@@ -1,0 +1,978 @@
+```{r config, echo=FALSE, message=FALSE, warning=FALSE, results="hide"}
+# Run config first to use dynamic variables in the YAML
+if (!require("upstartr")) install.packages("upstartr")
+library("upstartr")
+run_config()
+```
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(fig.width = 8.66, fig.height = 6, fig.path = "graphics/", echo = FALSE, message = FALSE, warning = FALSE, collapse = TRUE)
+```
+
+---
+title: "COVID-19 2nd and 3rd wave"
+author: "Michael Pereira <michael.pereira@freepress.mb.ca>"
+date: "`r format(Sys.Date(), "%B %d, %Y")`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    highlight: textmate
+    theme: cosmo
+    df_print: kable
+    self_contained: true
+    css: style.css
+    code_folding: hide
+---
+
+
+```{r get_read_data}
+
+# Update timestamp
+last_update_timestamp <- Sys.Date()
+source(dir_src("theme.R"))
+source(dir_src("palette.R"))
+
+run_process()
+
+run_analyze()
+```
+
+## Data import
+
+### Dashboard
+```{r compare_dashboard, class.source = 'fold-show'}
+
+# Cases
+dashboard_daily_status_all_2nd3rd <- dashboard_daily_status_all %>%
+  filter(date >= "2020-09-04" & date <= "2021-04-20") %>%
+  mutate(
+    month = month(date),
+    cases_mavg_7day = roll_mean(daily_cases, 7, na.rm = TRUE, fill = NA, align = "right"),
+    cases_mavg_7day_100K = cases_mavg_7day / population_manitoba_2020 * 100000
+  )
+
+dashboard_daily_status_all_2nd_wave <- dashboard_daily_status_all_2nd3rd %>%
+  mutate(month = month(date)) %>%
+  filter(month == 10) %>%
+  select(-rha, -object_id, -month)
+
+
+dashboard_daily_status_all_3rd_wave <- dashboard_daily_status_all_2nd3rd %>%
+  filter(date >= max(date) - 31) %>%
+  select(-rha, -object_id)
+
+cases_30day_2nd_wave_sum <- sum(dashboard_daily_status_all_2nd_wave$daily_cases)
+cases_30day_2nd_wave_min <- min(dashboard_daily_status_all_2nd_wave$daily_cases)
+cases_30day_2nd_wave_max <- max(dashboard_daily_status_all_2nd_wave$daily_cases)
+cases_30day_2nd_wave_median <- median(dashboard_daily_status_all_2nd_wave$daily_cases)
+
+cases_30day_3rd_wave_sum <- sum(dashboard_daily_status_all_3rd_wave$daily_cases)
+cases_30day_3rd_wave_min <- min(dashboard_daily_status_all_3rd_wave$daily_cases)
+cases_30day_3rd_wave_max <- max(dashboard_daily_status_all_3rd_wave$daily_cases)
+cases_30day_3rd_wave_median <- median(dashboard_daily_status_all_3rd_wave$daily_cases)
+```
+
+### Bulletins
+```{r compare_bulletins}
+
+wfp_daily_bulletin <-
+  wfp_daily_totals %>%
+  select(
+    date, new_daily_cases, active, recovered, deaths, total_hospital, total_icu,
+    active_hospital, active_icu, test_to_date
+  ) %>%
+  filter(date >= "2020-09-04" & date <= "2021-04-20") %>%
+  mutate(
+    month = month(date),
+    new_daily_mavg_7day = roll_mean(new_daily_cases, 7, na.rm = TRUE, fill = NA, align = "right"),
+    hospitalizations_active_mavg_7day = roll_mean(active_hospital, 7, na.rm = TRUE, fill = NA, align = "right"),
+    icu_active_mavg_7day = roll_mean(active_icu, 7, na.rm = TRUE, fill = NA, align = "right")
+  ) %>%
+  fill(active_hospital, active_icu)
+
+
+wfp_daily_bulletin_2nd_wave <- wfp_daily_bulletin %>%
+  mutate(month = month(date)) %>%
+  filter(month == 10)
+
+wfp_daily_bulletin_3rd_wave <- wfp_daily_bulletin %>%
+  filter(date >= max(date) - 31)
+
+
+hospitalizations_active_30day_2nd_wave_min <- min(wfp_daily_bulletin_2nd_wave$active_hospital)
+hospitalizations_active_30day_2nd_wave_max <- max(wfp_daily_bulletin_2nd_wave$active_hospital)
+hospitalizations_active_30day_2nd_wave_median <- median(wfp_daily_bulletin_2nd_wave$active_hospital)
+
+hospitalizations_active_30day_3rd_wave_min <- min(wfp_daily_bulletin_3rd_wave$active_hospital)
+hospitalizations_active_30day_3rd_wave_max <- max(wfp_daily_bulletin_3rd_wave$active_hospital)
+hospitalizations_active_30day_3rd_wave_median <- median(wfp_daily_bulletin_3rd_wave$active_hospital)
+
+icu_active_30day_2nd_wave_min <- min(wfp_daily_bulletin_2nd_wave$active_icu)
+icu_active_30day_2nd_wave_max <- max(wfp_daily_bulletin_2nd_wave$active_icu)
+icu_active_30day_2nd_wave_median <- median(wfp_daily_bulletin_2nd_wave$active_icu)
+
+icu_active_30day_3rd_wave_min <- min(wfp_daily_bulletin_3rd_wave$active_icu)
+icu_active_30day_3rd_wave_max <- max(wfp_daily_bulletin_3rd_wave$active_icu)
+icu_active_30day_3rd_wave_median <- median(wfp_daily_bulletin_3rd_wave$active_icu)
+```
+
+
+### Five-day positivity
+```{r compare_5day_positivity}
+
+fiveday_positivity_2nd_3rd_wave <- dashboard_5day_positivity %>%
+  filter(date >= "2020-09-04" & date <= "2021-04-20")
+
+fiveday_positivity_2nd_wave <- fiveday_positivity_2nd_3rd_wave %>%
+  mutate(month = month(date)) %>%
+  filter(month == 10)
+
+fiveday_positivity_3rd_wave <- fiveday_positivity_2nd_3rd_wave %>%
+  filter(date >= max(date) - 31)
+```
+
+### Demographics
+```{r compare_demographics_full_import}
+
+start <- as.Date("2020-09-14",format="%Y-%m-%d")
+end <- as.Date("2021-05-17",format="%Y-%m-%d")
+importJSON <- "None" # None/Full
+
+# THIS TAKES A FEW MINUTES, READ THE CSV UNLESS IT'S THE FIRST RUN OF THE DAY
+# Create df based on what the JSON contains then rbind in the while loop
+
+# Pull from JSON and stack the dates
+# Oct 4 and 10 are wrong in this b/c column names
+# change halfway through the month
+
+if(importJSON == "Full"){
+    
+  theDate <- start
+  
+  demographics_df_sample <- jsonlite::fromJSON(dir_data_raw( "demographic_heatmap/2020-10-01-demographics-rha.json"))
+  demographics_df_sample <- demographics_df_sample[["features"]][["attributes"]]
+  demographics_df_sample <- demographics_df_sample %>%
+    clean_names() %>%
+    mutate(
+      date = as.Date("2020-10-01", "%Y-%m-%d"),
+      total_cases = NA,
+      object_id = NA
+    )
+  demographics_df <- slice(demographics_df_sample, 0)
+  # demographics_df <- demographics_df
+  
+  while (theDate <= end){
+  
+    file_name <- paste("/demographic_heatmap/", format(theDate,"%Y-%m-%d"), "-demographics-rha.json", sep="")
+    print(file_name)
+  
+    demographics_rha_tmp <- jsonlite::fromJSON(dir_data_raw(file_name))
+  
+    # demographics_rha_tmp <- jsonlite::fromJSON(here::here(dir_data_raw, file_name))
+    demographics_rha_tmp <- demographics_rha_tmp[["features"]][["attributes"]]
+    demographics_rha_tmp <- demographics_rha_tmp %>%
+      clean_names() %>%
+      mutate(
+        date = as.Date(theDate, "%Y-%m-%d")
+      )
+  
+    if("total_cases" %in% colnames(demographics_rha_tmp)){
+      demographics_rha_tmp <- demographics_rha_tmp %>% rename( value = total_cases )
+    }
+  
+    if("object_id" %in% colnames(demographics_rha_tmp)){
+      demographics_rha_tmp <- demographics_rha_tmp %>% select(-object_id)
+    }
+  
+    demographics_df <- rbind(demographics_df, demographics_rha_tmp)
+  
+    Sys.sleep(.25)
+    theDate <- theDate + 1
+  
+  }
+  
+  write_csv(demographics_df, dir_data_out(paste("demographics_df", '.csv', sep='')))  
+    
+}
+
+
+```
+
+```{r compare_demographics}
+
+dashboard_demographics <- read_csv(dir_data_out("demographics_df.csv"))
+
+
+
+MB_pop_estimates_2020 <- MB_pop_estimates_2020_statcan_17_10_0005_01 %>%
+  group_by(age_group_mb) %>%
+  summarize(total = sum(population_2020est)) %>%
+  mutate(
+    age_group_mb = ifelse(age_group_mb == "100+", "99+", age_group_mb)
+  )
+
+dashboard_demographics_allrha <- read_csv(dir_data_out("demographics_df.csv")) %>%
+  filter(rha == "All") %>%
+  select(-rha) %>%
+  pivot_wider(names_from = gender, values_from = value) %>%
+  clean_names() %>%
+  mutate(
+    total_cases = male + female
+  ) %>%
+  left_join(
+    MB_pop_estimates_2020,
+    by = c("age_group" = "age_group_mb")
+  ) %>%
+  rename(
+    population_2020est = total
+  ) %>%
+  mutate(
+    cumulative_case_rate = total_cases / population_2020est * 100000
+  )
+
+
+dashboard_demographics_allrha_2nd_wave <- dashboard_demographics_allrha %>%
+  mutate(month = month(date)) %>%
+  filter(month == 10)
+
+dashboard_demographics_allrha_3rd_wave <- dashboard_demographics_allrha %>%
+  filter(date >= max(date) - 31)
+```
+
+## Key points
+
+* Daily cases are sourced from dashboard data and show the test date. Investigation and reporting lags can lead to differences in counts between the dashboard dates and summary statistics as reported in the daily bulletin.
+
+```{r keypoints}
+
+cat(paste("\n\n#### Second wave (Oct. 2020)"))
+cat(paste("\n*", "New daily cases:", "daily min:", comma(cases_30day_2nd_wave_min), " | median:", comma(cases_30day_2nd_wave_median), " | max:", comma(cases_30day_2nd_wave_max), " | total:", comma(cases_30day_2nd_wave_sum), sep = " "))
+cat(paste("\n*", "Hospitalizations (active, incl ICU):", "daily min:", comma(hospitalizations_active_30day_2nd_wave_min), " | median:", comma(hospitalizations_active_30day_2nd_wave_median), " | max:", comma(hospitalizations_active_30day_2nd_wave_max), sep = " "))
+cat(paste("\n*", "ICU (active): daily min:", comma(icu_active_30day_2nd_wave_min), " | median:", comma(icu_active_30day_2nd_wave_median), " | max:", comma(icu_active_30day_2nd_wave_max), sep = " "))
+
+daysprior_31 <- max(dashboard_daily_status_all_3rd_wave$date) - 31
+cat(paste("\n\n#### Third wave ", daysprior_31, "-", max(dashboard_daily_status_all_3rd_wave$date), "(31 days)"))
+cat(paste("\n*", "New daily cases:", "daily min:", comma(cases_30day_3rd_wave_min), " | median:", comma(cases_30day_3rd_wave_median), " | max:", comma(cases_30day_3rd_wave_max), " | total:", comma(cases_30day_3rd_wave_sum), sep = " "))
+cat(paste("\n*", "Hospitalizations (active, incl ICU): daily min:", comma(hospitalizations_active_30day_3rd_wave_min), " | median:", comma(hospitalizations_active_30day_3rd_wave_median), " | max:", comma(hospitalizations_active_30day_3rd_wave_max), sep = " "))
+cat(paste("\n*", "ICU (active): daily min:", comma(icu_active_30day_3rd_wave_min), " | median:", comma(icu_active_30day_3rd_wave_median), " | max:", comma(icu_active_30day_3rd_wave_max), sep = " "))
+```
+
+## Graphics
+
+### New daily cases
+
+**Test date as noted in the dashboard data and may differ from numbers reported in the bulletin.**
+```{r viz_cases_2nd_3rd, fig.width=8.66, fig.height=6}
+
+p_2nd_3rd_wave_cases <- ggplot(dashboard_daily_status_all_2nd3rd) +
+  aes(x = date, weight = daily_cases) +
+  geom_bar(colour = "#e9e9e9", fill = "#e9e9e9", size = .5) +
+  geom_bar(
+    data = dashboard_daily_status_all_2nd_wave,
+    aes(x = date, weight = daily_cases),
+    colour = nominalMuted_shade_0, fill = nominalMuted_shade_0, size = .5
+  ) +
+  geom_bar(
+    data = dashboard_daily_status_all_3rd_wave,
+    aes(x = date, weight = daily_cases),
+    colour = nominalMuted_shade_0, fill = nominalMuted_shade_0, size = .5
+  ) +
+  annotate("text",
+    x = as.Date("2020-10-16"),
+    y = 480,
+    label = paste(comma(cases_30day_2nd_wave_sum), "\nnew cases", sep = ""),
+    vjust = 0.8, size = 4, lineheight = 1,
+    colour = "#000000"
+  ) +
+  annotate("text",
+    x = as.Date("2021-04-04"),
+    y = 440,
+    label = paste(comma(cases_30day_3rd_wave_sum), "\nnew cases", sep = ""),
+    vjust = 0.8, size = 4, lineheight = 1,
+    colour = "#000000"
+  ) +
+
+  geom_curve(
+    data = data.frame(
+      x = as.Date("2020-10-12"), y = 410,
+      xend = as.Date("2020-10-27"), yend = 90
+    ),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    size = .25, colour = "#000000", curvature = .25, arrow = structure(list(angle = 30, length = structure(0.1, class = "unit", valid.unit = 2L, unit = "inches"), ends = 2L, type = 2L), class = "arrow"), inherit.aes = FALSE, show.legend = FALSE
+  ) +
+  geom_curve(
+    data = data.frame(
+      x = as.Date("2021-04-09"), y = 370,
+      xend = as.Date("2021-04-08"), yend = 30
+    ),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    size = .25, colour = "#000000", curvature = -0.25, arrow = structure(list(angle = 30, length = structure(0.1, class = "unit", valid.unit = 2L, unit = "inches"), ends = 2L, type = 2L), class = "arrow"), inherit.aes = FALSE, show.legend = FALSE
+  ) +
+
+
+  geom_line(aes(x = date, y = cases_mavg_7day),
+           colour="#ffffff",size=1.2) +
+  geom_line(aes(x = date, y = cases_mavg_7day),
+           colour=nominalBold_shade_1,size=.8) +
+
+  geom_text(data=dashboard_daily_status_all_2nd3rd %>% filter(date == max(date)),
+          aes(x = date + 5, y = cases_mavg_7day - 1,
+          label = wrap_text(paste("Seven-day moving average ", sep=""), 13)
+        ),
+          color="#000000", hjust = .05, vjust = 1, size=3
+  ) +
+
+  scale_x_date(
+    expand = c(0, 0),
+    limits = c(as.Date("2020-09-15"), as.Date("2021-05-30")),
+    date_breaks = "1 month",
+    labels = date_format("%b")
+  ) +
+  scale_y_continuous(
+    expand = c(0, 0),
+    limits = c(0, 800),
+    labels = scales::comma
+  ) +
+  labs(
+    title = wrap_text("Daily cases of COVID-19 in Manitoba", 70),
+    subtitle = wrap_text("Reported test date", 80),
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health (", last_update_timestamp, ")", sep = "")), 80),
+    x = "",
+    y = "",
+    fill = ""
+  ) +
+  minimal_theme() +
+  theme(
+    legend.position = c(.9, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888")
+  )
+
+p_2nd_3rd_wave_cases <- prepare_plot(p_2nd_3rd_wave_cases)
+ggsave_pngpdf(p_2nd_3rd_wave_cases, "p_2nd_3rd_wave_cases", width_var = 8.66, height_var = 6, dpi_var=96, scale_var = 1, units_var = "in")
+
+plot(p_2nd_3rd_wave_cases)
+```
+
+
+
+
+
+### Daily hospitalizations
+
+**As reported in the daily bulletin and dashboard. Using active/contagious cases because that is what's available for October.**
+```{r viz_hospitalizations_2nd_3rd, fig.width=8.66, fig.height=6}
+
+p_2nd_3rd_wave_hospitalizations <- ggplot(wfp_daily_bulletin) +
+  aes(x = date, weight = active_hospital) +
+
+  geom_bar(colour = "#e9e9e9", fill = "#e9e9e9", size = .5) +
+  # geom_line(aes(x = date, y = hospitalizations_active_mavg_7day),
+  #          colour=nominalMuted_shade_1,size=1) +
+
+  geom_bar(
+    data = wfp_daily_bulletin_2nd_wave,
+    aes(x = date, weight = active_hospital),
+    colour = wfp_blue, fill = wfp_blue, size = .5
+  ) +
+
+  geom_bar(
+    data = wfp_daily_bulletin_2nd_wave,
+    aes(x = date, weight = active_hospital),
+    colour = wfp_blue, fill = wfp_blue, size = .5
+  ) +
+  geom_bar(
+    data = wfp_daily_bulletin_3rd_wave,
+    aes(x = date, weight = active_hospital),
+    colour = wfp_blue, fill = wfp_blue, size = .5
+  ) +
+
+  # geom_text(data=wfp_daily_bulletin_2nd_wave %>% filter(date==max(date)),
+  #           aes(x = date, y = active_hospital,
+  #               label=paste(format(date, "%b %d"), "\n", active_hospital, sep="")
+  #               ),
+  #           colour="#000000", size=4, vjust=-.75) +
+  # geom_text(data=wfp_daily_bulletin_3rd_wave %>% filter(date==max(date)),
+  #           aes(x = date, y = active_hospital,
+  #               label=paste(format(date, "%b %d"), "\n", active_hospital, sep="")
+  #               ),
+  #           colour="#000000", size=4, vjust=-.75) +
+
+  annotate("text",
+    x = as.Date("2020-10-17"),
+    y = 190,
+    label = paste("Median of ", comma(hospitalizations_active_30day_2nd_wave_median), "\nactive cases\n in hospital", sep = ""),
+    vjust = 0.8, size = 4,
+    colour = "#000000"
+  ) +
+  annotate("text",
+    x = as.Date("2021-04-04"),
+    y = 250,
+    label = paste("Median of ", comma(hospitalizations_active_30day_3rd_wave_median), "\nactive cases\n in hospital", sep = ""),
+    vjust = 0.8, size = 4,
+    colour = "#000000"
+  ) +
+  geom_curve(
+    data = data.frame(
+      x = as.Date("2020-10-15"), y = 130,
+      xend = as.Date("2020-10-15"), yend = 50
+    ),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    size = .25, colour = "#000000", curvature = .25, arrow = structure(list(angle = 30, length = structure(0.1, class = "unit", valid.unit = 2L, unit = "inches"), ends = 2L, type = 2L), class = "arrow"), inherit.aes = FALSE, show.legend = FALSE
+  ) +
+  geom_curve(
+    data = data.frame(
+      x = as.Date("2021-04-04"), y = 190,
+      xend = as.Date("2021-04-04"), yend = 80
+    ),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    size = .25, colour = "#000000", curvature = -0.25, arrow = structure(list(angle = 30, length = structure(0.1, class = "unit", valid.unit = 2L, unit = "inches"), ends = 2L, type = 2L), class = "arrow"), inherit.aes = FALSE, show.legend = FALSE
+  ) +
+  scale_x_date(
+    expand = c(0, 0),
+    limits = c(as.Date("2020-09-15"), as.Date("2021-04-30")),
+    date_breaks = "1 month",
+    labels = date_format("%b")
+  ) +
+  scale_y_continuous(
+    expand = c(0, 0),
+    limits = c(0, 400),
+    labels = scales::comma
+  ) +
+  labs(
+    title = wrap_text("Daily COVID-19 hospitalizations in Manitoba", 70),
+    subtitle = "Active and contagious cases",
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health (", last_update_timestamp, ")", sep = "")), 80),
+    x = "",
+    y = "",
+    fill = ""
+  ) +
+  minimal_theme() +
+  theme(
+    legend.position = c(.9, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888")
+  )
+
+
+p_2nd_3rd_wave_hospitalizations <- prepare_plot(p_2nd_3rd_wave_hospitalizations)
+ggsave_pngpdf(p_2nd_3rd_wave_hospitalizations, "p_2nd_3rd_wave_hospitalizations", width_var = 8.66, height_var = 6, dpi_var=96, scale_var = 1, units_var = "in")
+
+plot(p_2nd_3rd_wave_hospitalizations)
+```
+
+
+### Daily ICU hospitalizations
+
+**As reported in the daily bulletin and dashboard. Using active/contagious cases because that is what's available for October.**
+```{r viz_icu_2nd_3rd, fig.width=8.66, fig.height=6}
+
+p_2nd_3rd_wave_icu <- ggplot(wfp_daily_bulletin) +
+  aes(x = date, weight = active_icu) +
+  geom_bar(colour = "#e9e9e9", fill = "#e9e9e9", size = .5) +
+  # geom_line(aes(x = date, y = active_icu),
+  #          colour=nominalMuted_shade_1,size=1) +
+
+  geom_bar(
+    data = wfp_daily_bulletin_2nd_wave,
+    aes(x = date, weight = active_icu),
+    colour = wfp_blue, fill = wfp_blue, size = .5
+  ) +
+  # geom_line(data=wfp_daily_bulletin_2nd_wave,
+  #           aes(x = date, y = active_icu),
+  #          colour=nominalBold_shade_1,size=1) +
+
+  geom_bar(
+    data = wfp_daily_bulletin_3rd_wave,
+    aes(x = date, weight = active_icu),
+    colour = wfp_blue, fill = wfp_blue, size = .5
+  ) +
+  # geom_line(data=wfp_daily_bulletin_3rd_wave,
+  #           aes(x = date, y = active_icu),
+  #          colour=nominalBold_shade_1,size=1) +
+
+  # geom_text(data=wfp_daily_bulletin_2nd_wave %>% filter(date==max(date)),
+  #           aes(x = date, y = active_icu,
+  #               label=paste(format(date, "%b %d"), "\n", active_icu, sep="")
+  #               ),
+  #           colour="#000000", size=4, vjust=-.75) +
+  # geom_text(data=wfp_daily_bulletin_3rd_wave %>% filter(date==max(date)),
+  #           aes(x = date, y = active_icu,
+  #               label=paste(format(date, "%b %d"), "\n", active_icu, sep="")
+  #               ),
+  #           colour="#000000", size=4, vjust=-.75) +
+  annotate("text",
+    x = as.Date("2020-10-16"),
+    y = 40,
+    label = paste("Median of ", comma(icu_active_30day_2nd_wave_median), "\nactive cases\n in ICU", sep = ""),
+    vjust = 0.8, size = 4,
+    colour = "#000000"
+  ) +
+  annotate("text",
+    x = as.Date("2021-04-04"),
+    y = 60,
+    label = paste("Median of ", comma(icu_active_30day_3rd_wave_median), "\nactive cases\n in ICU", sep = ""),
+    vjust = 0.8, size = 4,
+    colour = "#000000"
+  ) +
+  geom_curve(
+    data = data.frame(
+      x = as.Date("2020-10-12"), y = 28,
+      xend = as.Date("2020-10-15"), yend = 10
+    ),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    size = .25, colour = "#000000", curvature = .25, arrow = structure(list(angle = 30, length = structure(0.1, class = "unit", valid.unit = 2L, unit = "inches"), ends = 2L, type = 2L), class = "arrow"), inherit.aes = FALSE, show.legend = FALSE
+  ) +
+  geom_curve(
+    data = data.frame(
+      x = as.Date("2021-04-06"), y = 48,
+      xend = as.Date("2021-04-04"), yend = 16
+    ),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    size = .25, colour = "#000000", curvature = -0.25, arrow = structure(list(angle = 30, length = structure(0.1, class = "unit", valid.unit = 2L, unit = "inches"), ends = 2L, type = 2L), class = "arrow"), inherit.aes = FALSE, show.legend = FALSE
+  ) +
+
+
+  #   annotate("text",
+  #        x = as.Date("2020-10-31"),
+  #        y = 350,
+  #        label = paste("Median of ", comma(icu_active_30day_2nd_wave_median), " active cases\n in ICU", sep=""),
+  #        vjust = 0.8, size=4,
+  #        colour = "#000000"
+  # ) +
+  #
+  # annotate("text",
+  #        x = as.Date("2021-03-15"),
+  #        y = 350,
+  #        label = paste("Median ", comma(icu_active_30day_3rd_wave_median), " active cases\n in ICU", sep=""),
+  #        vjust = 0.8, size=4,
+  #        colour = "#000000"
+  # ) +
+  scale_x_date(
+    expand = c(0, 0),
+    limits = c(as.Date("2020-09-15"), as.Date("2021-04-30")),
+    date_breaks = "1 month",
+    labels = date_format("%b")
+  ) +
+  scale_y_continuous(
+    expand = c(0, 0),
+    limits = c(0, 80),
+    labels = scales::comma
+  ) +
+  labs(
+    title = wrap_text("Daily COVID-19 ICU hospitalizations in Manitoba", 70),
+    subtitle = "Active and contagious cases",
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health (", last_update_timestamp, ")", sep = "")), 80),
+    x = "",
+    y = "",
+    fill = ""
+  ) +
+  minimal_theme() +
+  theme(
+    legend.position = c(.9, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888")
+  )
+
+p_2nd_3rd_wave_icu <- prepare_plot(p_2nd_3rd_wave_icu)
+ggsave_pngpdf(p_2nd_3rd_wave_icu, "p_2nd_3rd_wave_icu", width_var = 8.66, height_var = 6, dpi_var=96, scale_var = 1, units_var = "in")
+
+plot(p_2nd_3rd_wave_icu)
+```
+
+
+### Five-day test positivity
+
+**As reported in the daily bulletin and dashboard. The province wasn't consistently reporting Winnipeg's rate until Nov. 1, 2020.**
+```{r viz_5day_test_positivity, fig.width=8.66, fig.height=6}
+
+p_2nd_3rd_wave_positivity <- ggplot(fiveday_positivity_2nd_3rd_wave) +
+  aes(x = date, y = positivity_rate_5day_mb) +
+  geom_line(colour = "#c9c9c9", fill = "#c9c9c9", size = .75) +
+  geom_line(
+    data = fiveday_positivity_2nd_wave,
+    aes(x = date, y = positivity_rate_5day_mb),
+    colour = wfp_blue, size = 1
+  ) +
+  geom_line(
+    data = fiveday_positivity_3rd_wave,
+    aes(x = date, y = positivity_rate_5day_mb),
+    colour = wfp_blue, size = 1
+  ) +
+  geom_point(
+    data = fiveday_positivity_2nd_wave %>% filter(date == max(date)),
+    aes(x = date, y = positivity_rate_5day_mb),
+    colour = wfp_blue, size = 2.5
+  ) +
+  geom_point(
+    data = fiveday_positivity_3rd_wave %>% filter(date == max(date)),
+    aes(x = date, y = positivity_rate_5day_mb),
+    colour = wfp_blue, size = 2.5
+  ) +
+  geom_text(
+    data = fiveday_positivity_2nd_wave %>% filter(date == max(date)),
+    aes(
+      x = date, y = positivity_rate_5day_mb,
+      label = paste(format(date, "%b %d"), "\n", positivity_rate_5day_mb, "%", sep = "")
+    ),
+    colour = "#000000", size = 4, vjust = -.75
+  ) +
+  geom_text(
+    data = fiveday_positivity_3rd_wave %>% filter(date == max(date)),
+    aes(
+      x = date, y = positivity_rate_5day_mb,
+      label = paste(format(date, "%b %d"), "\n", positivity_rate_5day_mb, "%", sep = "")
+    ),
+    colour = "#000000", size = 4, vjust = 2
+  ) +
+  scale_x_date(
+    expand = c(0, 0),
+    limits = c(as.Date("2020-09-15"), as.Date("2021-04-30")),
+    date_breaks = "1 month",
+    labels = date_format("%b")
+  ) +
+  scale_y_continuous(
+    expand = c(0, 0),
+    limits = c(0, 20),
+    labels = function(x) {
+      ifelse(x %in% c(20), paste(x, "%", sep = ""), x)
+    }
+  ) +
+  labs(
+    title = wrap_text("Five-day test positivity for COVID-19 in Manitoba", 70),
+    subtitle = "",
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health (", last_update_timestamp, ")", sep = "")), 80),
+    x = "",
+    y = "",
+    fill = ""
+  ) +
+  minimal_theme() +
+  theme(
+    legend.position = c(.9, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888")
+  )
+
+p_2nd_3rd_wave_positivity <- prepare_plot(p_2nd_3rd_wave_positivity)
+ggsave_pngpdf(p_2nd_3rd_wave_positivity, "p_2nd_3rd_wave_positivity", width_var = 8.66, height_var = 6, dpi_var=96, scale_var = 1, units_var = "in")
+
+plot(p_2nd_3rd_wave_positivity)
+```
+
+
+
+### Case demographics
+
+
+```{r viz_ct_chg_cases_age, fig.width=8.66, fig.height=6}
+
+dashboard_demographics_allrha_jan1 <- dashboard_demographics_allrha %>% 
+  filter(date == as.Date("2021-01-01")) %>% 
+  select(
+    date, age_group, total_cases
+  )
+
+dashboard_demographics_allrha_apr30 <- dashboard_demographics_allrha %>% 
+  filter(date == max(date)) %>% 
+  select(
+    date, age_group, total_cases
+  )
+
+dashboard_demographics_allrha_jan1_apr30 <-  left_join(
+  dashboard_demographics_allrha_jan1,
+  dashboard_demographics_allrha_apr30,
+  by=c("age_group"="age_group")
+) %>% 
+  rename(
+    total_cases_jan1 = total_cases.x,
+    total_cases_ytd = total_cases.y
+  ) %>% 
+  mutate(
+    newcases_ytd = total_cases_ytd - total_cases_jan1,
+    pct_chg = (total_cases_ytd - total_cases_jan1) / abs(total_cases_jan1) * 100
+  ) %>% 
+  select(
+    -date.y
+  )
+
+
+```
+
+
+
+**As reported in the dashboard data.**
+```{r viz_case_demographics, fig.width=8.66, fig.height=6}
+
+p_2nd_3rd_case_demographics <- ggplot(dashboard_demographics_allrha) +
+  aes(x = date, y = total_cases, group = age_group) +
+  geom_line(size = 1, alpha = .5, colour = "#c9c9c9") +
+  geom_line(data=dashboard_demographics_allrha %>% filter(date >= as.Date("2021-01-01")) %>% filter(age_group %in% c("0-9", "10-19")),
+            size = 1, alpha = 1, colour = wfp_blue) +
+  # geom_line(
+  #   data = dashboard_demographics_allrha_2nd_wave %>% filter(age_group %in% c("0-9", "10-19")),
+  #   aes(x = date, y = total_cases, group = age_group),
+  #   size = 1, alpha = 1, colour = wfp_blue
+  # ) +
+  # geom_line(
+  #   data = dashboard_demographics_allrha_3rd_wave %>% filter(age_group %in% c("0-9", "10-19")),
+  #   aes(x = date, y = total_cases, group = age_group),
+  #   size = 1, alpha = 1, colour = wfp_blue
+  # ) +
+  geom_text_repel(
+    data = dashboard_demographics_allrha %>% filter(date == max(date)),
+    aes(x = date, y = total_cases,
+        label = paste(age_group, ":", comma(total_cases, accuracy=1), sep=" "),
+        fontface=ifelse(age_group %in% c("0-9", "10-19"), "bold", "plain")
+        ),
+    size = 4, colour = "#000000",
+    hjust = -.5,
+    color = "#222222",
+    force=10,
+    direction = "y",
+    segment.color = "#999999",
+    segment.size = .2,
+    show.legend = FALSE
+
+  ) +
+  
+  # annotate("text",
+  #          x=as.Date("2021-01-24"),
+  #          y=7200,
+  #          label=wrap_text("Between Jan. 1 and May 8, cases among 0-9 year olds increased by 138 per cent. Among 10-19 year olds, cases grew by 92 per cent in the same four month period.", 42),
+  #          hjust=1, vjust=0.8, size=4,
+  #          colour="#000000"
+  # ) +
+  # 
+  scale_x_date(
+    expand = c(0, 0),
+    limits = c(as.Date("2020-09-15"), as.Date("2021-08-30")),
+    date_breaks = "1 month",
+    labels = date_format("%b")
+  ) +
+  scale_y_continuous(
+    expand = c(0, 0),
+    limits = c(0, 10000),
+    label=comma
+    # ,
+    # labels = function(x) { ifelse(x %in% c(20), paste(x, "%", sep = ""), x) }
+  ) +
+  labs(
+    title = wrap_text("Reported cases of COVID-19 in Manitoba by age group", 70),
+    subtitle= wrap_text("All cases to date", 80),
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health (", last_update_timestamp, ")", sep = "")), 80),
+    x = "",
+    y = "",
+    colour = "Age group"
+  ) +
+  minimal_theme() +
+  theme(
+      # plot.title = ggplot2::element_text(margin=ggplot2::margin(0,0,20,0)),
+    legend.position = c(.2, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888")
+  )
+
+p_2nd_3rd_case_demographics <- prepare_plot(p_2nd_3rd_case_demographics)
+ggsave_pngpdf(p_2nd_3rd_case_demographics, "p_2nd_3rd_case_demographics", width_var = 8.66, height_var = 6, dpi_var=96, scale_var = 1, units_var = "in")
+
+plot(p_2nd_3rd_case_demographics)
+```
+
+
+**As reported in the dashboard data.**
+```{r viz_case_demographics_rate, fig.width=8.66, fig.height=6}
+
+
+p_2nd_3rd_case_demographics_rate <- ggplot(dashboard_demographics_allrha) +
+  aes(x = date, y = cumulative_case_rate, group = age_group) +
+  geom_line(size = 1, alpha = .5, colour = "#c9c9c9") +
+  geom_line(data=dashboard_demographics_allrha %>% filter(age_group %in% c("0-9", "10-19")),
+            size = 1, alpha = 1, colour = wfp_blue) +
+
+  #
+  # geom_line(
+  #   data = dashboard_demographics_allrha_2nd_wave %>% filter(age_group %in% c("0-9", "10-19")),
+  #   aes(x = date, y = cumulative_case_rate, group = age_group),
+  #   size = 1, alpha = 1, colour = wfp_blue
+  # ) +
+  # geom_line(
+  #   data = dashboard_demographics_allrha_3rd_wave %>% filter(age_group %in% c("0-9", "10-19")),
+  #   aes(x = date, y = cumulative_case_rate, group = age_group),
+  #   size = 1, alpha = 1, colour = wfp_blue
+  # ) +
+  geom_text_repel(
+    data = dashboard_demographics_allrha %>% filter(date == max(date)),
+    aes(x = date, y = cumulative_case_rate,
+        label = paste(age_group, ":", comma(cumulative_case_rate), sep=" "),
+        fontface=ifelse(age_group %in% c("0-9", "10-19"), "bold", "plain")
+        ),
+    size = 4, colour = "#000000",
+    hjust = -.5,
+    color = "#222222",
+    force=10,
+    direction = "y",
+    segment.color = "#999999",
+    segment.size = .2,
+    show.legend = FALSE
+
+  ) +
+  scale_x_date(
+    expand = c(0, 0),
+    limits = c(as.Date("2020-09-15"), as.Date("2021-08-30")),
+    date_breaks = "1 month",
+    labels = date_format("%b")
+  ) +
+  scale_y_continuous(
+    expand = c(0, 0),
+    limits = c(0, 15000),
+    label=comma
+    # ,
+    # labels = function(x) { ifelse(x %in% c(20), paste(x, "%", sep = ""), x) }
+  ) +
+  labs(
+    title = wrap_text("Reported cases per capita of COVID-19 in Manitoba by age group", 70),
+    subtitle="Cases per 100,000 people",
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health (", last_update_timestamp, ")", sep = "")), 80),
+    x = "",
+    y = "",
+    colour = "Age group"
+  ) +
+  minimal_theme() +
+  theme(
+    legend.position = c(.2, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888")
+  )
+
+p_2nd_3rd_case_demographics_rate <- prepare_plot(p_2nd_3rd_case_demographics_rate)
+ggsave_pngpdf(p_2nd_3rd_case_demographics_rate, "p_2nd_3rd_case_demographics_rate", width_var = 8.66, height_var = 6, dpi_var=96, scale_var = 1, units_var = "in")
+
+
+plot(p_2nd_3rd_case_demographics_rate)
+```
+
+
+
+## Data tables
+
+### 2nd wave - October 2020
+#### Dashboard data
+```{r table_2nd_3rd_oct_dashboard_cases, results="show"}
+
+datatable(dashboard_daily_status_all_2nd_wave,
+  caption = "Table: dashboard_daily_status_all_2nd_wave",
+  class = "cell-border stripe", rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(0, "desc"))
+  )
+)
+```
+
+### 2nd wave - October 2020
+#### Bulletin numbers
+```{r table_2nd_3rd_oct_bulletin_cases, results="show"}
+
+datatable(wfp_daily_bulletin_2nd_wave,
+  caption = "Table: wfp_daily_bulletin_2nd_wave",
+  class = "cell-border stripe", rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(0, "desc"))
+  )
+)
+```
+
+
+### 2nd wave - October 2020
+#### Five-day test positivity
+```{r table_2nd_3rd_oct_positivity, results="show"}
+
+datatable(fiveday_positivity_2nd_wave,
+  caption = "Table: fiveday_positivity_2nd_wave",
+  class = "cell-border stripe", rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(0, "desc"))
+  )
+)
+```
+
+### 3rd wave - April 2021
+#### Dashboard data
+```{r table_2nd_3rd_april_dashboard_cases, results="show"}
+
+datatable(dashboard_daily_status_all_3rd_wave,
+  caption = "Table: dashboard_daily_status_all_3rd_wave",
+  class = "cell-border stripe", rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(0, "desc"))
+  )
+)
+```
+
+### 3rd wave - April 2021
+#### Bulletin numbers
+```{r table_2nd_3rd_april_bulletin_cases, results="show"}
+
+datatable(wfp_daily_bulletin_3rd_wave,
+  caption = "Table: wfp_daily_bulletin_3rd_wave",
+  class = "cell-border stripe", rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(0, "desc"))
+  )
+)
+```
+
+### 3rd wave - April 2021
+#### Five-day test positivity
+```{r table_2nd_3rd_april_positivity, results="show"}
+
+datatable(fiveday_positivity_3rd_wave,
+  caption = "Table: fiveday_positivity_3rd_wave",
+  class = "cell-border stripe", rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(0, "desc"))
+  )
+)
+```

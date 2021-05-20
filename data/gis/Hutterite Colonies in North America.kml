@@ -1,0 +1,4900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Hutterite Colonies in North America</name>
+    <description>Location of Hutterite Colonies in the prairies of western Canada and the northern great plains of the U.S. Colonies are arranged by Leut: Dariusleut (purple), Leherleut (yellow) and Schmiedeleut (green).</description>
+    <Style id="icon-111-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/111-purple-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-111-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/111-purple-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-111">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-111-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-111-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-157-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/157-yellow-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-157-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/157-yellow-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-157">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-157-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-157-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-157-nodesc-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/157-yellow-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-157-nodesc-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/157-yellow-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-157-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-157-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-157-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-61-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/61-green-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-61-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/61-green-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-61">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-61-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-61-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Untitled layer</name>
+      <Placemark>
+        <name>Alix Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.138363,52.351909,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arm River Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -105.057526,50.689478,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Arrowwood Colony (AB)</name>
+        <description>Dariusleut. Location approximate.</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.439818,50.624697,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Athabasca Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.493069,54.75413,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ayers Ranch Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.948242,47.051527,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Beiseker Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.684422,51.388241,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Belle Plain Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -105.16197,50.503043,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bentley Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.997719,52.410988,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berry Creek Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.707258,51.701219,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Big Rose Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.038993,51.951957,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Birch Hills Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -118.345604,55.585964,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Birch Meadows Colony (AB)</name>
+        <description>Dariusleut. Location approximate.</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -117.833084,55.821469,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blue Ridge Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.633731,49.228142,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blue Sky Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.497795,51.798193,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Box Elder Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.885004,49.789638,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Byemoor Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.201919,52.063206,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Carmangay Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.000858,50.087158,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cameron Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.434852,49.904453,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camrose Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.834364,53.113329,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cayley Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.922809,50.418527,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cleardale Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -119.392664,56.364118,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cluny Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.761656,50.857327,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Codesa Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -118.054593,55.721366,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Craigmyle Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.206841,51.711126,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deerfield Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.67791,47.259931,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Donalda Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.448993,52.622142,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Downie Lake Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.693164,49.805371,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eagle Creek Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.329376,52.331428,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ear View Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.36229,50.031278,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>East Cardston Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.222327,49.193318,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>East Malta Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.606694,48.348427,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>East Raymond Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.577006,49.416269,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Elkwater Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.173537,49.780865,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Enchant Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.524841,50.16623,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Erskine Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.846879,52.31281,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Estuary Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.839136,50.940687,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ewelme Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.497686,49.45137,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fairview Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.82159,51.399854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ferrybank Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.842503,52.774259,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Flat Willow Ranch Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.48921,46.724412,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fords Creek Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.916293,47.12968,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fort Pitt Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.799114,53.580288,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Forty Mile Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.356456,45.282543,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gadsby Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.356231,52.153064,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gildford Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.2878,48.800912,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grandview Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -119.025712,55.253312,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Granum Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.604593,49.848144,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Green Leaf Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -106.697068,52.932325,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hairy Hill Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.027763,53.735853,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>High River Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.66209,50.480132,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillcrest Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -106.452273,51.791239,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillridge Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.336095,49.718401,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillsvale Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.199055,52.836903,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillview Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.946552,51.368331,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hodgeville Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.040987,50.074688,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Holden Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.320762,53.225568,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Holt Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.310425,53.021763,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hughenden Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.00149,52.431877,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Huxley Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.096481,51.946894,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Iron Creek Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.057685,53.0883,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Keho Lake Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.014306,49.987174,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kilby Butte Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.349755,46.546913,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>King Ranch Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.638881,47.056006,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>LaJord Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -104.189508,50.355488,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lakeside Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.360576,49.666301,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lakeview Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.013135,52.270382,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Leask Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -106.783095,52.980927,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Leedale Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -114.460929,52.549545,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Little Bow Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.369656,50.217027,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Livingstone Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -114.163165,49.651372,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lomond Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.425175,50.342324,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Loring Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.971502,48.786959,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lougheed Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.556323,52.585406,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mannville Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.169681,53.26961,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Marlin Colony (WA)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -119.034309,47.350721,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mayfield Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.987454,49.490203,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mixburn Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.371056,53.179638,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Morinville Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.847456,53.869733,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mountain View Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.475079,51.238989,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New York Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.394482,49.589651,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>North Harlem Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.755598,48.584706,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>O.B. Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.226258,53.671687,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Peace View Colony (BC)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -120.480943,56.028937,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pibroch Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.845862,54.306357,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pincher Creek Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.990594,49.504038,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pine Haven Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.288236,52.906271,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pine Hill Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -114.077721,52.149519,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plain Lake Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.66876,53.625039,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pleasant Valley Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.415986,52.366885,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ponteix Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.467781,49.561176,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prairie Elk Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -105.795037,48.01604,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prairie View Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.123012,51.392297,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Quill Lake Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -104.163511,51.999241,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rainbow Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.589487,51.972222,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Raymore Colony (SK)</name>
+        <description>Dariusleut. Location approximate.</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -104.660532,51.504547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Red Willow Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.463345,52.450775,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ribstone Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.384183,52.605861,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ridge Valley Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -117.949543,55.124157,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverbend Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -106.815683,52.665036,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverside Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.4479,49.440266,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverview Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -106.483511,52.273677,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rockyview Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -114.135793,51.339384,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rosebud Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.121007,51.311749,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sandhills Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.374687,51.334646,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Schoonover Colony (WA)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -118.58283,47.231604,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Scotford Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.078115,53.756171,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Scott Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.880777,52.324574,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shady Lane Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -118.229804,55.720956,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Silver Creek Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.964355,52.842103,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Simmie Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.005032,49.902831,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Smoky Lake Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.457116,54.030291,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>South Peace Colony (BC)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -120.266125,56.069242,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spokane Colony (WA)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -117.725529,47.691292,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Creek Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.930609,49.833733,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Creek Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.621215,47.154571,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Lake Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.522926,50.014751,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Point Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.812166,49.683325,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Ridge Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.864223,53.02433,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Springvale Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.154057,51.322743,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Valley Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.058639,49.351495,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Water Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.441006,51.93608,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stahl Colony (WA)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -118.721085,47.150457,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stahlville Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.268307,51.306014,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Standoff Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.310195,49.483988,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stanfield Colony (OR)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -119.082837,45.82443,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Star City City (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -104.274747,52.916149,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Starland Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.600616,51.748901,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunny Bend  Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -114.181474,54.381813,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunny Dale Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.53544,52.332308,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunshine Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.488361,51.03807,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Surprise Creek Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -110.340315,47.170163,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Swift Current Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.887608,50.434182,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Thompson Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.54326,49.422877,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Three Hills Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.270126,51.622371,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tofield Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.663766,53.283659,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tschetter Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.51892,51.285235,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Turin Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.583656,50.016652,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Turner Colony (MT)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.434828,48.758717,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Valley View Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.635063,51.737641,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Valleyview Ranch Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -117.054127,54.993825,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vauxhall Farms Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.060262,49.940474,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vegreville Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.87754,53.329018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Veteran Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.157261,52.125108,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Viking Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -111.608977,53.199187,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Warburg Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -114.358182,53.24915,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Warden Colony (WA)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -118.949991,47.057718,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Waterton Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.687189,49.26302,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Webb Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -108.208002,50.137493,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>West Bench Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -109.130039,49.645971,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>West Raley Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.235121,49.292822,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wheatland Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.184746,51.14599,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>White Lake Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -113.204271,49.915244,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Willow Park Colony (SK)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -107.439179,51.883894,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wilson Siding Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.576712,49.624451,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wintering Hills Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.488704,51.147788,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wolf Creek Colony (AB)</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -112.514819,49.408606,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wollman Ranch Colony, ND</name>
+        <description>Dariusleut</description>
+        <styleUrl>#icon-111</styleUrl>
+        <Point>
+          <coordinates>
+            -101.766829,46.548516,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Abbey Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.788043,50.694106,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Acadia Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -110.410069,51.207002,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Armada Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.74609,50.379482,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baildon Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -105.504502,50.141205,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Beechy Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.552279,50.720652,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bench Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.690702,49.735721,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Big Bend Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.140867,49.1623,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Big Sky Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.766736,48.840321,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Big Stone Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.206974,47.400584,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Birch Creek Colony (MT)</name>
+        <styleUrl>#icon-157-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -112.469676,48.245896,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bluegrass Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.083023,49.411289,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bone Creek Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.366316,49.919437,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bow City Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.279271,50.452516,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Brant Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.542604,50.453301,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Britestone Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.187474,51.439533,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Butte Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.937546,49.219802,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camrose Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.612725,48.310687,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Carmichael Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.630287,50.001032,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cascade Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.820205,47.440147,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Castor Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.043892,52.185729,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clear Lake Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.32771,50.11722,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clear Spring Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -106.334281,51.433413,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clearview Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.458275,50.981348,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cloverleaf Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.427791,51.653388,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Crystal Spring Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.802597,49.169435,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cypress Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.631727,49.867623,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deerfield Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.880736,49.512909,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Delco Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.253945,49.462887,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dinsmore Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.357175,51.39208,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Duncan Ranch Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -110.024307,46.444574,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eagle Creek Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.201247,48.700642,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>East End Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.547771,48.750506,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Eatonia Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.642317,51.127473,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Elm Spring Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.144276,49.34564,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Evergreen Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.950762,49.584949,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fair Haven Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.627609,47.403348,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fairlane Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.907473,49.461301,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fairville Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.560363,50.874006,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Garden Plane Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.616657,49.121667,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Glacier Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.219019,48.8317,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Glendale Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.544034,48.840421,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Glidden Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.138152,51.156725,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Golden Valley Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.274354,46.257663,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Golden View Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.299199,52.086917,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Greenwood Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.294325,49.588746,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hand Hills Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.071803,51.521833,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hartland Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.44847,48.951628,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Haven Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.478289,50.352483,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hidden Lake Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.604403,48.600715,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hilldale Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.781428,48.801051,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillside Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.069836,48.979056,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Huron Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -106.020869,50.846789,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hutterville Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.765207,49.350781,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jenner Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.139522,50.824773,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kingsbury Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.485751,48.304243,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kings Lake Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.661249,49.421298,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kingsland Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.354514,49.360118,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kyle Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.056011,51.026567,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lathom Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.282523,50.609449,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lone Pine Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.445173,52.331834,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MacMillan Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -114.050281,50.422699,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Main Center Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.394709,50.612153,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Martinsdale Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -110.267134,46.489369,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mialta Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.068631,50.469144,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Miami Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.427362,49.360923,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Midland Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.920086,49.67584,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Milden Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.415843,51.461452,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Milford Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.699323,49.377906,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Milford Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.20956,47.329523,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Miller Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.291364,47.926645,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Miltow Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.859422,49.30289,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mountain View Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.721019,46.069228,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neudorf Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.787807,51.471165,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neu Muehl Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.259758,51.467476,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Newdale Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.893771,50.667418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Newell Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.489701,50.942881,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Elm Spring Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.872841,49.295882,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Miami Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.28209,48.192872,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Rockport Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.399357,49.488067,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Rockport Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.022227,47.863376,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oaklane Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.20987,49.653164,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>O.K. Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.613501,49.344856,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Old Elm Spring Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.947651,49.310414,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Parkland Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.737087,50.230549,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pennant Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.18663,50.568688,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plainview Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.661527,49.318418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pleasant Valley Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.049023,47.338847,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pondera Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.419823,48.238137,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ponderosa Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.625326,49.670991,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prairie Home Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.960936,49.529165,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ridgeland Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.350413,51.100743,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rim Rock Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.094883,48.896316,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverbend Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.303644,50.831252,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>River Road Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.842758,49.08307,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverview Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.02951,48.178078,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rock Lake Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.273431,49.619697,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rockport Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.809319,49.301977,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rockport Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.474692,48.067522,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rosedale Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.119523,49.320499,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rose Glen Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -110.184898,50.491954,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rosetown Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.039022,51.628591,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rose Valley Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -105.513885,49.538906,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sage Creek Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -110.971984,48.929712,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sand Lake Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.907715,49.224773,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Seville Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.591152,48.703433,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shamrock Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.352884,49.655774,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Silver Sage Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.208473,49.489931,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Smiley Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.481238,51.672279,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>South Bend Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.648841,52.354715,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sovereign Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.720832,51.557418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Springdale Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.017381,46.461738,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Springfield Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.989094,51.517702,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Side Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.739665,50.820116,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring View Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.132584,51.012702,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Springwater Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -109.755703,46.458523,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Standard Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.827245,51.144074,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Starbrite Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.50006,49.336601,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Suncrest Colony (AB)</name>
+        <styleUrl>#icon-157-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -111.771574,52.057879,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunny Brook Colony (MT)</name>
+        <description>Lehrerleut. Location approximate</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -110.826667,48.122135,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunny Site Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.386706,49.30273,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunrise Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.146919,49.404765,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tompkins Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.843263,49.928816,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Twilight Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -117.538052,55.477748,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Twin Creek Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.862177,50.989317,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Twin Hills Colony (MT)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.070317,48.016622,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Valley Centre Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.157721,51.773635,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vanguard Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.275291,49.818052,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Verdant Valley Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -112.470259,51.468097,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Waldeck Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -107.545575,50.589645,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wheatland Colony (SK)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -108.654099,50.676609,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wild Rose Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.429065,50.374782,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Willow Creek Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -113.647828,50.094538,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Winnifred Colony (AB)</name>
+        <description>Lehrerleut</description>
+        <styleUrl>#icon-157</styleUrl>
+        <Point>
+          <coordinates>
+            -111.121679,49.996426,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Acadia Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.28152,49.931189,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Airport Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.455694,50.080065,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Altona Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -93.97206,44.525733,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aspenheim Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.644812,50.013135,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baker Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.720384,49.831051,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Barrickman Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.603854,49.933751,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Big Stone Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.474729,45.52877,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bloomfield Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.677665,50.14057,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blooming Prairie Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.829158,49.551387,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blue Clay Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.134579,49.286585,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blumengard Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.16853,45.241821,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Blumengart Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.796065,49.133101,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bon Homme Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.887961,49.872196,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bon Homme Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.707121,42.864586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Boundary Lane Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -101.390522,49.927532,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Brantwood Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.976373,49.866077,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Brentwood Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.298102,45.152872,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Brightstone Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.267787,50.307377,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Broad Valley Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.498759,50.952243,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Brockett Colony (AB)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -113.767537,49.457807,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cameron Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.266097,43.190874,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camrose Colony, SD</name>
+        <description>Schmiedeleut (New Colony)</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.21743,44.930415,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>CanAm Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.853684,49.421986,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cascade Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.842772,50.06883,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cedar Grove Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.805237,43.530193,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Claremont Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.95247,44.712567,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clark Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.980132,44.789043,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clearfield Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.14243,43.145657,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clearview Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.052507,49.648809,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Clearwater Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.245247,50.250862,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Collins Colony (SD)</name>
+        <description>Schmiedeleut. Location approximate</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.698535,44.545958,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Concord Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.130009,50.099586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cool Spring Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.692863,50.375281,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Crystal Spring Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.110014,49.52326,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cypress Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.150567,49.578562,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Decker Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -100.79618,50.307156,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deerboine Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -100.266992,49.90761,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Deerfield Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.90205,45.587054,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Delta Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.045255,50.073214,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Elmendorf Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -94.877298,43.864577,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Elm River Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.103869,49.941093,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Evergreen Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.549281,49.419128,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Evergreen Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.042218,45.123003,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fairholme Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.459055,49.770625,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fairview Colony (ND)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.402113,46.33822,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fairway Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.628781,49.909887,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fordham Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.9115,44.767437,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Forest River Colony (ND)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.701921,48.181889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Glendale Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.286613,44.799501,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Glenway Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.078681,49.18027,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Golden View Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.443723,43.690578,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Good Hope Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.413397,49.904591,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gracevale Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.285504,43.927286,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grand Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.932171,49.842644,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grassland Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.795099,45.667193,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grass River Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.111469,50.562017,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Grass Ranch Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.880904,43.645243,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Green Acres Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.756639,49.570042,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Greenwald Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.511571,50.308061,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Greenwood Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.152169,43.211939,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Haven Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -92.702029,43.813396,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Heartland Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.687434,49.981751,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Heartland Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.268333,44.164412,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hidden Valley Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.955423,49.876759,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillcrest Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.669852,44.945458,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillside Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.793232,49.951541,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hillside Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.04789,44.737408,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Holmfield Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.394479,49.203578,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Homewood Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.557445,49.739554,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Huron Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.855838,49.95296,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Huron Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.206603,44.564006,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hutterville Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.210342,45.265869,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Iberville Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.688161,49.972299,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Interlake Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.151171,50.425634,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>James Valley Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.757481,49.837881,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jamesville Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.488093,43.108072,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kamsley Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.664949,49.491688,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Keystone Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.587438,50.086018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lakeside Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.563887,49.91017,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lake View Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.46227,43.219456,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Leaning Oak Colony (MN)</name>
+        <description>Schmiedeleut. Location approximate</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -95.62195,47.784755,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lismore Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.584224,45.421781,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Little Creek Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.823636,50.066407,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Long Lake Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.818066,45.60414,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maple Grove Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -100.725771,49.409573,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maple River Colony (ND)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.439165,46.071795,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Marble Ridge Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.522828,51.181779,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maxwell Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.647377,49.950859,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maxwell Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.636541,43.183695,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mayfair Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.843883,49.063502,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mayfield Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.577949,44.69457,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Miami Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.210045,49.288394,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Millbrook Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.872585,43.671522,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Millerdale Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.11266,44.399169,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Millshof Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.40937,49.611872,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Milltown Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.846524,49.915846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Netley Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.014814,50.333365,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neuhof Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -94.936568,43.899393,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Elm Spring Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.828123,43.488711,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Haven Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.442467,50.219669,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Newdale Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -100.083819,49.672128,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Newdale Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.523224,44.290773,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Newport Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.932004,45.679541,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>New Rosedale Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.443085,49.838835,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Norfeld Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.567501,44.424432,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Norquay Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.99474,50.001642,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Northern Breeze Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.188575,50.142823,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oak Bluff Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.235663,49.345249,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oak Lane Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.743181,43.509349,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oak Ridge Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.796668,49.597929,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Oak River Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -100.38849,50.120308,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Odanah Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.827425,50.179867,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Old Elm Spring Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.798651,43.493871,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Orland Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.198634,43.8214,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Parkview Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.409345,50.546662,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pearl Creek Creek (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.914785,44.32744,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pembina Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.397921,49.144985,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pembrook Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.997325,45.374254,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pine Creek Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.090439,50.005773,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pineland Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -95.956887,49.021322,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plainview Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -101.410108,49.982467,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Plainview Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.008446,45.582179,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Platte Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.127233,43.467697,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pleasant Valley Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.468488,44.059966,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Poinsett Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.899149,44.642278,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Poplar Point Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.941995,50.042547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Prairie Blossom Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.349733,50.237842,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rainbow Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.926521,49.677975,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ridgeland Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.623055,49.801705,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ridgeville Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.014138,49.094328,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverbend Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.188609,49.793775,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverdale Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.051459,50.165133,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverside Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.262902,50.250726,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Riverside Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.139342,44.485423,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rock Lake Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.474838,50.067623,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rockport Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.842753,43.58117,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rolland Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.59103,44.342099,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rolling Acres Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.440684,50.415101,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rosebank Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.199839,49.408497,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rosedale Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.737952,49.962369,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rosedale Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.873377,43.623843,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rose Valley Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.193607,49.497348,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rustic Acres Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.093125,43.873008,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shady Lane Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.648134,49.719531,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shamrock Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.955209,44.618385,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Silver Winds Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.673706,49.448649,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Shannon Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.417948,44.00674,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Skyview Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.353336,49.351715,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sommerfeld Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.071802,50.056295,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Souris River Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -100.26696,49.48811,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spink Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.292362,44.745941,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Creek Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.880644,45.908364,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Springfield Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.390946,49.921125,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Springhill Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.518253,50.301379,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Lake Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.174479,44.234583,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Prairie Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.446101,46.93936,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Valley Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.756219,49.757649,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Spring Valley Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.886642,44.041089,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sprucewood Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.499657,50.017784,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Starland Colony (MN)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -94.473946,44.606451,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Starlite Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.674117,49.800918,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sturgeon Creek Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.422918,49.928978,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Suncrest Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.93206,49.508383,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sundale Colony (ND)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.441937,46.323612,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunnyside Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.09558,49.876596,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sunset Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.888359,45.807073,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Thunderbird Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.265607,45.190168,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Treesbank Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.625624,49.623444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Trileaf Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.231523,49.335409,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tschetter Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.68773,43.370596,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Twilight Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.445263,50.08927,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Upland Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.977403,43.876326,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Valley View Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.794865,49.352054,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vermillion Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.361818,49.659114,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Waldheim Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.828733,49.857336,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wellwood Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.678217,49.404619,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Westroc Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.643756,50.12444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>White Rock Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.624919,45.91021,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Whiteshell Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -96.031823,50.035646,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Willow Bank Colony (ND)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.570998,46.315402,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Willow Creek Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -99.456554,49.040034,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Windy Bay Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.898457,49.346442,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wingham Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -98.055884,49.750252,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wolf Creek Colony (SD)</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.619326,43.352689,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Woodlands Colony</name>
+        <description>Schmiedeleut</description>
+        <styleUrl>#icon-61</styleUrl>
+        <Point>
+          <coordinates>
+            -97.929546,50.092931,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

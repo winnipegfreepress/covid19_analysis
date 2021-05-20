@@ -1,0 +1,188 @@
+```{r config, echo=FALSE, message=FALSE, warning=FALSE, results="hide"}
+# Run config first to use dynamic variables in the YAML
+if (!require("upstartr")) install.packages("upstartr")
+library("upstartr")
+run_config()
+```
+---
+title: "`r getOption("startr.title")`"
+date: "`r format(Sys.Date(), "%B %d, %Y")`"
+author: "`r getOption("startr.author")`"
+output: 
+  html_document: 
+    theme: flatly
+    toc: yes
+    highlight: textmate
+    df_print: kable
+---
+
+
+## Daily This Just In
+
+Update the TJI worksheet on this Google Sheet
+[https://docs.google.com/spreadsheets/d/19IqfhdXQaQbCJDns3yG0EEL4TAYGRgEGKKyLeELvLNA/edit#gid=362680117](TJI worksheet)
+
+Use one `death_bullet` for the provided details of each reported COVID-19 death. 
+
+Find/Replace to remove the hashmarks and check the final copy, it's a mixed bag of data feeds and manual entry. 
+
+
+```{r prep_tji, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+source(dir_src("tji.R"))
+```
+
+```{r show_tji, results="as-is", collapse = TRUE}
+cat(tji_hed_body)
+```
+
+----------
+
+```{r get_read_data, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+
+source(dir_src("theme.R"))
+source(dir_src("palette.R"))
+source(dir_src("get.R"))
+
+run_process()
+run_analyze()
+run_visualize()
+
+
+# source(dir_src("insights.R"))
+
+```
+
+
+## Daily COVID-19 data
+
+### Daily case status of reported COVID-19 in Manitoba
+```{r viz_daily_case_status, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_daily_case_status.png
+plot(wfp_daily_case_status)
+
+```
+
+
+### New daily and seven-day average cases of COVID-19 reported in Manitoba
+```{r viz_wfp_new_daily_cases_avg, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_new_daily_cases_avg.png
+plot(wfp_new_daily_cases_avg)
+```
+
+
+### Hospitalizations and ICU patients
+```{r viz_wfp_daily_hospitalization, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_daily_hospitalization.png
+plot(wfp_daily_hospitalization)
+```
+
+
+
+### New daily cases of COVID-19 per capita reported in Manitoba
+```{r viz_wfp_new_daily_cases_100K, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_new_daily_cases_100K.png
+plot(wfp_new_daily_cases_100K)
+```
+
+
+### New daily cases of COVID-19 per capita reported in Manitoba
+```{r viz_wfp_new_daily_cases, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_new_daily_cases_100K.png
+plot(wfp_new_daily_cases_100K)
+```
+
+### Reported cases of COVID-19 per capita reported in Manitoba
+```{r viz_wfp_rha_total_cases_100K, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_rha_total_cases_100K.png
+plot(wfp_rha_total_cases_100K)
+```
+
+
+### Active cases of COVID-19 reported in Manitoba
+```{r viz_wfp_rha_active_cases, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_rha_active_cases.png
+plot(wfp_rha_active_cases)
+```
+
+
+### Active cases of COVID-19 per capita reported in Manitoba
+```{r viz_wfp_rha_active_cases_100K, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_rha_active_cases_100K.png
+plot(wfp_rha_active_cases_100K)
+```
+
+
+### Five-day test positivity
+```{r viz_wfp_5day_test_positivity, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_5day_test_positivity.png
+plot(wfp_5day_test_positivity)
+```
+
+
+### COVID-19 deaths
+```{r viz_wfp_mb_deaths, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_mb_deaths.png
+plot(wfp_mb_deaths)
+```
+
+## Provincial COVID-19 comparisons
+
+### COVID-19 cases per capita across Canada
+```{r viz_wfp_phac_total_cases_100K, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_phac_total_cases_100K.png
+plot(wfp_phac_total_cases_100K)
+```
+
+### COVID-19 deaths per capita across Canada
+```{r viz_wfp_phac_total_deaths_100K, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_phac_total_deaths_100K.png
+plot(wfp_phac_total_deaths_100K)
+```
+
+### Growth in provincial cases since the tenth case
+```{r viz_wfp_provincial_growth_timeline_since10, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_provincial_growth_timeline_since10.png
+plot(wfp_provincial_growth_timeline_since10)
+```
+
+### COVID-19 variants
+```{r viz_wfp_covid19_variants, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_covid19_variants.png
+plot(wfp_covid19_variants)
+```
+
+
+## Vaccinations
+
+
+### First and second vaccine doses
+```{r viz_wfp_covid_19_mb_vaccinations_first_second, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_covid_19_mb_vaccinations_first_second.png
+plot(wfp_covid_19_mb_vaccinations_first_second)
+```
+
+### Vaccinations -- age of those vaccinated
+```{r viz_wfp_covid19_vaccine_demographics, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_covid19_vaccine_demographics.png
+plot(wfp_covid19_vaccine_demographics)
+```
+
+### Vaccinations -- delivered and administered
+```{r viz_wfp_vaccine_gap, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_vaccine_gap.png
+plot(wfp_vaccine_gap)
+```
+
+### Vaccinations -- provincial comparison of doses administered
+```{r viz_wfp_vaccine_gap_provinces, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# wfp_vaccine_gap_provinces.png
+plot(wfp_vaccine_gap_provinces)
+```
+
+## Weekly COVID-19 data
+
+
+
+## Misc one-off COVID-19 data
+
+

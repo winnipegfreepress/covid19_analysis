@@ -1,0 +1,425 @@
+```{r config, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+# Run config first to use dynamic variables in the YAML
+if (!require("upstartr")) install.packages("upstartr")
+library("upstartr")
+run_config()
+
+```
+
+---
+title: "COVID-19 vaccinations"
+author: "Michael Pereira <michael.pereira@freepress.mb.ca>"
+date: "`r format(Sys.Date(), "%B %d, %Y")`"
+output:
+  html_document:
+    toc: yes
+    highlight: textmate
+    theme: flatly
+    df_print: kable
+---
+
+
+```{r get_read_data, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+
+source(dir_src("theme.R"))
+source(dir_src("palette.R"))
+
+
+knit_print.data.frame = function(x, ...) {
+  res = paste(c("", "", knitr::kable(x)), collapse = "\n")
+  knitr::asis_output(res)
+}
+
+registerS3method(
+  "knit_print", "data.frame", knit_print.data.frame,
+  envir = asNamespace("knitr")
+)
+
+# This is normally set in the get.R file
+Sys.sleep(time_pause)
+
+
+source(dir_src("get_vaccinations.R"))
+source(dir_src("process_populations.R"))
+source(dir_src("process_vaccinations.R"))
+run_analyze()
+
+source(dir_src("visualize_strings.R"))
+################################################################################
+# Vaccinations
+################################################################################
+source(dir_src("visualize_vaccine_admin_gap.R"))
+source(dir_src("visualize_vaccine_daily_vaccinations.R"))
+source(dir_src("visualize_vaccine_demographic_coverage.R"))
+source(dir_src("visualize_vaccine_targets.R"))
+
+
+source(dir_src("visualize_vaccine_demographics.R"))
+source(dir_src("visualize_vaccine_distribution.R"))
+source(dir_src("visualize_vaccine_first_second_dose.R"))
+source(dir_src("visualize_vaccine_gap_provinces.R"))
+
+
+source(dir_src("_vaccination_comparison.R"))
+
+# source(dir_src("_scratch", "visualize_vaccine_demographics_female_male.R"))
+# source(dir_src("_scratch", "visualize_vaccine_distribution.R"))
+# source(dir_src("_scratch", "visualize_vaccine_administration.R"))
+
+
+```
+
+
+### Daily vaccinations
+#### First, second and combined
+```{r viz_wfp_covid_19_mb_daily_vaccinations_1st2nd, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+plot(wfp_covid_19_mb_daily_vaccinations_1st2nd)
+
+plot(wfp_covid_19_mb_daily_vaccinations_combined)
+
+```
+
+
+### Administered and unused doses of COVID-19 vaccine
+#### Admin gap
+```{r viz_wfp_vaccine_gap, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+plot(wfp_vaccine_gap)
+```
+
+
+### Vaccination demographic coverage
+```{r viz_wfp_covid19_vaccine_demographics_coverage, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+plot(wfp_covid19_vaccine_demographics_coverage)
+```
+
+
+### Vaccination targets
+#### With seven-day average and daily outputs
+```{r viz_wfp_vaccine_targets, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+# plot(wfp_vaccine_targets)
+
+plot(wfp_vaccine_targets_7dayavg)
+```
+
+
+
+### Provincial vaccine gaps
+```{r viz_wfp_vaccine_gap_provinces, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+
+plot(wfp_vaccine_gap_provinces)
+```
+
+
+
+### Provincial comparison of unused doses per capita
+```{r viz_wfp_admin_gap_comparison, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+
+plot(wfp_admin_gap_comparison)
+```
+
+
+
+----
+
+## Provincial vaccine distribution, admin and admin gap and averages
+
+~TODO: Replace population with 18+ projections from StatCan~
+~TODO: Filter out territories~
+TODO: Add today's distribution and administration numbers for Manitoba
+
+**Population estimates on July 1st, by age and sex**
+This table has population projections by age but it is only prepared annually for a July 1 projection. Counts as 2020 population.
+[Table: 17-10-0005-01 | Population estimates on July 1st, by age and sex](https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=1710000501&selectedNodeIds=3D101&checkedLevels=0D1,0D2,1D1&refPeriods=20200101,20200101&dimensionLayouts=layout3,layout2,layout2,layout2&vectorDisplay=false)
+
+
+* Province (Lenore K) said that staff worked with the Manitoba Bureau of Statistics to come up with the projected adult population at the end of 2020, which was 1,068,553. This matches the StatCan population projection for July 1, 2020.
+
+**THIS MAUALLY INCLUDES THE LATEST NUMBERS FOR MANITOBA**
+
+
+```{r table_vaccine_compare_j_pop, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+
+```
+
+----
+
+```{r work_vaccine_distribution_admin_admingap, echo=TRUE, message=TRUE, warning=TRUE, fig.width=8.66, fig.height=6}
+
+# Load population data
+population_provinces_18plus_2021Q2 <- read_csv(dir_data_raw("population_provinces_18plus_2021Q2.csv")) %>%
+  clean_names() %>%
+  rename(
+    province = geography,
+    population = population_18plus_2020q2
+  ) %>%
+  mutate(reference_period = as.Date("2020-06-30")) %>%
+  select("reference_period", "province", "population")
+
+
+# Load vaccine distribution & administration counts
+# * standardize province names in to join with population
+vaccine_compare <- covid_vaccine %>%
+  mutate(
+    province = ifelse(province == "BC", "British Columbia",
+               ifelse(province == "NL", "Newfoundland and Labrador",
+               ifelse(province == "NWT", "Northwest Territories",
+               ifelse(province == "PEI", "Prince Edward Island",
+                  province
+               ))))
+  )
+# %>%
+#   filter(date < max(date))
+
+
+# Split out MB and update with latest and rebind rows
+vaccine_compare_noMB <- vaccine_compare %>%
+  filter(province != "Manitoba")
+
+vaccine_compare_MB <- vaccine_compare %>%
+  filter(province == "Manitoba")
+# %>%
+  # mutate(
+  #   # cumulative_dvaccine = ifelse(date == max(date), 409470, cumulative_dvaccine),
+  #   cumulative_avaccine = ifelse(date == max(date), 231049, cumulative_avaccine)
+  # )
+
+vaccine_compare <- rbind(
+  vaccine_compare_noMB,
+  vaccine_compare_MB
+)
+
+# Recast to dataframes for tidy join
+vaccine_compare <-  as.data.frame(vaccine_compare)
+population_provinces_18plus_2021Q2 <- as.data.frame(population_provinces_18plus_2021Q2)
+
+
+# Join vaccination and population dataframes and calculate rates, etc.
+provincial_vaccine_comparisons <- left_join(
+    vaccine_compare,
+    population_provinces_18plus_2021Q2,
+    by=c("province"="province")
+  ) %>%
+  mutate(
+    administered_doses_per_capita = cumulative_avaccine / population * 100000,
+    administration_gap_per_capita = dose_difference / population * 100000
+  ) %>%
+  rename(
+    dose_difference_cnt = dose_difference,
+    vaccination_gap_pct = vaccination_gap
+  ) %>%
+  select(
+    "date",
+    "province",
+    "population",
+    # "dvaccine",
+    "cumulative_dvaccine" ,
+    # "avaccine",
+    "cumulative_avaccine" ,
+    "vaccination_gap_pct",
+    "dose_difference_cnt" ,
+    "administered_doses_per_capita",
+    "administration_gap_per_capita"
+  ) %>%
+  filter(province %notin% c("Northwest Territories", "Nunavut", "Yukon"))
+
+# Complete provincial_vaccine_comparisons table shown at bottom
+```
+
+
+```{r echo=TRUE, message=TRUE, warning=TRUE, fig.width=8.66, fig.height=6}
+
+# Grab the most recent date of data
+provincial_vaccine_comparisons_last_date <- provincial_vaccine_comparisons %>%
+  filter(date==max(date)) %>%
+  arrange(desc(administered_doses_per_capita)) %>%
+  mutate(province = factor(province, unique(province))) # reset your factor-column based on that order
+
+
+datatable(provincial_vaccine_comparisons_last_date,
+          caption = 'Table: provincial_vaccine_comparisons_last_date',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 25,
+            order = list(list(1, 'desc'))
+          )
+        )
+
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE, fig.width=8.66, fig.height=6}
+
+# calculate min, max and averages (mean and median)
+min_administered_doses_per_capita <- min(provincial_vaccine_comparisons_last_date$administered_doses_per_capita)
+
+cat(paste("Min: ", min_administered_doses_per_capita))
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE, fig.width=8.66, fig.height=6}
+
+max_administered_doses_per_capita <- min(provincial_vaccine_comparisons_last_date$administered_doses_per_capita)
+
+cat(paste("Max: ", max_administered_doses_per_capita))
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE, fig.width=8.66, fig.height=6}
+
+median_administered_doses_per_capita <- median(provincial_vaccine_comparisons_last_date$administered_doses_per_capita)
+
+cat(paste("Median: ", median_administered_doses_per_capita))
+
+```
+
+```{r echo=TRUE, message=TRUE, warning=TRUE, fig.width=8.66, fig.height=6}
+
+mean_administered_doses_per_capita <- mean(provincial_vaccine_comparisons_last_date$administered_doses_per_capita)
+
+cat(paste("Mean: ", mean_administered_doses_per_capita))
+
+```
+
+
+
+
+
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+
+# This just adds a blank row to the table for the median/mean labels on the graphic
+# provincial_vaccine_comparisons_last_date <- provincial_vaccine_comparisons_last_date %>%
+#   add_row(
+#   date                          = as.Date("2021-04-07") ,
+#   province                      = " ",
+#   cumulative_dvaccine           = 0 ,
+#   cumulative_avaccine           = 0 ,
+#   vaccination_gap_pct           = 0 ,
+#   dose_difference_cnt           = 0 ,
+#   population                    = 0 ,
+#   administered_doses_per_capita = 0 ,
+#   administration_gap_per_capita = 0 ,
+#   )
+
+
+
+p_provincial_vaccinations_per100K <- plot_bar_x_reordered_y(
+  provincial_vaccine_comparisons_last_date,
+  x_var=province, y_var=administered_doses_per_capita,
+  bar_colour = nominalMuted_shade_0,
+  title_str="Provincial COVID-19 vaccinations per capita",
+  subtitle="Vaccinations per 100,000 people age 18 or older. Includes first and second doses",
+  y_units="", ymin=0, ymax=100000,
+  source_str="COVID-19 CANADA OPEN DATA WORKING GROUP", lastupdate_str=last_update_timestamp
+)
+
+p_provincial_vaccinations_per100K <- p_provincial_vaccinations_per100K +
+  geom_hline(yintercept = median_administered_doses_per_capita, linetype="dotted",
+                color = "#222222", size=.35)  +
+  annotate("text",
+             x = " ",
+             y = median_administered_doses_per_capita,
+             label = wrap_text(paste(
+               "Median ", comma(median_administered_doses_per_capita), "/100K people",
+               "\n",
+               "Mean ", comma(mean_administered_doses_per_capita), "/100K people",
+               sep=""
+               ), 27),
+             size=3, hjust=-.09,
+             colour = "#000000"
+    )
+
+wfp_provincial_vaccinations_per100K <- prepare_plot(p_provincial_vaccinations_per100K)
+ggsave_pngpdf(wfp_provincial_vaccinations_per100K, "wfp_provincial_vaccinations_per100K", width_var=8.66, height_var=6, dpi_var=96, scale_var=1, units_var="in")
+
+plot(wfp_provincial_vaccinations_per100K)
+
+
+# p_provincial_vaccinations_per100K <-  ggplot(provincial_vaccine_comparisons_last_date) +
+#  aes(x = reorder(province, administered_doses_per_capita), weight = administered_doses_per_capita) +
+#  geom_bar(
+#           fill =nominalMuted_shade_0) +
+#  # geom_bar(
+#  #          data=provincial_vaccine_comparisons_last_date %>% filter(province=="Manitoba"),
+#  #          aes(x = reorder(province, administered_doses_per_capita), weight = administered_doses_per_capita),
+#  #          fill =wfp_blue) +
+#  #  geom_text(data=provincial_vaccine_comparisons_last_date,
+#  #    aes(x = reorder(province, administered_doses_per_capita), y = 0, label=comma(administered_doses_per_capita, accuracy=2)), size=3, hjust=-.35, colour="#ffffff"
+#  #  ) +
+#   geom_hline(yintercept = median_administered_doses_per_capita, linetype="dotted",
+#                 color = "#222222", size=.35)  +
+#   # geom_hline(yintercept = mean_administered_doses_per_capita, linetype="dashed",
+#   #               color = "#222222", size=.35)  +
+#   annotate("text",
+#              x = " ",
+#              y = median_administered_doses_per_capita,
+#              label = wrap_text(paste(
+#                "Median ", comma(median_administered_doses_per_capita), "/100K people",
+#                "\n",
+#                "Mean ", comma(mean_administered_doses_per_capita), "/100K people",
+#                sep=""
+#                ), 27),
+#              size=3, hjust=-.09,
+#              colour = "#000000"
+#     ) +
+#     scale_y_continuous(
+#     expand = c(0, 0),
+#     limits=c(0, 100000),
+#     breaks=seq(0,100000,by=25000),
+#     label=comma
+#   ) +
+#   coord_flip()+
+#  labs(
+#     title = "Provincial COVID-19 vaccinations per capita",
+#     subtitle="Vaccinations per 100,000 people age 18 or older. Includes first and second doses",
+#     caption = paste("WINNIPEG FREE PRESS — SOURCE: COVID-19 CANADA OPEN DATA WORKING GROUP (2021-04-08)", sep = ""),
+#     x = "",
+#     y = ""
+#   ) +
+#  minimal_theme() +
+#     theme(
+#       axis.line=element_blank(),
+#       # axis.text.x=element_blank(),
+#       # axis.ticks=element_blank(),
+#       axis.title.x=element_blank(),
+#       panel.grid.major.y=ggplot2::element_blank(),
+#       panel.grid.minor.y=ggplot2::element_blank()
+#     )
+#
+
+
+
+```
+
+----
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+
+datatable(provincial_vaccine_comparisons,
+          caption = 'Table: provincial_vaccine_comparisons',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 25,
+            order = list(list(0, 'desc'))
+          )
+)
+
+```
+
+
+----
+
+
+## Data tables
+
+### Daily first and second doses
+```{r table_COVID19_MB_first_second_vaccine_dose, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis"}
+
+datatable(COVID19_MB_first_second_vaccine_dose,
+          caption = 'Table: COVID19_MB_first_second_vaccine_dose',
+          class="cell-border stripe", rownames=FALSE)
+
+```
+

@@ -1,0 +1,44 @@
+
+plot_bar_timeseries_w_avg <- function(
+  df, x_var="", y_var="", colour_var="", fill_var="", group_var="",
+  avg_var="",
+  bar_colour="", avg_colour="",
+  title_str="", subtitle_str="", x_str="", y_str="",
+  x_units="", xmin="", xmax="", xformat="",
+  y_units="", ymin="", ymax="",
+  source_str="", lastupdate_str=""
+) {
+
+  p_tmp <- ggplot2::ggplot(data=df) +
+    aes(x={{ x_var }}, y= {{ y_var }}) +
+    geom_bar(
+      aes(x={{ x_var }}, y= {{ y_var }}),
+      stat="identity",
+      color={{bar_colour}}, fill={{bar_colour}},
+      size=.25, alpha=1) +
+      geom_step(aes(x={{ x_var }}, y= {{ avg_var }}), color="#ffffff", size=1.25, alpha=1, direction="vh") +
+      geom_step(aes(x={{ x_var }}, y= {{ avg_var }}), color={{avg_colour}}, size=.75, alpha=1, direction="vh") +
+    scale_x_date(
+      expand=c(0, 0),
+      limits=as.Date(c({{xmin}},{{xmax}})),
+      date_breaks={{x_units}},
+      labels=date_format({{xformat}})
+    ) +
+    scale_y_continuous(
+      expand=c(0, 0),
+      limits=c(ymin, ymax),
+      labels=scales::comma
+    ) +
+    labs(
+      title=wrap_text(title_str, 70),
+      subtitle=wrap_text(subtitle_str, 80),
+      caption=wrap_text(toupper(paste(credit_str, " — SOURCE: ", source_str, " (", lastupdate_str, ")",sep="")), 80),
+      x=x_str,
+      y=y_str,
+      fill=""
+    ) +
+    minimal_theme()
+
+  invisible(p_tmp)
+
+}

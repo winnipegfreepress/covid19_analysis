@@ -1,0 +1,19 @@
+Map Corners Coordinates
+Project: active_cases_rate_districts
+SRS: EPSG:4326
+
+NW (upper left)
+X: -103.10869856660428
+Y: 52.964451699025894
+
+NE (upper right)
+X: -93.18226909564994
+Y: 52.964451699025894
+
+SE (bottom right)
+X: -93.18226909564994
+Y: 49.47192236191667
+
+SW (bottom left)
+X: -103.10869856660428
+Y: 49.47192236191667
