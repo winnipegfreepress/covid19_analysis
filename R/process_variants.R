@@ -1,12 +1,11 @@
 
 covid19_variants <- read_csv(dir_data_raw("covid_variants.csv")) %>%
   clean_names() %>%
-  # select(-x6) %>%
   mutate(
     uncategorized=ifelse(is.na(uncategorized), 0, uncategorized)
   ) %>%
   rowwise() %>%
-  mutate(total_variant_cases=b_1_1_7 + b_1_351 + p_1 + uncategorized) %>%
+  mutate(total_variant_cases=b_1_1_7 + b_1_351 + p_1 + b_1_617 + uncategorized) %>%
   pivot_longer(
     -province,
     names_to="variant",
@@ -14,12 +13,13 @@ covid19_variants <- read_csv(dir_data_raw("covid_variants.csv")) %>%
   ) %>%
   mutate(
     variant=ifelse(variant=="b_1_1_7", "B.1.1.7",
-               ifelse(variant=="b_1_351", "B.1.351",
-                ifelse(variant=="p_1", "P.1",
-                 ifelse(variant=="uncategorized", "Uncategorized",
-                  ifelse(variant=="total_variant_cases", "Total",
-                       "P.1"
-                )))))
+            ifelse(variant=="b_1_351", "B.1.351",
+            ifelse(variant=="p_1", "P.1",
+            ifelse(variant=="b_1_617", "B.1.617",
+            ifelse(variant=="uncategorized", "Uncategorized",
+            ifelse(variant=="total_variant_cases", "Total",
+            "P.1"
+        ))))))
   )
 
 covid19_variants_total <- covid19_variants %>%

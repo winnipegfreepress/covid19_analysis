@@ -71,47 +71,47 @@ new_b117_str <- ""
 new_b1351_str <- ""
 new_p1_str <- ""
 new_uncat_str <- ""
-
-if(tji_voc_new_b1117 > 0){
-  if(tji_voc_new_b1117 == 1){
-    new_b117_str <- "• one case of the B.1.1.7 variant"
-  }
-  if(tji_voc_new_b1117 > 1){
-    new_b117_str <- paste("• ", tji_voc_new_b1117, " cases of the B.1.1.7 variant", sep="")
-  }
-}
-
-if(tji_voc_new_b1351 > 0){
-  if(tji_voc_new_b1351 == 1){
-    new_b1351_str <- "• one case of the B.1.351 variant"
-  }
-  if(tji_voc_new_b1351 > 1){
-    new_b1351_str <- paste("• ", tji_voc_new_b1351, " cases of the B.1.351 variant", sep="")
-  }
-}
-
-if(tji_voc_new_p1 > 0){
-
-  if(tji_voc_new_p1 == 1){
-    new_p1_str <- "• one case of the P.1 variant"
-  }
-  if(tji_voc_new_p1 > 1){
-    new_p1_str <- paste("• ", tji_voc_new_p1, " cases of the P.1 variant", sep="")
-  }
-}
-
-if (tji_voc_new_uncat > 0) {
-  if (tji_voc_new_uncat == 1) {
-    new_uncat_str <- "• one uncategorized variant of concern case"
-  }
-  if (tji_voc_new_uncat > 1) {
-    new_uncat_str <- paste("• ", tji_voc_new_uncat, " uncategorized variant of concern cases", sep = "")
-  }
-}
-
-
-tji_new_voc_hed_str <-  ""
-new_voc_str=""
+#
+# if(tji_voc_new_b1117 > 0){
+#   if(tji_voc_new_b1117 == 1){
+#     new_b117_str <- "• one case of the B.1.1.7 variant"
+#   }
+#   if(tji_voc_new_b1117 > 1){
+#     new_b117_str <- paste("• ", tji_voc_new_b1117, " cases of the B.1.1.7 variant", sep="")
+#   }
+# }
+#
+# if(tji_voc_new_b1351 > 0){
+#   if(tji_voc_new_b1351 == 1){
+#     new_b1351_str <- "• one case of the B.1.351 variant"
+#   }
+#   if(tji_voc_new_b1351 > 1){
+#     new_b1351_str <- paste("• ", tji_voc_new_b1351, " cases of the B.1.351 variant", sep="")
+#   }
+# }
+#
+# if(tji_voc_new_p1 > 0){
+#
+#   if(tji_voc_new_p1 == 1){
+#     new_p1_str <- "• one case of the P.1 variant"
+#   }
+#   if(tji_voc_new_p1 > 1){
+#     new_p1_str <- paste("• ", tji_voc_new_p1, " cases of the P.1 variant", sep="")
+#   }
+# }
+#
+# if (tji_voc_new_uncat > 0) {
+#   if (tji_voc_new_uncat == 1) {
+#     new_uncat_str <- "• one uncategorized variant of concern case"
+#   }
+#   if (tji_voc_new_uncat > 1) {
+#     new_uncat_str <- paste("• ", tji_voc_new_uncat, " uncategorized variant of concern cases", sep = "")
+#   }
+# }
+#
+#
+# tji_new_voc_hed_str <-  ""
+# new_voc_str=""
 
 if(total_new_voc > 0){
 
