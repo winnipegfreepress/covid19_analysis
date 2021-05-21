@@ -36,7 +36,7 @@ plot_bar_x_reordered_y <- function(
   if(!is.na(subtitle_str) && subtitle_str != ""){
     bar_plot <- bar_plot +
       labs(
-        title=wrap_text(title_str, 70),
+        title=wrap_text(title_str, 65),
         subtitle=wrap_text(subtitle_str, 80),
         caption=wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: ", source_str, " (", lastupdate_str, ")",sep="")), 80),
         x=x_str,
@@ -48,7 +48,7 @@ plot_bar_x_reordered_y <- function(
   if(is.na(subtitle_str) || subtitle_str == ""){
     bar_plot <- bar_plot +
       labs(
-        title=wrap_text(title_str, 70),
+        title=wrap_text(title_str, 65),
         caption=wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: ", source_str, " (", lastupdate_str, ")",sep="")), 120),
         x=x_str,
         y=y_str,
