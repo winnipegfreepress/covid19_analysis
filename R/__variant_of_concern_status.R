@@ -1,5 +1,13 @@
 
 dashboard_variants_of_concern_type <- dashboard_variants_of_concern %>%
+  mutate(
+    variant = case_when(
+      variant == "B.1.617" ~ "B.1.617",
+      variant == "B.1.617.1" ~ "B.1.617",
+      variant == "B.1.617.2" ~ "B.1.617",
+      TRUE ~ variant
+    )
+  ) %>%
   select(variant, cases) %>%
   group_by(variant) %>%
   summarize(
@@ -9,6 +17,14 @@ dashboard_variants_of_concern_type <- dashboard_variants_of_concern %>%
 
 dashboard_variants_of_concern_transmission <- dashboard_variants_of_concern %>%
   select(-object_id) %>%
+  mutate(
+    variant = case_when(
+      variant == "B.1.617" ~ "B.1.617",
+      variant == "B.1.617.1" ~ "B.1.617",
+      variant == "B.1.617.2" ~ "B.1.617",
+      TRUE ~ variant
+    )
+  ) %>%
   group_by(rha, variant, staging) %>%
   summarize(
     total=sum(cases, na.rm=TRUE)
@@ -36,12 +52,12 @@ p_variants_of_concern_transmission <- ggplot(dashboard_variants_of_concern_trans
     stat="identity", size=4, vjust=-.5) +
   scale_y_continuous(
     expand=c(0, 0),
-    limits=c(0,800),
+    limits=c(0,5000),
     labels=scales::comma
   ) +
   labs(
     title=wrap_text("Most likely acquisition type for reported COVID-19 variant of concern cases in Manitoba", 65),
-    caption=wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: MANITOBA HEALTH (2021-04-27)", sep="")), 80),
+    caption=wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: MANITOBA HEALTH (", last_update_timestamp, ")", sep="")), 80),
     x="",
     y="",
     fill=""
