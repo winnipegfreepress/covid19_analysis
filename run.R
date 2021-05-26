@@ -2,14 +2,15 @@ if (!require("upstartr")) install.packages("upstartr")
 library("upstartr")
 run_config()
 
+# Individual step calls
+source(dir_src("theme.R"))
+source(dir_src("palette.R"))
+
+
 ################################################################################
 # Run either the individual step calls or
 # the notebook which does the same whileto build the report
 ################################################################################
-
-# Individual step calls
-source(dir_src("theme.R"))
-source(dir_src("palette.R"))
 
 # Prep TJI before downloading everything
 source(dir_src("tji.R"))

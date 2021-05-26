@@ -1,3 +1,6 @@
+dashboard_5day_positivity <- dashboard_5day_positivity %>%
+  fill(positivity_rate_5day_ywg)
+
 
 p_5day_test_positivity <- plot_line_timeseries_pct(
   dashboard_5day_positivity,

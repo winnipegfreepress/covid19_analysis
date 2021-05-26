@@ -112,26 +112,26 @@ new_uncat_str <- ""
 #
 # tji_new_voc_hed_str <-  ""
 # new_voc_str=""
-
-if(total_new_voc > 0){
-
-  new_voc_str <- paste("Laboratory testing of previously reported cases has identified: ",
-                         "\n", new_b117_str,
-                         "\n", new_b1351_str,
-                         "\n", new_p1_str,
-                         "\n", new_uncat_str,
-                        sep=""
-                       )
-
-  tji_new_voc_hed_str <- paste(total_new_voc, " variant of concern cases and ", sep="")
-
-}
-
-
-total_b1117_str <- paste("zero cases of B.1.1.7")
-total_b1351_str <- paste("zero cases of B.1.351")
-oc_total_p1_str <- paste("zero cases of P.1")
-
+#
+# if(total_new_voc > 0){
+#
+#   new_voc_str <- paste("Laboratory testing of previously reported cases has identified: ",
+#                          "\n", new_b117_str,
+#                          "\n", new_b1351_str,
+#                          "\n", new_p1_str,
+#                          "\n", new_uncat_str,
+#                         sep=""
+#                        )
+#
+#   tji_new_voc_hed_str <- paste(total_new_voc, " variant of concern cases and ", sep="")
+#
+# }
+#
+#
+# total_b1117_str <- paste("zero cases of B.1.1.7")
+# total_b1351_str <- paste("zero cases of B.1.351")
+# oc_total_p1_str <- paste("zero cases of P.1")
+#
 
 
 if(tji_voc_total_b1117 > 1){
@@ -149,16 +149,17 @@ if (tji_voc_total_uncat > 1) {
 
 
 
-total_voc_str <- paste(
-  "Public health officials have reported a total of ",
-  total_voc, " variant of concern cases in Manitoba including ",
-  total_b1117_str, ", ",
-  total_b1351_str, " and ",
-  oc_total_p1_str, ".",
-  oc_total_uncat_str, ".",
-  sep=""
-)
+# total_voc_str <- paste(
+#   "Public health officials have reported a total of ",
+#   total_voc, " variant of concern cases in Manitoba including ",
+#   total_b1117_str, ", ",
+#   total_b1351_str, " and ",
+#   oc_total_p1_str, ".",
+#   oc_total_uncat_str, ".",
+#   sep=""
+# )
 
+total_voc_str <- ""
 
 
 
