@@ -42,26 +42,30 @@ tji_icu_total  <- gsheet_wfp_tji %>% filter(field == "icu_total") %>% select(val
 tji_voc_new_b1117 <-   gsheet_wfp_tji %>% filter(field == "voc_new_b1117") %>% select(value) %>% pull()
 tji_voc_new_b1351 <-   gsheet_wfp_tji %>% filter(field == "voc_new_b1351") %>% select(value) %>% pull()
 tji_voc_new_p1 <-  gsheet_wfp_tji %>% filter(field == "voc_new_p1") %>% select(value) %>% pull()
+tji_voc_new_b1617 <-  gsheet_wfp_tji %>% filter(field == "voc_new_b1617") %>% select(value) %>% pull()
 tji_voc_new_uncat <- gsheet_wfp_tji %>% filter(field == "voc_new_unknown") %>% select(value) %>% pull()
 
 tji_voc_total_b1117 <-   gsheet_wfp_tji %>% filter(field == "voc_total_b1117") %>% select(value) %>% pull()
 tji_voc_total_b1351 <-   gsheet_wfp_tji %>% filter(field == "voc_total_b1351") %>% select(value) %>% pull()
 tji_voc_total_p1 <-  gsheet_wfp_tji %>% filter(field == "voc_total_p1") %>% select(value) %>% pull()
+tji_voc_total_b1617 <-  gsheet_wfp_tji %>% filter(field == "voc_total_b1617") %>% select(value) %>% pull()
 tji_voc_total_uncat <- gsheet_wfp_tji %>% filter(field == "voc_total_unknown") %>% select(value) %>% pull()
 
 # Cast to numeric
 tji_voc_new_b1117 <-  as.numeric(as.character(tji_voc_new_b1117))
 tji_voc_new_b1351 <-  as.numeric(as.character(tji_voc_new_b1351))
 tji_voc_new_p1 <-  as.numeric(as.character(tji_voc_new_p1))
+tji_voc_new_b1617 <-  as.numeric(as.character(tji_voc_new_b1617))
 tji_voc_new_uncat <- as.numeric(as.character(tji_voc_new_uncat))
 
 tji_voc_total_b1117 <-  as.numeric(as.character(tji_voc_total_b1117))
 tji_voc_total_b1351 <-  as.numeric(as.character(tji_voc_total_b1351))
 tji_voc_total_p1 <-  as.numeric(as.character(tji_voc_total_p1))
+tji_voc_total_b1617 <-  as.numeric(as.character(tji_voc_total_b1617))
 tji_voc_total_uncat <- as.numeric(as.character(tji_voc_total_uncat))
 
-total_new_voc <- tji_voc_new_b1117 + tji_voc_new_b1351 + tji_voc_new_p1 + tji_voc_new_uncat
-total_voc <- tji_voc_total_b1117 + tji_voc_total_b1351 + tji_voc_total_p1 + tji_voc_total_uncat
+total_new_voc <- tji_voc_new_b1117 + tji_voc_new_b1351 + tji_voc_new_p1 + tji_voc_new_b1617 + tji_voc_new_uncat
+total_voc <- tji_voc_total_b1117 + tji_voc_total_b1351 + tji_voc_total_p1 + tji_voc_total_b1617 + tji_voc_total_uncat
 
 
 ################################################################################
@@ -237,14 +241,15 @@ if(tji_daily_deaths == 0){
 
 
 
-headline <-  paste("", new_cases_str, " new COVID-19 cases, ", tji_new_voc_hed_str, " ", tji_daily_deaths_hed_str, " in Manitoba ", today_name, sep="")
+# headline <-  paste("", new_cases_str, " new COVID-19 cases, ", tji_new_voc_hed_str, " ", tji_daily_deaths_hed_str, " in Manitoba ", today_name, sep="")
+headline <-  paste("", new_cases_str, " new COVID-19 cases and ",  tji_daily_deaths_hed_str, " in Manitoba ", today_name, sep="")
 
 story <- paste(
   "Provincial health officials announced ",  new_cases_str, " new cases of COVID-19 and ",  tji_daily_deaths_str, " in Manitoba ", today_name, ".",
   "\n","\n",
-  new_voc_str,
+  # new_voc_str,
   "\n\n",
-  total_voc_str, "\n\n",
+  # total_voc_str, "\n\n",
   "There are ",  comma(active_cases_str), " active cases in Manitoba, with ",  tji_hospitalized_total, " people in hospital, ",  tji_icu_total, " of them in intensive care.",
   "\n","\n",
   "The five-day test positivity rate is ",  tji_positivity_manitoba, " in Manitoba, and ",  tji_positivity_winnipeg, " in Winnipeg. ",

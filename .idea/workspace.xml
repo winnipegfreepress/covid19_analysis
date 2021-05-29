@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ccf56fcc-fbe1-4e53-bf80-e1a90858353b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/R/__vaccine_uptake.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/__vaccine_uptake.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/R/tji.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/tji.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/COVID19_MB_first_second_vaccine_dose.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/COVID19_MB_first_second_vaccine_dose.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/COVID19_MB_vaccine_demographics.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/COVID19_MB_vaccine_demographics.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/COVID19_vaccine_administration.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/COVID19_vaccine_administration.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/COVID19_vaccine_distribution.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/COVID19_vaccine_distribution.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/covid_variants.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/covid_variants.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_5day_positivity.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_5day_positivity.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_all.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_all.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_districts_all.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_districts_all.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_districts_winnipeg.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_districts_winnipeg.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_interlake_eastern.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_interlake_eastern.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_northern.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_northern.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_prairie_mountain_health.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_prairie_mountain_health.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_southern_health.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_southern_health.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_status_winnipeg.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_status_winnipeg.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/dashboard_daily_topline.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/dashboard_daily_topline.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/gsheet_wfp_daily_totals.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/gsheet_wfp_daily_totals.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/gsheet_wfp_test_positivity.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/gsheet_wfp_test_positivity.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/mb_covid_vaccinations_inventory_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/mb_covid_vaccinations_inventory_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/mb_covid_vaccinations_summary_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/mb_covid_vaccinations_summary_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/mb_covid_vaccinations_summary_stats_updated.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/mb_covid_vaccinations_summary_stats_updated.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/mb_covid_vaccine_doses_distributed.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/mb_covid_vaccine_doses_distributed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/mbdata_variant_of_concern_cases.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/mbdata_variant_of_concern_cases.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/phac_daily.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/phac_daily.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/raw/wfp_tji.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/raw/wfp_tji.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/covid19_2nd_3rd_wave.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/reports/covid19_2nd_3rd_wave.Rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/vaccinations.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/reports/vaccinations.Rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_attic_graphic.R" beforeDir="false" afterPath="$PROJECT_DIR$/run_attic_graphic.R" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/run.R" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1t6FgQ85d9zlAhOoYKYzHLDVcCg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ccf56fcc-fbe1-4e53-bf80-e1a90858353b" name="Default Changelist" comment="" />
+      <created>1622081743103</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622081743103</updated>
+    </task>
+    <servers />
+  </component>
+</project>

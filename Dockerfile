@@ -1,9 +1,15 @@
-FROM rocker/tidyverse:3.3.1
+FROM rocker/tidyverse
 
-## Copy repo files into the docker container
-USER root
-COPY . ${HOME}
+# create an R user
+ENV USER rstudio
 
-# Install packages from init.R
-RUN if [ -f init.R ]; then R --quiet -f init.R; fi
+# Copy project files into the docker container
+COPY . /home/$USER/analysis
 
+# Install packages from config.R through init.R
+# This should but doesn't work
+# RUN if [ -f init.R ]; then R --quiet -f init.R; fi
+
+# Using duplicate requirements instead
+COPY ./DockerConfig/requirements.R /tmp/requirements.R
+RUN Rscript /tmp/requirements.R

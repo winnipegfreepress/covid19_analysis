@@ -6,7 +6,6 @@ run_config()
 source(dir_src("theme.R"))
 source(dir_src("palette.R"))
 
-
 ################################################################################
 # Run either the individual step calls or
 # the notebook which does the same whileto build the report
@@ -31,7 +30,6 @@ run_visualize()
 
 # COVID-19 analysis notebook
 # run_notebook(filename="index.Rmd")
-
 
 run_notebook(filename="vaccinations.Rmd")
 upload_reports_s3(report="vaccinations.html", destination_path="covid-19-tracker/")

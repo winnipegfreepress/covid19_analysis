@@ -196,14 +196,7 @@ if(importJSON == "Full"){
     
 }
 
-
-```
-
-```{r compare_demographics}
-
 dashboard_demographics <- read_csv(dir_data_out("demographics_df.csv"))
-
-
 
 MB_pop_estimates_2020 <- MB_pop_estimates_2020_statcan_17_10_0005_01 %>%
   group_by(age_group_mb) %>%

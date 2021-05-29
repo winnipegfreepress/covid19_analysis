@@ -11,7 +11,7 @@ p_new_daily_tests_avg <- plot_bar_timeseries_w_avg(
   avg_colour=nominalBold_shade_1,
   title_str="Daily tests for COVID-19 reported in Manitoba",
   subtitle_str="", x_str="", y_str="",
-  xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="1 month",
+  xmin="2020-03-01", xmax=xmax_var, xformat="%b", x_units="1 month",
   ymin=0, ymax=5000, y_units="",
   source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )

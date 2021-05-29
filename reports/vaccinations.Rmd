@@ -74,9 +74,7 @@ source(dir_src("_vaccination_comparison.R"))
 ```
 
 
-* ~~TODO: Replace population with 18+ projections from StatCan~~
-* ~~TODO: Filter out territories~~
-* TODO: Add today's distribution and administration numbers for Manitoba
+
 
 
 **THIS MAUALLY INCLUDES THE LATEST NUMBERS FOR MANITOBA**
@@ -138,7 +136,7 @@ plot(wfp_admin_gap_comparison)
 
 ## Provincial vaccine distribution, admin and admin gap and averages
 
-```{r table_vaccine_compare_j_pop, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis", collapse = TRUE}
+```{r table_vaccine_compare_j_pop, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="hide", collapse = TRUE}
 
 ```
 

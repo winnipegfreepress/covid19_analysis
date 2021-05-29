@@ -1,0 +1,553 @@
+```{r config, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+# Run config first to use dynamic variables in the YAML
+if (!require("upstartr")) install.packages("upstartr")
+library("upstartr")
+run_config()
+
+```
+
+---
+title: "COVID-19 cases and vaccinations"
+author: "Michael Pereira <michael.pereira@freepress.mb.ca>"
+date: "`r format(Sys.Date(), "%B %d, %Y")`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    highlight: textmate
+    theme: simplex
+    df_print: kable
+    self_contained: false
+    code_folding: hide
+---
+
+
+```{r config_session, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+
+source(dir_src("theme.R"))
+source(dir_src("palette.R"))
+
+
+knit_print.data.frame = function(x, ...) {
+  res = paste(c("", "", knitr::kable(x)), collapse = "\n")
+  knitr::asis_output(res)
+}
+
+registerS3method(
+  "knit_print", "data.frame", knit_print.data.frame,
+  envir = asNamespace("knitr")
+)
+
+# This is normally set in the get.R file
+Sys.sleep(time_pause)
+
+
+```
+
+```{r readin_json, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+
+
+start <- as.Date("2020-09-14",format="%Y-%m-%d")
+end <- as.Date("2021-05-28",format="%Y-%m-%d")
+importJSON <- "Full" # None/Full
+
+# THIS TAKES A FEW MINUTES, READ THE CSV UNLESS IT'S THE FIRST RUN OF THE DAY
+# Create df based on what the JSON contains then rbind in the while loop
+
+# Pull from JSON and stack the dates
+# Oct 4 and 10 are wrong in this b/c column names
+# change halfway through the month
+
+if(importJSON == "Full"){
+
+  theDate <- start
+
+  demographics_df_sample <- jsonlite::fromJSON(dir_data_raw( "demographic_heatmap/2020-10-01-demographics-rha.json"))
+  demographics_df_sample <- demographics_df_sample[["features"]][["attributes"]]
+  demographics_df_sample <- demographics_df_sample %>%
+    clean_names() %>%
+    mutate(
+      date = as.Date("2020-10-01", "%Y-%m-%d"),
+      total_cases = NA,
+      object_id = NA
+    )
+  demographics_df <- slice(demographics_df_sample, 0)
+  # demographics_df <- demographics_df
+
+  while (theDate <= end){
+
+    file_name <- paste("/demographic_heatmap/", format(theDate,"%Y-%m-%d"), "-demographics-rha.json", sep="")
+    print(file_name)
+
+    demographics_rha_tmp <- jsonlite::fromJSON(dir_data_raw(file_name))
+
+    # demographics_rha_tmp <- jsonlite::fromJSON(here::here(dir_data_raw, file_name))
+    demographics_rha_tmp <- demographics_rha_tmp[["features"]][["attributes"]]
+    demographics_rha_tmp <- demographics_rha_tmp %>%
+      clean_names() %>%
+      mutate(
+        date = as.Date(theDate, "%Y-%m-%d")
+      )
+
+    if("total_cases" %in% colnames(demographics_rha_tmp)){
+      demographics_rha_tmp <- demographics_rha_tmp %>% rename( value = total_cases )
+    }
+
+    if("object_id" %in% colnames(demographics_rha_tmp)){
+      demographics_rha_tmp <- demographics_rha_tmp %>% select(-object_id)
+    }
+
+    demographics_df <- rbind(demographics_df, demographics_rha_tmp)
+
+    Sys.sleep(.25)
+    theDate <- theDate + 1
+
+  }
+  
+  write_csv(demographics_df, dir_data_out(paste("demographics_df", '.csv', sep='')))
+
+}
+```
+
+```{r get_read_data, echo=FALSE, message=FALSE, warning=FALSE, results="hide", collapse = TRUE}
+
+# Population estimates
+MB_pop_estimates_2020_statcan_17_10_0005_01 <-  read_feather(dir_data_processed("MB_pop_estimates_2020_statcan_17_10_0005_01.feather"))
+
+MB_pop_estimates_2020 <- MB_pop_estimates_2020_statcan_17_10_0005_01 %>%
+  group_by(age_group_mb) %>%
+  summarize(total = sum(population_2020est)) %>%
+  mutate(
+    age_group_mb = ifelse(age_group_mb == "100+", "99plus", age_group_mb),
+    age_group_mb = ifelse(age_group_mb == "99+", "99plus", age_group_mb),    
+  )
+
+
+pop_99plus <- MB_pop_estimates_2020 %>% filter(age_group_mb == "99plus") %>% select(total) %>% pull()
+pop_90_99 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "90-99") %>% select(total) %>% pull()
+pop_80_89 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "80-89") %>% select(total) %>% pull()
+pop_70_79 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "70-79") %>% select(total) %>% pull()
+pop_60_69 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "60-69") %>% select(total) %>% pull()
+pop_50_59 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "50-59") %>% select(total) %>% pull()
+pop_40_49 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "40-49") %>% select(total) %>% pull()
+pop_30_39 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "30-39") %>% select(total) %>% pull()
+pop_20_29 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "20-29") %>% select(total) %>% pull()
+pop_10_19 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "10-19") %>% select(total) %>% pull()
+pop_0_9 <- MB_pop_estimates_2020 %>% filter(age_group_mb == "0-9") %>% select(total) %>% pull()
+pop_90plus <- pop_99plus + pop_90_99
+
+
+dashboard_demographics <- read_csv(dir_data_out("demographics_df.csv")) %>% 
+    mutate(
+      age_group = ifelse(age_group == "99+", "99plus", age_group),
+      age_group = gsub("-", "_", age_group, fixed=TRUE)
+    )
+
+dashboard_demographics_allrha <- dashboard_demographics  %>%
+  filter(rha == "All") %>%
+  select(-rha) %>%
+  pivot_wider(names_from = gender, values_from = value) %>%
+  clean_names() %>%
+  mutate(
+    total_cases = male + female
+  ) %>%
+  select(
+    -female, -male
+  ) %>%
+  pivot_wider(
+    names_from="age_group",
+    names_prefix = "age_",
+    values_from="total_cases"
+  ) %>% 
+  mutate(
+    daily_new_99plus = age_99plus - lag(age_99plus),
+    daily_new_90_99  = age_90_99  - lag(age_90_99),
+    daily_new_80_89  = age_80_89  - lag(age_80_89),
+    daily_new_70_79  = age_70_79  - lag(age_70_79),
+    daily_new_60_69  = age_60_69  - lag(age_60_69),
+    daily_new_50_59  = age_50_59  - lag(age_50_59),
+    daily_new_40_49  = age_40_49  - lag(age_40_49),
+    daily_new_30_39  = age_30_39  - lag(age_30_39),
+    daily_new_20_29  = age_20_29  - lag(age_20_29),
+    daily_new_10_19  = age_10_19  - lag(age_10_19),
+    daily_new_0_9    = age_0_9    - lag(age_0_9)
+  )
+
+dashboard_demographics_allrha__daily_new <- dashboard_demographics_allrha %>%  
+  select(
+    date,
+    daily_new_99plus,
+    daily_new_90_99,
+    daily_new_80_89,
+    daily_new_70_79,
+    daily_new_60_69,
+    daily_new_50_59,
+    daily_new_40_49,
+    daily_new_30_39,
+    daily_new_20_29,
+    daily_new_10_19,
+    daily_new_0_9    
+  ) %>% 
+  mutate(
+      daily_new_99plus = ifelse(is.na(daily_new_99plus), 0, daily_new_99plus),
+      daily_new_90_99 = ifelse(is.na(daily_new_90_99), 0, daily_new_90_99), 
+      daily_new_80_89 = ifelse(is.na(daily_new_80_89), 0, daily_new_80_89), 
+      daily_new_70_79 = ifelse(is.na(daily_new_70_79), 0, daily_new_70_79), 
+      daily_new_60_69 = ifelse(is.na(daily_new_60_69), 0, daily_new_60_69), 
+      daily_new_50_59 = ifelse(is.na(daily_new_50_59), 0, daily_new_50_59), 
+      daily_new_40_49 = ifelse(is.na(daily_new_40_49), 0, daily_new_40_49), 
+      daily_new_30_39 = ifelse(is.na(daily_new_30_39), 0, daily_new_30_39), 
+      daily_new_20_29 = ifelse(is.na(daily_new_20_29), 0, daily_new_20_29), 
+      daily_new_10_19 = ifelse(is.na(daily_new_10_19), 0, daily_new_10_19), 
+      daily_new_0_9 = ifelse(is.na(daily_new_0_9), 0, daily_new_0_9), 
+  ) %>% 
+  mutate(
+    daily_new_90plus = daily_new_90_99 + daily_new_99plus
+  )
+
+
+dashboard_demographics_allrha__7day_new <- dashboard_demographics_allrha__daily_new %>% 
+  mutate(
+    new_cases_7day_avg_90plus = round(roll_mean(daily_new_90plus, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_99plus = round(roll_mean(daily_new_99plus, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_90_99 = round(roll_mean(daily_new_90_99, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_80_89 = round(roll_mean(daily_new_80_89, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_70_79 = round(roll_mean(daily_new_70_79, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_60_69 = round(roll_mean(daily_new_60_69, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_50_59 = round(roll_mean(daily_new_50_59, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_40_49 = round(roll_mean(daily_new_40_49, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_30_39 = round(roll_mean(daily_new_30_39, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_20_29 = round(roll_mean(daily_new_20_29, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_10_19 = round(roll_mean(daily_new_10_19, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_0_9 = round(roll_mean(daily_new_0_9, 7, na.rm=TRUE, fill=NA, align="right"), digits=1)
+  ) %>% 
+  select(
+    date,
+    new_cases_7day_avg_90plus,
+    new_cases_7day_avg_99plus,
+    new_cases_7day_avg_90_99,
+    new_cases_7day_avg_80_89,
+    new_cases_7day_avg_70_79,
+    new_cases_7day_avg_60_69,
+    new_cases_7day_avg_50_59,
+    new_cases_7day_avg_40_49,
+    new_cases_7day_avg_30_39,
+    new_cases_7day_avg_20_29,
+    new_cases_7day_avg_10_19,
+    new_cases_7day_avg_0_9    
+  )
+
+
+dashboard_demographics_allrha__7day_new <- dashboard_demographics_allrha__daily_new %>% 
+  mutate(
+    new_cases_7day_avg_90plus = round(roll_mean(daily_new_90plus, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_99plus = round(roll_mean(daily_new_99plus, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_90_99 = round(roll_mean(daily_new_90_99, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_80_89 = round(roll_mean(daily_new_80_89, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_70_79 = round(roll_mean(daily_new_70_79, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_60_69 = round(roll_mean(daily_new_60_69, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_50_59 = round(roll_mean(daily_new_50_59, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_40_49 = round(roll_mean(daily_new_40_49, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_30_39 = round(roll_mean(daily_new_30_39, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_20_29 = round(roll_mean(daily_new_20_29, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_10_19 = round(roll_mean(daily_new_10_19, 7, na.rm=TRUE, fill=NA, align="right"), digits=1),
+    new_cases_7day_avg_0_9 = round(roll_mean(daily_new_0_9, 7, na.rm=TRUE, fill=NA, align="right"), digits=1)
+  ) %>% 
+  select(
+    date,
+    new_cases_7day_avg_90plus,
+    new_cases_7day_avg_99plus,
+    new_cases_7day_avg_90_99,
+    new_cases_7day_avg_80_89,
+    new_cases_7day_avg_70_79,
+    new_cases_7day_avg_60_69,
+    new_cases_7day_avg_50_59,
+    new_cases_7day_avg_40_49,
+    new_cases_7day_avg_30_39,
+    new_cases_7day_avg_20_29,
+    new_cases_7day_avg_10_19,
+    new_cases_7day_avg_0_9    
+  )
+
+dashboard_demographics_allrha__7day_new_100K <- dashboard_demographics_allrha__7day_new %>% 
+  mutate(
+    cases_100K_7day_avg_90plus = round(new_cases_7day_avg_90plus / pop_90plus * 100000, digits=1), 
+    cases_100K_7day_avg_99plus = round(new_cases_7day_avg_99plus / pop_99plus * 100000, digits=1), 
+    cases_100K_7day_avg_90_99 = round(new_cases_7day_avg_90_99 / pop_90_99 * 100000, digits=1), 
+    cases_100K_7day_avg_80_89 = round(new_cases_7day_avg_80_89 / pop_80_89 * 100000, digits=1), 
+    cases_100K_7day_avg_70_79 = round(new_cases_7day_avg_70_79 / pop_70_79 * 100000, digits=1), 
+    cases_100K_7day_avg_60_69 = round(new_cases_7day_avg_60_69 / pop_60_69 * 100000, digits=1), 
+    cases_100K_7day_avg_50_59 = round(new_cases_7day_avg_50_59 / pop_50_59 * 100000, digits=1), 
+    cases_100K_7day_avg_40_49 = round(new_cases_7day_avg_40_49 / pop_40_49 * 100000, digits=1), 
+    cases_100K_7day_avg_30_39 = round(new_cases_7day_avg_30_39 / pop_30_39 * 100000, digits=1), 
+    cases_100K_7day_avg_20_29 = round(new_cases_7day_avg_20_29 / pop_20_29 * 100000, digits=1), 
+    cases_100K_7day_avg_10_19 = round(new_cases_7day_avg_10_19 / pop_10_19 * 100000, digits=1), 
+    cases_100K_7day_avg_0_9 = round(new_cases_7day_avg_0_9 / pop_0_9 * 100000, digits=1) 
+  ) %>% 
+  select(
+    date,
+    cases_100K_7day_avg_90plus,
+    cases_100K_7day_avg_99plus,
+    cases_100K_7day_avg_90_99,
+    cases_100K_7day_avg_80_89,
+    cases_100K_7day_avg_70_79,
+    cases_100K_7day_avg_60_69,
+    cases_100K_7day_avg_50_59,
+    cases_100K_7day_avg_40_49,
+    cases_100K_7day_avg_30_39,
+    cases_100K_7day_avg_20_29,
+    cases_100K_7day_avg_10_19,
+    cases_100K_7day_avg_0_9    
+  )
+
+
+```
+
+
+
+```{r viz_7day_cases_100K, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis", collapse = TRUE}
+
+df_7day_cases_100K <- dashboard_demographics_allrha__7day_new_100K %>% 
+  pivot_longer(
+    cols=c(
+      cases_100K_7day_avg_99plus,
+      cases_100K_7day_avg_90plus,
+      cases_100K_7day_avg_90_99,
+      cases_100K_7day_avg_80_89,
+      cases_100K_7day_avg_70_79,
+      cases_100K_7day_avg_60_69,
+      cases_100K_7day_avg_50_59,
+      cases_100K_7day_avg_40_49,
+      cases_100K_7day_avg_30_39,
+      cases_100K_7day_avg_20_29,
+      cases_100K_7day_avg_10_19,
+      cases_100K_7day_avg_0_9
+    ),
+    names_to="age",
+    values_to="cases_7day_100K"
+  ) %>% 
+  mutate(
+    age = gsub("cases_100K_7day_avg_", "", age, fixed=TRUE)    
+  ) %>% 
+  filter(
+    age %notin% c("99plus", "90_99")
+  )
+
+
+  p_7day_cases_100K <- ggplot(df_7day_cases_100K) + 
+    aes(x = date, y = cases_7day_100K, colour=age, group=age) +
+   
+    annotate("segment", x = as.Date("2021-04-09"), xend = as.Date("2021-04-09"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-04-09"), y = 70, label = "60+", hjust=1.25) +
+    
+    annotate("segment", x = as.Date("2021-04-30"), xend = as.Date("2021-04-30"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-04-30"), y = 70, label = "50+", hjust=1.25) +
+    
+    annotate("segment", x = as.Date("2021-05-07"), xend = as.Date("2021-05-07"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-05-07"), y = 70, label = "40+", hjust=1.25) +
+
+    annotate("segment", x = as.Date("2021-05-10"), xend = as.Date("2021-05-10"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-05-10"), y = 70, label = "30+", hjust=-.3) +
+
+    geom_line(size = .75) +
+ 
+    scale_x_date(
+      expand = c(0, 0),
+      limits = c(as.Date("2021-03-01"), as.Date("2021-06-15")),
+      date_breaks = "2 weeks",
+      labels = date_format("%b %d")
+    ) +
+    scale_y_continuous(
+      expand = c(0, 0),
+      limits = c(0, 80),
+      labels = comma
+      # labels = function(x) {
+      #   ifelse(x %in% c(20), paste(x, "%", sep = ""), x)
+      # }
+    ) +  
+    scale_color_hue() +
+ labs(
+    title = wrap_text("Daily COVID-19 cases per 100,000 people by age group", 70),
+    subtitle = "Seven-day rolling average",
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health", sep = "")), 80),
+    x = "",
+    y = "",
+    fill = ""
+  ) +
+  minimal_theme() +
+  theme(
+    legend.position = c(.2, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888"),
+    strip.background=ggplot2::element_blank(),
+    strip.text=ggplot2::element_text(size =13, hjust=0, face="bold"),
+    panel.border=ggplot2::element_blank()
+  )
+
+
+wfp_7day_cases_100K <- prepare_plot(p_7day_cases_100K)
+ggsave_pngpdf(wfp_7day_cases_100K, "wfp_7day_cases_100K", width_var = 8.66, height_var = 6, dpi_var=300, scale_var = 1, units_var = "in")
+
+plot(wfp_7day_cases_100K)
+
+```
+
+
+
+```{r viz_7day_cases_100K_facet, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=14, results="asis", collapse = TRUE}
+
+  p_7day_cases_100K_facet <- ggplot(df_7day_cases_100K) + 
+    aes(x = date, y = cases_7day_100K, group=age) +
+    
+
+    annotate("segment", x = as.Date("2021-04-09"), xend = as.Date("2021-04-09"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-04-09"), y = 70, label = "60+", hjust=1.25) +
+      
+    annotate("segment", x = as.Date("2021-04-30"), xend = as.Date("2021-04-30"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-04-30"), y = 70, label = "50+", hjust=1.25) +
+    
+    annotate("segment", x = as.Date("2021-05-07"), xend = as.Date("2021-05-07"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-05-07"), y = 70, label = "40+", hjust=1.25) +
+
+    annotate("segment", x = as.Date("2021-05-10"), xend = as.Date("2021-05-10"), 
+             y = 0, yend = 80, colour = "#c9c9c9") +   
+    annotate("text", x =as.Date("2021-05-10"), y = 70, label = "30+", hjust=-.3) +
+
+    geom_line(size = .75, colour=wfp_blue) +
+
+    # geom_text_repel(
+    #   # geom_text(
+    #     data=df_7day_cases_100K %>%  filter(date == max(date)),
+    #     aes(x=date, y=cases_7day_100K,
+    #         label=age
+    #     ),
+    #     color="#222222",
+    #     force=10,
+    #     size=4,
+    #     hjust=-3,
+    #     vjust=-.25,
+    #     direction="y",
+    #     segment.color="#c9c9c9",
+    #     segment.size=.2,
+    #     show.legend=FALSE
+    #   ) +    
+    scale_x_date(
+      expand = c(0, 0),
+      limits = c(as.Date("2021-03-01"), as.Date("2021-06-15")),
+      date_breaks = "2 weeks",
+      labels = date_format("%b %d")
+    ) +
+    scale_y_continuous(
+      expand = c(0, 0),
+      limits = c(0, 80),
+      labels = comma
+      # labels = function(x) {
+      #   ifelse(x %in% c(20), paste(x, "%", sep = ""), x)
+      # }
+    ) +  
+    scale_color_hue() +
+    guides(colour=FALSE) +
+ labs(
+    title = wrap_text("Daily COVID-19 cases per 100,000 people by age group", 70),
+    subtitle = "Seven-day rolling average",
+    caption = wrap_text(toupper(paste("WINNIPEG FREE PRESS — SOURCE: Manitoba Health", sep = "")), 80),
+    x = "",
+    y = "",
+    fill = ""
+  ) +
+  minimal_theme() +
+  theme(
+    legend.position = c(.9, 1),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(10, 10, 10, 10),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    axis.ticks = ggplot2::element_line(color="#888888"),
+    strip.background=ggplot2::element_blank(),
+    strip.text=ggplot2::element_text(size =13, hjust=0, face="bold"),
+    panel.border=ggplot2::element_blank()
+  ) +
+  facet_wrap(.~age, ncol = 2)
+
+
+wfp_7day_cases_100K_facet <- prepare_plot(p_7day_cases_100K_facet)
+ggsave_pngpdf(wfp_7day_cases_100K_facet, "wfp_7day_cases_100K_facet", width_var = 8.66, height_var = 14, dpi_var=300, scale_var = 1, units_var = "in")
+
+plot(wfp_7day_cases_100K_facet)
+
+```
+
+
+## Data tables
+
+### MB_pop_estimates_2020
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis", collapse = TRUE}
+
+datatable(MB_pop_estimates_2020,
+          caption = 'Table: MB_pop_estimates_2020',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 25,
+            order = list(list(0, 'desc'))
+          )
+)
+```
+
+### dashboard_demographics_allrha__daily_new
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis", collapse = TRUE}
+
+datatable(dashboard_demographics_allrha__daily_new,
+          caption = 'Table: dashboard_demographics_allrha__daily_new',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 10,
+            order = list(list(0, 'desc'))
+          )
+)
+```
+
+### dashboard_demographics_allrha__7day_new
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis", collapse = TRUE}
+
+datatable(dashboard_demographics_allrha__7day_new,
+          caption = 'Table: dashboard_demographics_allrha__7day_new',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 10,
+            order = list(list(0, 'desc'))
+          )
+)
+
+```
+
+### dashboard_demographics_allrha__7day_new_100K
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6, results="asis", collapse = TRUE}
+
+datatable(dashboard_demographics_allrha__7day_new_100K,
+          caption = 'Table: dashboard_demographics_allrha__7day_new_100K',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 10,
+            order = list(list(0, 'desc'))
+          )
+)
+
+
+```
+

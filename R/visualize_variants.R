@@ -19,7 +19,7 @@ p_covid19_variants <- plot_bar_x_reordered_y_stacked(
   title_str="Cases of COVID-19 variants of concern reported in Canada",
   subtitle_str="Total count of reported cases",
   x_str="", y_str="",
-  ymin=0, ymax=175000, y_units="",
+  ymin=0, ymax=200000, y_units="",
   source_str="Provincial health agencies", lastupdate_str=last_update_timestamp
 )
 
