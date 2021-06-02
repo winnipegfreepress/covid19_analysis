@@ -1,10 +1,17 @@
+
 FROM rocker/tidyverse
+
+# install the linux libraries needed for plumber
+RUN apt-get update -qq && apt-get install -y \
+  libssl-dev \
+  libcurl4-gnutls-dev
 
 # create an R user
 ENV USER rstudio
 
-# Copy project files into the docker container
-COPY . /home/$USER/analysis
+# install devtools and upstartr
+RUN R -e "install.packages('devtools')"
+RUN R -e "install.packages('globeandmail/upstartr')"
 
 # Install packages from config.R through init.R
 # This should but doesn't work
@@ -13,3 +20,6 @@ COPY . /home/$USER/analysis
 # Using duplicate requirements instead
 COPY ./DockerConfig/requirements.R /tmp/requirements.R
 RUN Rscript /tmp/requirements.R
+
+# Copy project files into the docker container
+COPY . /home/$USER/analysis

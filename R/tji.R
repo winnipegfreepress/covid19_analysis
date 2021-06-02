@@ -75,7 +75,7 @@ new_b117_str <- ""
 new_b1351_str <- ""
 new_p1_str <- ""
 new_uncat_str <- ""
-#
+
 # if(tji_voc_new_b1117 > 0){
 #   if(tji_voc_new_b1117 == 1){
 #     new_b117_str <- "• one case of the B.1.1.7 variant"
@@ -132,42 +132,42 @@ new_uncat_str <- ""
 # }
 #
 #
-# total_b1117_str <- paste("zero cases of B.1.1.7")
-# total_b1351_str <- paste("zero cases of B.1.351")
-# oc_total_p1_str <- paste("zero cases of P.1")
-#
+total_b1117_str <- paste("zero cases of B.1.1.7")
+total_b1351_str <- paste("zero cases of B.1.351")
+oc_total_p1_str <- paste("zero cases of P.1")
+
 
 
 if(tji_voc_total_b1117 > 1){
-  total_b1117_str <- paste(tji_voc_total_b1117, " cases of B.1.1.7", sep="")
+  total_b1117_str <- paste(comma(tji_voc_total_b1117), " cases of B.1.1.7", sep="")
 }
 if(tji_voc_total_b1351 > 1){
-  total_b1351_str <- paste(tji_voc_total_b1351, " cases of B.1.351", sep="")
+  total_b1351_str <- paste(comma(tji_voc_total_b1351), " cases of B.1.351", sep="")
 }
 if(tji_voc_total_p1 > 1){
-  oc_total_p1_str <- paste(tji_voc_total_p1, " cases of the P.1 variant", sep="")
+  oc_total_p1_str <- paste(comma(tji_voc_total_p1), " cases of the P.1 variant", sep="")
 }
+if(tji_voc_total_b1617 > 1){
+  oc_total_b1617_str <- paste(comma(tji_voc_total_b1617), " cases of the B.1.617 variant lineage", sep="")
+}
+
 if (tji_voc_total_uncat > 1) {
-  oc_total_uncat_str <- paste(tji_voc_total_uncat, " uncategorized variant of concern cases", sep = "")
+  oc_total_uncat_str <- paste(comma(tji_voc_total_uncat), " uncategorized variant of concern cases", sep = "")
 }
 
 
 
-# total_voc_str <- paste(
-#   "Public health officials have reported a total of ",
-#   total_voc, " variant of concern cases in Manitoba including ",
-#   total_b1117_str, ", ",
-#   total_b1351_str, " and ",
-#   oc_total_p1_str, ".",
-#   oc_total_uncat_str, ".",
-#   sep=""
-# )
+total_voc_str <- paste(
+  "Public health officials have reported a total of ", "\n",
+  comma(total_voc), " variant of concern cases in Manitoba including ", "\n",
+  total_b1117_str, ", ", "\n",
+  total_b1351_str, " and ", "\n",
+  oc_total_p1_str, ".", "\n",
+  oc_total_uncat_str, ".", "\n",
+  sep=""
+)
 
 total_voc_str <- ""
-
-
-
-
 ################################################################################
 # Deaths
 ################################################################################
@@ -247,9 +247,7 @@ headline <-  paste("", new_cases_str, " new COVID-19 cases and ",  tji_daily_dea
 story <- paste(
   "Provincial health officials announced ",  new_cases_str, " new cases of COVID-19 and ",  tji_daily_deaths_str, " in Manitoba ", today_name, ".",
   "\n","\n",
-  # new_voc_str,
-  "\n\n",
-  # total_voc_str, "\n\n",
+  total_voc_str, "\n\n",
   "There are ",  comma(active_cases_str), " active cases in Manitoba, with ",  tji_hospitalized_total, " people in hospital, ",  tji_icu_total, " of them in intensive care.",
   "\n","\n",
   "The five-day test positivity rate is ",  tji_positivity_manitoba, " in Manitoba, and ",  tji_positivity_winnipeg, " in Winnipeg. ",
@@ -267,6 +265,3 @@ tji_hed_body <- paste(
   story,
   sep=""
 )
-
-
-

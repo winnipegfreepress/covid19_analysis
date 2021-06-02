@@ -1,5 +1,7 @@
 
-mb_12plus_population_2020estimate <- 1068553 + 111322
+# Province via Brian Smiley provided 12+ pop estimate based on PHIMS records
+# mb_12plus_population_2020estimate <- 1068553 + 111322
+mb_12plus_population_2020estimate <- 1175703
 mb_18plus_population_2020estimate <- 1068553
 
 mb_12plus_population_2020estimate_25pct=mb_12plus_population_2020estimate * .25

@@ -14,5 +14,5 @@
 
 # simple one liner for command line copying
 
-DATA_DIR=${PWD}/canalysis
-sudo docker run -d --rm -p 28787:8787 --name wfp_c19_analysis -e USERID=$UID -e PASSWORD=SoSecret! -v $DATA_DIR:/home/rstudio/analysis wfp_c19_analysis
+DATA_DIR=${PWD}/analysis
+sudo docker run -d --rm -p 28787:8787 --name wfp_c19_analysis -e USERID=$UID -e PASSWORD=SoSecret! -v $DATA_DIR:/home/rstudio/analysis wfp_covid19_analysis

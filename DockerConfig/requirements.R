@@ -1,13 +1,23 @@
+
 install.packages(c(
-  "devtools", "globeandmail/upstartr",
-  "tidyverse", "glue", "magrittr", "lubridate", "hms",
-  "readxl", "feather", "RcppRoll",
-  "scales", "janitor", "httr", "Cairo",
-  "ggrepel", "prettydoc",
-  "aws.s3", "dotenv", "rlang",
-  "googledrive", "googlesheets4", "cowplot",
-  "zip", "gmailr", "knitr", "DT", "zoo", "ggtext",
-  "ggpubr", "ggtext", "showtext", "kableExtra",
-  "pracma", "ISOweek"
+  "dotenv",
+  "tidyverse", "glue", "magrittr",
+  "lubridate", "hms", "rlang",
+  "zoo", "pracma", "ISOweek",
+  "RcppRoll", "janitor",
+
+  "readxl", "feather", "zip", "rio",
+
+  "httr", "plumber", "rvest",
+
+  "aws.s3",
+  "gmailr", "googledrive", "googlesheets4",
+
+  "prettydoc", "scales",
+  "ggpubr", "cowplot",
+  "ggrepel", "ggtext", "showtext",
+  "Cairo",
+
+  "knitr", "DT", "kableExtra"
 ))
 
