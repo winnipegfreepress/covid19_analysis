@@ -6,6 +6,9 @@ wfp_daily_totals <- read_feather(dir_data_processed("wfp_daily_totals.feather"))
 
 wfp_daily_status_tall <-  wfp_daily_totals %>%
   select(date, active, recovered, deaths) %>%
+  mutate(
+    active = as.numeric(as.character(active))
+  ) %>%
   fill(active, recovered, deaths) %>%
   pivot_longer(-date, names_to="type", values_to="cnt") %>%
   mutate(type=factor(type, levels=c("deaths", "recovered", "active")))

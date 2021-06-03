@@ -14,7 +14,7 @@ test_to_date_str <- wfp_daily_totals_last_date %>% select(test_to_date) %>% pull
 confirmed_and_probable_str <- wfp_daily_totals_last_date %>% select(confirmed_and_probable) %>% pull()
 deaths_str <- wfp_daily_totals_last_date %>% select(deaths) %>% pull()
 recovered_str <- wfp_daily_totals_last_date %>% select(recovered) %>% pull()
-active_str <- wfp_daily_totals_last_date %>% select(active) %>% pull()
+active_str <- wfp_daily_totals_last_date %>% select(active) %>% mutate(active=as.numeric(as.character(active))) %>% pull()
 total_hospital_str <- wfp_daily_totals_last_date %>% select(total_hospital) %>% pull()
 total_icu_str <- wfp_daily_totals_last_date %>% select(total_icu) %>% pull()
 
