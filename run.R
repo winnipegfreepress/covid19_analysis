@@ -26,18 +26,7 @@ source(dir_src("tweets.R"))
 
 run_visualize()
 
-# Analyze and viz
-
 # source(dir_src("insights.R"))
-
-# COVID-19 analysis notebook
-# run_notebook(filename="index.Rmd")
-
-run_notebook(filename="vaccinations.Rmd")
-upload_reports_s3(report="vaccinations.html", destination_path="covid-19-tracker/")
-
-# run_notebook(filename="covid19_2nd_3rd_wave.Rmd")
-# upload_reports_s3(report="covid19_2nd_3rd_wave.html", destination_path="covid-19-tracker/")
 
 upload_plots_s3()
 
