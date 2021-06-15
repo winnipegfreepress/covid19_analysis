@@ -4,6 +4,7 @@ wfp_daily_totals_raw <- read_csv(dir_data_raw("gsheet_wfp_daily_totals.csv")) %>
   fill(deaths) %>%
   mutate(
     date=as.Date(date, "%m/%d/%Y"),
+    new_daily_cases=as.numeric(as.character(new_daily_cases)),
     new_daily_tests=test_daily_diff,
     new_daily_deaths=new_daily_deaths,
     cases_mavg_7day=roll_mean(new_daily_cases, 7, na.rm=TRUE, fill=NA, align="right"),
