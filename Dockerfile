@@ -11,7 +11,7 @@ ENV USER wfpnews
 
 # install devtools and upstartr
 RUN R -e "install.packages('devtools')"
-RUN R -e "install.packages('globeandmail/upstartr')"
+RUN R -e "install.packages('upstartr')"
 
 # Install packages from config.R through init.R
 # This should but doesn't work
@@ -22,4 +22,4 @@ COPY ./requirements.R /tmp/requirements.R
 RUN Rscript /tmp/requirements.R
 
 # Copy project files into the docker container
-COPY . /home/$USER/analysis
+COPY . /home/$USER/covid19_analysis
