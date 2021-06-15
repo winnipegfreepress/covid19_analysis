@@ -18,7 +18,7 @@ RUN R -e "install.packages('globeandmail/upstartr')"
 # RUN if [ -f init.R ]; then R --quiet -f init.R; fi
 
 # Using duplicate requirements instead
-# COPY ./DockerConfig/requirements.R /tmp/requirements.R
+COPY ./requirements.R /tmp/requirements.R
 RUN Rscript /tmp/requirements.R
 
 # Copy project files into the docker container
