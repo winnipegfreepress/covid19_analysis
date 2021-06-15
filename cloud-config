@@ -1,3 +1,0 @@
-#cloud-config
-#runcmd:
-#  - docker run -d -p 8787:8787 -e PASSWORD=supersekrit rocker/tidyverse

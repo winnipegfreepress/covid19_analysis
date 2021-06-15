@@ -20,4 +20,3 @@ install.packages(c(
 
   "knitr", "DT", "kableExtra"
 ))
-
