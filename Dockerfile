@@ -11,7 +11,7 @@ ENV USER wfpnews
 
 # install devtools and upstartr
 RUN R -e "install.packages('devtools')"
-RUN R -e "install.packages('upstartr')"
+RUN R -e "install.packages('globeandmail/upstartr')"
 
 # Install packages from config.R through init.R
 # This should but doesn't work
