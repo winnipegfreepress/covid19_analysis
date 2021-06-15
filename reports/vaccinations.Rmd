@@ -44,7 +44,7 @@ Sys.sleep(time_pause)
 
 
 source(dir_src("get_vaccinations.R"))
-source(dir_src("process_populations.R"))
+source(dir_src("process.R"))
 source(dir_src("process_vaccinations.R"))
 run_analyze()
 
@@ -63,7 +63,6 @@ source(dir_src("visualize_vaccine_distribution.R"))
 source(dir_src("visualize_vaccine_first_second_dose.R"))
 source(dir_src("visualize_vaccine_gap_provinces.R"))
 
-
 source(dir_src("_vaccination_comparison.R"))
 
 # source(dir_src("_scratch", "visualize_vaccine_demographics_female_male.R"))
@@ -77,7 +76,6 @@ source(dir_src("_vaccination_comparison.R"))
 
 
 
-**THIS MAUALLY INCLUDES THE LATEST NUMBERS FOR MANITOBA**
 
 
 ----
@@ -142,7 +140,7 @@ plot(wfp_admin_gap_comparison)
 
 ----
 
-```{r work_vaccine_distribution_admin_admingap, echo=TRUE, message=TRUE, warning=TRUE, fig.width=8.66, fig.height=6}
+```{r work_vaccine_distribution_admin_admingap, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.66, fig.height=6}
 
 # Load vaccine distribution & administration counts
 # * standardize province names in to join with population
@@ -458,8 +456,24 @@ datatable(population_provinces_2020_all_18plus,
 
 
 
-datatable(MB_pop_estimates_2020,
-          caption = 'Table: MB_pop_estimates_2020',
+datatable(mbhealth_population_agegroups_12plus,
+          caption = 'Table: mbhealth_population_agegroups_12plus',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 15,
+            order = list(list(0, 'desc'))
+          ))
+
+datatable(mbhealth_population_agegroups,
+          caption = 'Table: mbhealth_population_agegroups',
+          class="cell-border stripe", rownames=FALSE,
+          options = list(
+            pageLength = 15,
+            order = list(list(0, 'desc'))
+          ))
+
+datatable(mbhealth_population_age_20200601,
+          caption = 'Table: mbhealth_population_age_20200601',
           class="cell-border stripe", rownames=FALSE,
           options = list(
             pageLength = 15,

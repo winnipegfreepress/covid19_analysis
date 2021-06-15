@@ -28,22 +28,22 @@ p_covid_19_mb_daily_vaccinations_1st2nd <- plot_bar_stack(
   group_var="",
   # bar_colour=nominalMuted_shade_0,
   title_str="Daily vaccinations for COVID-19 in Manitoba",
-  subtitle_str="First and second doses",
+  # subtitle_str="First and second doses",
   x_str="", y_str="",
   xmin="2020-12-01", xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=20000, y_units="",
+  ymin=0, ymax=25000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 
 
 p_covid_19_mb_daily_vaccinations_1st2nd <- p_covid_19_mb_daily_vaccinations_1st2nd +
-  annotate("text",
-           x=as.Date(max(COVID19_MB_daily_1st_2nd_vaccine_dose_tall$vaccination_date)) + 2,
-           y=most_recent_date_admin_vaccines,
-           label=paste(comma(most_recent_date_admin_vaccines, accuracy=1), " doses\nadministered", sep=""),
-           size=4,
-           hjust=0
-  ) +
+  # annotate("text",
+  #          x=as.Date(max(COVID19_MB_daily_1st_2nd_vaccine_dose_tall$vaccination_date)) + 2,
+  #          y=most_recent_date_admin_vaccines,
+  #          label=paste(comma(most_recent_date_admin_vaccines, accuracy=1), " doses\nadministered", sep=""),
+  #          size=4,
+  #          hjust=0
+  # ) +
   # annotate("rect",
   #          xmin=as.Date("2021-03-29"), xmax=as.Date("2021-05-30"),
   #          ymin=6000, ymax=7000,
@@ -80,8 +80,8 @@ p_covid_19_mb_daily_vaccinations_1st2nd <- p_covid_19_mb_daily_vaccinations_1st2
       "second_doses"=nominalBold_shade_1
     ),
     labels=c(
-      "First doses",
-      "Second doses"
+      "First dose",
+      "Second dose"
     )
   ) +
   guides(colour=FALSE) +
@@ -105,19 +105,19 @@ p_covid_19_mb_daily_vaccinations_combined <- plot_bar_timeseries(
   subtitle_str="Combined daily total of first and second doses",
   x_str="", y_str="",
   xmin="2020-12-01", xmax="2021-08-30", xformat="%b", x_units="1 month",
-  ymin=0, ymax=20000, y_units="",
+  ymin=0, ymax=25000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 
 
-p_covid_19_mb_daily_vaccinations_combined <- p_covid_19_mb_daily_vaccinations_combined +
-  annotate("text",
-         x=as.Date(max(COVID19_MB_daily_1st_2nd_vaccine_dose_tall$vaccination_date)) + 2,
-         y=most_recent_date_admin_vaccines,
-         label=paste(comma(most_recent_date_admin_vaccines, accuracy=1), " doses\nadministered", sep=""),
-         size=4,
-         hjust=0
-  )
+# p_covid_19_mb_daily_vaccinations_combined <- p_covid_19_mb_daily_vaccinations_combined +
+  # annotate("text",
+  #        x=as.Date(max(COVID19_MB_daily_1st_2nd_vaccine_dose_tall$vaccination_date)) + 2,
+  #        y=most_recent_date_admin_vaccines,
+  #        label=paste(comma(most_recent_date_admin_vaccines, accuracy=1), " doses\nadministered", sep=""),
+  #        size=4,
+  #        hjust=0
+  # ) +
   # annotate("rect",
   #          xmin=as.Date("2021-03-29"), xmax=as.Date("2021-05-30"),
   #          ymin=6000, ymax=7000,

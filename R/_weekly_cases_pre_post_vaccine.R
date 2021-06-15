@@ -56,3 +56,11 @@ dashboard_weekly_total_cases <- dashboard_daily_status_all %>%
 
 View(bulletin_weekly_total_cases)
 View(dashboard_weekly_total_cases)
+
+total_cases_epi_week <- left_join(
+  bulletin_weekly_total_cases,
+  dashboard_weekly_total_cases,
+  by = c("epi_week", "epi_year")
+)
+
+write_csv(total_cases_epi_week, dir_data_out(paste("total_cases_epi_week", ".csv", sep = "")))

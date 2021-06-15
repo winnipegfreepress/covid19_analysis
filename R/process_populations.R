@@ -68,9 +68,47 @@ population_provinces_18plus_2021Q2 <- read_csv(dir_data_raw("population_province
   select("reference_period", "province", "population")
 
 
+# MB 2020-06-01 populations
+mbhealth_population_age_20200601 <- read_csv(dir_data_raw("mbhealth-population-age-20200601.csv")) %>%
+  clean_names() %>%
+  rename(
+    population_total=total,
+    population_male=male,
+    population_female=female
+    )
+
+mbhealth_population_agegroups <- mbhealth_population_age_20200601 %>%
+  group_by(
+    age_group
+  ) %>%
+  summarize(
+    population_age=sum(population_total)
+  )
+
+mbhealth_population_agegroups_12plus <- mbhealth_population_age_20200601 %>%
+  group_by(
+    age_group_12plus
+  ) %>%
+  summarize(
+    population_age=sum(population_total)
+  ) %>%
+  filter(age_group_12plus != "under12")
+
+population_12plus_total <- sum(mbhealth_population_agegroups_12plus$population_age)
+
+
+
+
+
 write_feather(population_provinces_2020, dir_data_processed("population_provinces_2020.feather"))
 write_feather(manitoba_health_regions_populations, dir_data_processed("manitoba_health_regions_populations.feather"))
 write_feather(manitoba_health_districts_populations, dir_data_processed("manitoba_health_districts_populations.feather"))
 write_feather(MB_age_group_pops, dir_data_processed("MB_age_group_pops.feather"))
 write_feather(MB_pop_estimates_2020_statcan_17_10_0005_01, dir_data_processed("MB_pop_estimates_2020_statcan_17_10_0005_01.feather"))
 write_feather(population_provinces_18plus_2021Q2, dir_data_processed("population_provinces_18plus_2021Q2.feather"))
+
+
+write_feather(mbhealth_population_age_20200601, dir_data_processed("mbhealth_population_age_20200601.feather"))
+write_feather(mbhealth_population_agegroups, dir_data_processed("mbhealth_population_agegroups.feather"))
+write_feather(mbhealth_population_agegroups_12plus, dir_data_processed("mbhealth_population_agegroups_12plus.feather"))
+

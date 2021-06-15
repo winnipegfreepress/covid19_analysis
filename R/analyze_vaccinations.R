@@ -206,11 +206,11 @@ covid_vaccine_unused_compare_tall <- left_join(
 # First dose demographic coverage
 ################################################################################
 MB_pop_estimates_2020 <- MB_pop_estimates_2020_statcan_17_10_0005_01 %>%
-  group_by(age_group_mb) %>%
+  group_by(age_group) %>%
   summarise(sumpop=sum(population_2020est)) %>%
   ungroup() %>%
   mutate(
-    age_group_mb=ifelse(age_group_mb == "100+", "99+", age_group_mb)
+    age_group=ifelse(age_group == "100+", "99+", age_group)
   )
 
 COVID19_MB_vaccine_age_groups <- COVID19_MB_vaccine_demographics_bothgenders_tall %>%
@@ -222,23 +222,15 @@ COVID19_MB_vaccine_age_groups <- COVID19_MB_vaccine_demographics_bothgenders_tal
 FN_vaccinations <- read_feather(dir_data_processed("FN_vaccinations.feather"))
 
 COVID19_MB_vaccine_demographics_coverage <- left_join(
-  MB_pop_estimates_2020,
+  mbhealth_population_agegroups,
   COVID19_MB_vaccine_age_groups,
-  by=c("age_group_mb"="age_group")
+  by=c("age_group"="age_group")
 ) %>%
-  # left_join(
-  #   FN_vaccinations,
-  #   by=c("age_group_mb"="age_group")
-  # ) %>%
   rename(
-    first_dose_mb=doses_administered_ttd,
-    population_2020est_statcan=sumpop
+    first_dose_mb=doses_administered_ttd
   ) %>%
   mutate(
     first_dose_mb=as.numeric(first_dose_mb)
-  ) %>%
-  rename(
-    age_group=age_group_mb
   ) %>%
   rowwise() %>%
   mutate(
@@ -253,7 +245,7 @@ COVID19_MB_vaccine_demographics_coverage_90plus2 <- as.data.frame(COVID19_MB_vac
 
 COVID19_MB_vaccine_demographics_coverage_90plus <- COVID19_MB_vaccine_demographics_coverage_90plus2 %>%
   summarise(
-    population_2020est_statcan=sum(population_2020est_statcan, na.rm=T),
+    population_age=sum(population_age, na.rm=T),
     first_dose_mb=sum(first_dose_mb, na.rm=T),
     # first_dose_fn=sum(first_dose_fn, na.rm=T),
     first_dose_total=sum(first_dose_total, na.rm=T)
@@ -264,7 +256,7 @@ COVID19_MB_vaccine_demographics_coverage_90plus <- COVID19_MB_vaccine_demographi
   ) %>%
   select(
     "age_group",
-    "population_2020est_statcan",
+    "population_age",
     "dose_type",
     "first_dose_mb",
     # "first_dose_fn",
@@ -278,5 +270,5 @@ COVID19_MB_vaccine_demographics_coverage_df <- COVID19_MB_vaccine_demographics_c
   filter(age_group %notin% c("90-99", "99+")) %>%
   rbind(COVID19_MB_vaccine_demographics_coverage_90plus) %>%
   mutate(
-    pct_vaccinated_fullpop=first_dose_total / population_2020est_statcan * 100
+    pct_vaccinated_fullpop=first_dose_total / population_age * 100
   )

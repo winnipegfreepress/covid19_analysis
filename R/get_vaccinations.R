@@ -32,6 +32,10 @@ GET("https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/mb_covid_
 Sys.sleep(time_pause)
 
 
+GET("https://opendata.arcgis.com/api/v3/datasets/0be6f85a9c054b66acd88c9d8ed079fd_0/downloads/data?format=csv&spatialRefId=3857",
+    write_disk(dir_data_raw("Manitoba_COVID-19_Vaccine_Uptake_by_District.csv"), overwrite=TRUE))
+Sys.sleep(time_pause)
+
 
 
 ################################################################################
@@ -45,6 +49,5 @@ Sys.sleep(time_pause)
 GET("https://github.com/ishaberry/Covid19Canada/raw/master/timeseries_prov/vaccine_distribution_timeseries_prov.csv",
     write_disk(dir_data_raw("COVID19_vaccine_distribution.csv"), overwrite=TRUE))
 Sys.sleep(time_pause)
-
 
 

@@ -44,7 +44,7 @@ source(dir_src("visualize_districts_new_cases.R"))
 
 # COVID-19 variants
 source(dir_src("visualize_variants.R"))
-
+source(dir_src("visualize_variant_of_concern_status.R"))
 
 ################################################################################
 # PHAC Total cases and deaths per 100K people
@@ -72,7 +72,7 @@ source(dir_src("visualize_vaccine_demographic_coverage.R"))
 # source(dir_src("_scratch", "visualize_vaccine_demographics_female_male.R"))
 # source(dir_src("_scratch", "visualize_vaccine_distribution.R"))
 # source(dir_src("_scratch", "visualize_vaccine_administration.R"))
-
+source(dir_src("visualize_vaccine_uptake.R"))
 
 ################################################################################
 # Weekly epi report
@@ -80,6 +80,8 @@ source(dir_src("visualize_vaccine_demographic_coverage.R"))
 source(dir_src("visualize_transmission_source.R"))
 source(dir_src("visualize_healthcareworkers.R"))
 source(dir_src("visualize_symptoms.R"))
+
+
 
 
 

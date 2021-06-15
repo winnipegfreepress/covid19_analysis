@@ -5,6 +5,7 @@ dashboard_variants_of_concern_type <- dashboard_variants_of_concern %>%
       variant == "B.1.617" ~ "B.1.617",
       variant == "B.1.617.1" ~ "B.1.617",
       variant == "B.1.617.2" ~ "B.1.617",
+      variant == "B.1.617.3" ~ "B.1.617",
       TRUE ~ variant
     )
   ) %>%
@@ -22,6 +23,7 @@ dashboard_variants_of_concern_transmission <- dashboard_variants_of_concern %>%
       variant == "B.1.617" ~ "B.1.617",
       variant == "B.1.617.1" ~ "B.1.617",
       variant == "B.1.617.2" ~ "B.1.617",
+      variant == "B.1.617.3" ~ "B.1.617",
       TRUE ~ variant
     )
   ) %>%
@@ -52,7 +54,7 @@ p_variants_of_concern_transmission <- ggplot(dashboard_variants_of_concern_trans
     stat="identity", size=4, vjust=-.5) +
   scale_y_continuous(
     expand=c(0, 0),
-    limits=c(0,5000),
+    limits=c(0,7500),
     labels=scales::comma
   ) +
   labs(
@@ -72,6 +74,34 @@ p_variants_of_concern_transmission <- ggplot(dashboard_variants_of_concern_trans
   facet_wrap(~staging)
 
 wfp_variants_of_concern_transmission <- prepare_plot(p_variants_of_concern_transmission)
-
 ggsave_pngpdf(wfp_variants_of_concern_transmission, "wfp_variants_of_concern_transmission", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
+
+
+p_covid19_variants_of_concern_type <- plot_bar_nominal(
+  dashboard_variants_of_concern_type,
+  x_var=variant,
+  y_var=total,
+  group_var="",
+  bar_colour=wfp_blue,
+  title_str="COVID-19 variant of concern cases reported in Manitoba",
+  subtitle_str="",
+  x_str="", y_str="",
+  ymin=0, ymax=10000, y_units="%",
+  source_str="Manitoba Health", lastupdate_str=last_update_timestamp
+)
+
+p_covid19_variants_of_concern_type <- p_covid19_variants_of_concern_type +
+  geom_text(
+    aes(
+      x=variant,
+      y=total,
+      label=paste(comma(total, accuracy=1), sep="")
+    ),
+    vjust=-.7,
+    # fontface="bold",
+    size=4
+  )
+
+wfp_covid19_variants_of_concern_type <- prepare_plot(p_covid19_variants_of_concern_type)
+ggsave_pngpdf(wfp_covid19_variants_of_concern_type, "wfp_covid19_variants", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")

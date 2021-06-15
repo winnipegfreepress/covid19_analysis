@@ -22,7 +22,7 @@ p_vaccine_gap <- plot_bar_stack(
   subtitle_str=paste("Administered ", comma(total_doses_administered), " of ",  comma(total_doses_distributed), " doses distributed by the federal government", sep=""),
   x_str="", y_str="",
   xmin="2020-12-01", xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=1000000, y_units="",
+  ymin=0, ymax=1500000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 
@@ -59,7 +59,14 @@ p_vaccine_gap <- p_vaccine_gap +
         "Unused doses"=nominalMuted_shade_1
         )
     ) +
-    guides(colour=FALSE)
+    guides(colour=FALSE) +
+  theme(
+    legend.title=ggplot2::element_text(face="bold"),
+    legend.position=c(.3, 1),
+    legend.justification=c("right", "top"),
+    legend.box.just="right",
+    legend.margin=margin(10, 10, 10, 10)
+  )
 
 
 wfp_vaccine_gap <- prepare_plot(p_vaccine_gap)

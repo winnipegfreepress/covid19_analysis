@@ -12,4 +12,4 @@ p_covid19_variants <- ggplot(covid19_variants) +
   coord_flip() +
   minimal_theme()
 
-plot(p_covid19_variants)
+# plot(p_covid19_variants)

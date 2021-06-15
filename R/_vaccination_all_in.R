@@ -1,22 +1,21 @@
 
 COVID19_MB_vaccine_demographics_coverage <- left_join(
-  MB_pop_estimates_2020,
+  mbhealth_population_agegroups,
   COVID19_MB_vaccine_age_groups,
-  by=c("age_group_mb"="age_group")
+  by=c("age_group"="age_group")
 ) %>%
   rename(
-    doses_administered_ttd=doses_administered_ttd,
-    population_2020est_statcan=sumpop
+    doses_administered_ttd=doses_administered_ttd
   ) %>%
   mutate(
     doses_administered_ttd=as.numeric(doses_administered_ttd)
   ) %>%
-  filter(age_group_mb != "0-9")
+  filter(age_group != "0-9")
 
 
 # Split off 90+
 COVID19_MB_vaccine_demographics_coverage__90plus <- COVID19_MB_vaccine_demographics_coverage %>%
-  filter(age_group_mb %in% c("90-99", "99+")) %>%
+  filter(age_group %in% c("90-99", "99+")) %>%
   pivot_wider(names_from="dose_type",
               values_from = doses_administered_ttd) %>%
   summarize(
@@ -25,10 +24,10 @@ COVID19_MB_vaccine_demographics_coverage__90plus <- COVID19_MB_vaccine_demograph
     second_doses_administered = sum(second_doses_administered),
   ) %>%
   mutate(
-    age_group_mb = "90 plus"
+    age_group = "90 plus"
   ) %>%
   select(
-    age_group_mb,
+    age_group,
     population_2020est_statcan,
     first_doses_administered,
     second_doses_administered
@@ -41,7 +40,7 @@ COVID19_MB_vaccine_demographics_coverage__90plus <- COVID19_MB_vaccine_demograph
   )
 
 COVID19_MB_vaccine_demographics_coverage__under90 <- COVID19_MB_vaccine_demographics_coverage %>%
-  filter(age_group_mb %notin% c("90-99", "99+"))
+  filter(age_group %notin% c("90-99", "99+"))
 
 COVID19_MB_vaccine_demographics_coverage <-  rbind(
   COVID19_MB_vaccine_demographics_coverage__under90,
@@ -56,7 +55,7 @@ COVID19_MB_vaccine_demographics_coverage <-  rbind(
 
 p_covid19_vaccine_demographics_coverage_1st2nd <- plot_bar_nominal(
   COVID19_MB_vaccine_demographics_coverage %>% filter(!is.na(pct_pop_vaccinated)) %>% filter(pct_pop_vaccinated > 0),
-  x_var=age_group_mb,
+  x_var=age_group,
   y_var=pct_pop_vaccinated,
   group_var="",
   bar_colour=wfp_blue,
@@ -70,7 +69,7 @@ p_covid19_vaccine_demographics_coverage_1st2nd <- plot_bar_nominal(
 p_covid19_vaccine_demographics_coverage_1st2nd <- p_covid19_vaccine_demographics_coverage_1st2nd +
   geom_text(
     aes(
-      x=age_group_mb,
+      x=age_group,
       y=pct_pop_vaccinated,
       label=paste(format(pct_pop_vaccinated, digits=1), "%", sep="")
     ),
@@ -81,7 +80,7 @@ p_covid19_vaccine_demographics_coverage_1st2nd <- p_covid19_vaccine_demographics
   ) +
   geom_text(
     aes(
-      x=age_group_mb,
+      x=age_group,
       y=pct_pop_vaccinated,
       label=paste(comma(doses_administered_ttd, accuracy=1), " doses", sep="")
     ),

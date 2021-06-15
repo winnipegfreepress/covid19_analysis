@@ -9,7 +9,7 @@ p_covid19_vaccine_demographics_coverage <- plot_bar_nominal(
   subtitle_str="Total first dose vaccinations in Manitoba",
   x_str="", y_str="",
   ymin=0, ymax=120, y_units="%",
-  source_str="Manitoba Health, Statistics Canada", lastupdate_str=last_update_timestamp
+  source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )
 
 p_covid19_vaccine_demographics_coverage <- p_covid19_vaccine_demographics_coverage +
@@ -17,7 +17,7 @@ p_covid19_vaccine_demographics_coverage <- p_covid19_vaccine_demographics_covera
     aes(
       x=age_group,
       y=pct_vaccinated_fullpop,
-      label=paste(format(pct_vaccinated_fullpop, digits=2), "%", sep="")
+      label=paste(format(pct_vaccinated_fullpop, digits=1, nsmall = 1), "%", sep="")
     ),
     hjust=-.15,
     vjust=-.1,
@@ -30,10 +30,21 @@ p_covid19_vaccine_demographics_coverage <- p_covid19_vaccine_demographics_covera
       y=pct_vaccinated_fullpop,
       label=paste(comma(first_dose_total, accuracy=1), " doses", sep="")
     ),
-    hjust=-.15,
+    hjust=-.08,
     vjust=1.5,
     size=2.5,
     colour="#555555"
+  ) +
+  geom_text(
+    aes(
+      x=age_group,
+      y=1,
+      label=paste("population", comma(population_age, accuracy=1), sep=" ")
+    ),
+    hjust=-.005,
+    # vjust=1.5,
+    size=3,
+    colour="#ffffff"
   ) +
   # annotate("text",
   #          x="50-59",
@@ -52,7 +63,7 @@ p_covid19_vaccine_demographics_coverage <- p_covid19_vaccine_demographics_covera
   labs(
     caption=wrap_text(paste("Calculated percentages may exceed 100% due to differences between actual and projected 2020 populations.", "\n\n",
                               toupper(paste("WINNIPEG FREE PRESS — SOURCE: ",
-                                      "Manitoba Health, Statistics Canada", " (", last_update_timestamp, ")",sep="")),
+                                      "Manitoba Health", " (", last_update_timestamp, ")",sep="")),
 
                               sep=""), 120)
   ) +

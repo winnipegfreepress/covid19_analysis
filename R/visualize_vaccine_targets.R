@@ -1,9 +1,15 @@
 
-mb_18plus_population_2020estimate <- 1068553
+mb_18_plus_population_2020estimate <- 1068553
+mb_12_17_population_2020estimate <- 111322
 
-mb_18plus_population_2020estimate_25pct=mb_18plus_population_2020estimate * .25
-mb_18plus_population_2020estimate_50pct=mb_18plus_population_2020estimate * .5
-mb_18plus_population_2020estimate_70pct=mb_18plus_population_2020estimate * .7
+mb_12plus_population_2020estimate <- mb_12_17_population_2020estimate + mb_18_plus_population_2020estimate
+
+mb_12plus_population_2020estimate <- population_12plus_total
+
+
+mb_12plus_population_2020estimate_25pct=mb_12plus_population_2020estimate * .25
+mb_12plus_population_2020estimate_50pct=mb_12plus_population_2020estimate * .5
+mb_12plus_population_2020estimate_70pct=mb_12plus_population_2020estimate * .7
 
 
 phac_covid_vaccine_mb_current <- COVID19_MB_first_second_vaccine_dose %>%
@@ -30,15 +36,15 @@ phac_covid_vaccine_mb_current_last_date_row <- phac_covid_vaccine_mb_current %>%
 
 
 cnt_first_dose <- phac_covid_vaccine_mb_current_last_date_row$cumulative_first_doses
-pct_first_dose <- phac_covid_vaccine_mb_current_last_date_row$cumulative_first_doses / mb_18plus_population_2020estimate * 100
+pct_first_dose <- phac_covid_vaccine_mb_current_last_date_row$cumulative_first_doses / mb_12plus_population_2020estimate * 100
 
 cnt_second_dose <- phac_covid_vaccine_mb_current_last_date_row$cumulative_second_doses
-pct_second_dose <- phac_covid_vaccine_mb_current_last_date_row$cumulative_second_doses / mb_18plus_population_2020estimate * 100
+pct_second_dose <- phac_covid_vaccine_mb_current_last_date_row$cumulative_second_doses / mb_12plus_population_2020estimate * 100
 
 subtitle_str <- paste(
   "Manitoba has administered ", comma(cnt_first_dose),
   " first doses of the COVID-19 vaccines, partially immunizing ",
-  round(pct_first_dose, digits=1), " per cent of the eligible population. ",
+  round(pct_first_dose, digits=1), " per cent of the eligible population 12 or older. ",
   comma(cnt_second_dose), " second doses have been administered, fully immunizing ",
   format(pct_second_dose, digits=2),
   " per cent of the eligible population. ",
@@ -120,7 +126,7 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   #          colour=nominalMuted_shade_1
   # ) +
   # geom_point(
-  #   aes(x=as.Date("2021-05-21"), y=mb_18plus_population_2020estimate * .7),
+  #   aes(x=as.Date("2021-05-21"), y=mb_12plus_population_2020estimate * .7),
   #   stat="identity",
   #   size=1,
   #   colour=nominalBold_shade_1,
@@ -129,7 +135,7 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   #
   # annotate("text",
   #          x=as.Date("2021-06-03"),
-  #          y=mb_18plus_population_2020estimate * .8,
+  #          y=mb_12plus_population_2020estimate * .8,
   #          label=wrap_text("Provincial estimates for completion based on vaccine supply", 25),
   #          size=3.5,
   #          lineheight=1,
@@ -139,7 +145,7 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   #
   # annotate("text",
   #          x=as.Date("2021-05-21"),
-  #          y=mb_18plus_population_2020estimate * .65,
+  #          y=mb_12plus_population_2020estimate * .65,
   #          label=wrap_text("High supply", 20),
   #          hjust=1.1, vjust=0, size=3.5,
   #          lineheight=1,
@@ -157,7 +163,7 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   #          colour=nominalMuted_shade_1
   # ) +
   # geom_point(
-  #   aes(x=as.Date("2021-06-18"), y=mb_18plus_population_2020estimate * .7),
+  #   aes(x=as.Date("2021-06-18"), y=mb_12plus_population_2020estimate * .7),
   #   stat="identity",
   #   size=1,
   #   colour=nominalBold_shade_1,
@@ -165,7 +171,7 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   # ) +
   # annotate("text",
   #          x=as.Date("2021-06-18"),
-  #          y=mb_18plus_population_2020estimate * .65,
+  #          y=mb_12plus_population_2020estimate * .65,
   #          label=wrap_text("Low supply", 20),
   #          hjust=-.1, vjust=0, size=3.5,
   #          lineheight=1,
@@ -211,7 +217,13 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   labs(
     title=wrap_text("COVID-19 vaccinations in Manitoba", 65),
     subtitle=wrap_text(subtitle_str, 88),
-    caption=wrap_text(toupper(paste("Winnipeg Free Press", " — SOURCE: ", "Manitoba Health Vaccine Dashboard", " (", last_update_timestamp, ")", sep="")), 80),
+    caption=
+
+      paste(comma(mb_12plus_population_2020estimate), " eligible Manitobans age 12 or older",
+            "\n",
+            toupper("Winnipeg Free Press"), " — SOURCE: ", toupper("Manitoba Health Vaccine Dashboard"), " (", last_update_timestamp, ")", sep="")
+
+    ,
     x="",
     y="",
     fill=""
@@ -224,51 +236,51 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
 p_vaccine_targets_5_10_20K <- p_vaccine_targets +
   annotate("text",
            x=as.Date("2020-12-15"),
-           y=mb_18plus_population_2020estimate,
+           y=mb_12plus_population_2020estimate,
            label=paste("Projected population (18+)", sep=""),
            hjust=0, vjust=-.75, size=3.5,
            colour="#222222"
   ) +
   annotate("text",
            x=as.Date("2020-12-15"),
-           y=mb_18plus_population_2020estimate * .7,
+           y=mb_12plus_population_2020estimate * .7,
            label=paste("Vaccination target: 70% of eligible Manitobans", sep=""),
            hjust=0, vjust=-.75, size=3.5,
            colour="#222222"
   ) +
-  geom_line(
-    data=phac_covid_vaccine_mb_projections %>%
-      filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose) %>%
-      filter(cumsum_daily_doses_20K_projected <= 1200000),
-    aes(x=date, y=cumsum_daily_doses_20K_projected),
-    stat="identity",
-    size=.5,
-    alpha=.5,
-    linetype="dotted",
-    colour=nominalMuted_shade_3
-  ) +
-  geom_line(
-    data=phac_covid_vaccine_mb_projections %>%
-      filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose) %>%
-      filter(cumsum_daily_doses_10K_projected <= 1200000),
-    aes(x=date, y=cumsum_daily_doses_10K_projected),
-    stat="identity",
-    size=.5,
-    alpha=.5,
-    linetype="dotted",
-    colour=nominalMuted_shade_2
-  ) +
-  geom_line(
-    data=phac_covid_vaccine_mb_projections %>%
-      filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose) %>%
-      filter(cumsum_daily_doses_5K_projected <= 1200000),
-    aes(x=date, y=cumsum_daily_doses_5K_projected),
-    stat="identity",
-    size=.5,
-    alpha=.5,
-    linetype="dotted",
-    colour=nominalMuted_shade_1
-  ) +
+  # geom_line(
+  #   data=phac_covid_vaccine_mb_projections %>%
+  #     filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose) %>%
+  #     filter(cumsum_daily_doses_20K_projected <= 1200000),
+  #   aes(x=date, y=cumsum_daily_doses_20K_projected),
+  #   stat="identity",
+  #   size=.5,
+  #   alpha=.5,
+  #   linetype="dotted",
+  #   colour=nominalMuted_shade_3
+  # ) +
+  # geom_line(
+  #   data=phac_covid_vaccine_mb_projections %>%
+  #     filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose) %>%
+  #     filter(cumsum_daily_doses_10K_projected <= 1200000),
+  #   aes(x=date, y=cumsum_daily_doses_10K_projected),
+  #   stat="identity",
+  #   size=.5,
+  #   alpha=.5,
+  #   linetype="dotted",
+  #   colour=nominalMuted_shade_2
+  # ) +
+  # geom_line(
+  #   data=phac_covid_vaccine_mb_projections %>%
+  #     filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose) %>%
+  #     filter(cumsum_daily_doses_5K_projected <= 1200000),
+  #   aes(x=date, y=cumsum_daily_doses_5K_projected),
+  #   stat="identity",
+  #   size=.5,
+  #   alpha=.5,
+  #   linetype="dotted",
+  #   colour=nominalMuted_shade_1
+  # ) +
   geom_text(
     data=phac_covid_vaccine_mb_projections %>%
       filter(cumsum_daily_doses_20K_projected >= 350000) %>%
@@ -301,21 +313,21 @@ p_vaccine_targets_5_10_20K <- p_vaccine_targets +
   )
 
 
-p_vaccine_targets_7dayavg <- p_vaccine_targets +
-  geom_line(
-    data=phac_covid_vaccine_mb_projections %>%
-      filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose),
-    aes(x=date, y=cumsum_daily_doses_7dayavg_projected),
-    stat="identity",
-    size=.75,
-    alpha=1,
-    linetype="dotted",
-    colour=wfp_blue
-  ) +
+p_vaccine_targets_7dayavg <- p_vaccine_targets
+  # geom_line(
+  #   data=phac_covid_vaccine_mb_projections %>%
+  #     filter(date >= maxdate_COVID19_MB_first_second_vaccine_dose),
+  #   aes(x=date, y=cumsum_daily_doses_7dayavg_projected),
+  #   stat="identity",
+  #   size=.75,
+  #   alpha=1,
+  #   linetype="dotted",
+  #   colour=wfp_blue
+  # )
   # geom_point(
   #   data=phac_covid_vaccine_mb_projections %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected > mb_18plus_population_2020estimate_25pct - phac_covid_vaccine_7day_avg_doses) %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected < mb_18plus_population_2020estimate_25pct + phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected > mb_12plus_population_2020estimate_25pct - phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected < mb_12plus_population_2020estimate_25pct + phac_covid_vaccine_7day_avg_doses) %>%
   #     head(1)
   #   ,
   #   aes(x=date, y=cumsum_daily_doses_7dayavg_projected),
@@ -327,8 +339,8 @@ p_vaccine_targets_7dayavg <- p_vaccine_targets +
   # ) +
   # geom_text(
   #   data=phac_covid_vaccine_mb_projections %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected > mb_18plus_population_2020estimate_25pct - phac_covid_vaccine_7day_avg_doses) %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected < mb_18plus_population_2020estimate_25pct + phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected > mb_12plus_population_2020estimate_25pct - phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected < mb_12plus_population_2020estimate_25pct + phac_covid_vaccine_7day_avg_doses) %>%
   #     head(1)
   #   ,
   #   aes(x=date, y=cumsum_daily_doses_7dayavg_projected, label="25%"),
@@ -339,8 +351,8 @@ p_vaccine_targets_7dayavg <- p_vaccine_targets +
 
   # geom_point(
   #   data=phac_covid_vaccine_mb_projections %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected > mb_18plus_population_2020estimate_50pct - phac_covid_vaccine_7day_avg_doses) %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected < mb_18plus_population_2020estimate_50pct + phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected > mb_12plus_population_2020estimate_50pct - phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected < mb_12plus_population_2020estimate_50pct + phac_covid_vaccine_7day_avg_doses) %>%
   #     head(1)
   #   ,
   #   aes(x=date, y=cumsum_daily_doses_7dayavg_projected),
@@ -352,8 +364,8 @@ p_vaccine_targets_7dayavg <- p_vaccine_targets +
   # ) +
   # geom_text(
   #   data=phac_covid_vaccine_mb_projections %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected > mb_18plus_population_2020estimate_50pct - phac_covid_vaccine_7day_avg_doses) %>%
-  #     filter(cumsum_daily_doses_7dayavg_projected < mb_18plus_population_2020estimate_50pct + phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected > mb_12plus_population_2020estimate_50pct - phac_covid_vaccine_7day_avg_doses) %>%
+  #     filter(cumsum_daily_doses_7dayavg_projected < mb_12plus_population_2020estimate_50pct + phac_covid_vaccine_7day_avg_doses) %>%
   #     head(1)
   #   ,
   #   aes(x=date, y=cumsum_daily_doses_7dayavg_projected, label="50%"),
@@ -362,63 +374,63 @@ p_vaccine_targets_7dayavg <- p_vaccine_targets +
   #   vjust=-1
   # ) +
 
-
-  geom_point(
-    data=phac_covid_vaccine_mb_projections %>%
-      filter(cumsum_daily_doses_7dayavg_projected > mb_18plus_population_2020estimate_70pct - phac_covid_vaccine_7day_avg_doses) %>%
-      filter(cumsum_daily_doses_7dayavg_projected < mb_18plus_population_2020estimate_70pct + phac_covid_vaccine_7day_avg_doses) %>%
-      head(1)
-    ,
-    aes(x=date, y=cumsum_daily_doses_7dayavg_projected),
-    stat="identity",
-    size=2,
-    shape=21,
-    colour=nominalBold_shade_1,
-    fill=nominalBold_shade_1
-  ) +
-  geom_text(
-    data=phac_covid_vaccine_mb_projections %>%
-      filter(cumsum_daily_doses_7dayavg_projected > mb_18plus_population_2020estimate_70pct - phac_covid_vaccine_7day_avg_doses) %>%
-      filter(cumsum_daily_doses_7dayavg_projected < mb_18plus_population_2020estimate_70pct + phac_covid_vaccine_7day_avg_doses) %>%
-      head(1)
-    ,
-    aes(x=date, y=cumsum_daily_doses_7dayavg_projected + 20000,
-        label=wrap_text("70%", 20)
-        ),
-    stat="identity",
-    fontface="bold",
-    size=4,
-    vjust=-.5
-  ) +
-  annotate("text",
-           x=as.Date(maxdate_COVID19_MB_first_second_vaccine_dose + 1),
-           y=cnt_first_dose + 130000,
-           label=wrap_text(paste(comma(phac_covid_vaccine_7day_avg_doses), "daily doses", sep=" "), 50),
-           hjust=-.44, vjust=.25, size=4,
-           fontface="bold",
-           lineheight=1,
-           colour="#222222"
-  ) +
-  annotate("text",
-           x=as.Date(maxdate_COVID19_MB_first_second_vaccine_dose + 1),
-           y=cnt_first_dose + 130000,
-           label=wrap_text(paste("Seven-day average", sep=" "), 50),
-           hjust=-.45, vjust=2, size=3.5,
-           lineheight=1,
-           colour="#222222"
-  )
+#
+#   geom_point(
+#     data=phac_covid_vaccine_mb_projections %>%
+#       filter(cumsum_daily_doses_7dayavg_projected > mb_12plus_population_2020estimate_70pct - phac_covid_vaccine_7day_avg_doses) %>%
+#       filter(cumsum_daily_doses_7dayavg_projected < mb_12plus_population_2020estimate_70pct + phac_covid_vaccine_7day_avg_doses) %>%
+#       head(1)
+#     ,
+#     aes(x=date, y=cumsum_daily_doses_7dayavg_projected),
+#     stat="identity",
+#     size=2,
+#     shape=21,
+#     colour=nominalBold_shade_1,
+#     fill=nominalBold_shade_1
+#   ) +
+#   geom_text(
+#     data=phac_covid_vaccine_mb_projections %>%
+#       filter(cumsum_daily_doses_7dayavg_projected > mb_12plus_population_2020estimate_70pct - phac_covid_vaccine_7day_avg_doses) %>%
+#       filter(cumsum_daily_doses_7dayavg_projected < mb_12plus_population_2020estimate_70pct + phac_covid_vaccine_7day_avg_doses) %>%
+#       head(1)
+#     ,
+#     aes(x=date, y=cumsum_daily_doses_7dayavg_projected + 20000,
+#         label=wrap_text("70%", 20)
+#         ),
+#     stat="identity",
+#     fontface="bold",
+#     size=4,
+#     vjust=-.5
+#   ) +
+  # annotate("text",
+  #          x=as.Date(maxdate_COVID19_MB_first_second_vaccine_dose + 1),
+  #          y=cnt_first_dose + 130000,
+  #          label=wrap_text(paste(comma(phac_covid_vaccine_7day_avg_doses), "daily doses", sep=" "), 50),
+  #          hjust=-.44, vjust=.25, size=4,
+  #          fontface="bold",
+  #          lineheight=1,
+  #          colour="#222222"
+  # ) +
+  # annotate("text",
+  #          x=as.Date(maxdate_COVID19_MB_first_second_vaccine_dose + 1),
+  #          y=cnt_first_dose + 130000,
+  #          label=wrap_text(paste("Seven-day average", sep=" "), 50),
+  #          hjust=-.45, vjust=2, size=3.5,
+  #          lineheight=1,
+  #          colour="#222222"
+  # )
 
 p_vaccine_targets <- p_vaccine_targets +
   annotate("text",
            x=as.Date("2020-12-15"),
-           y=mb_18plus_population_2020estimate,
+           y=mb_12plus_population_2020estimate,
            label=paste("Projected population (18+)", sep=""),
            hjust=0, vjust=-.75, size=3.5,
            colour="#222222"
   ) +
   annotate("text",
            x=as.Date("2020-12-15"),
-           y=mb_18plus_population_2020estimate * .7,
+           y=mb_12plus_population_2020estimate * .7,
            label=paste("Vaccination target: 70% of eligible Manitobans", sep=""),
            hjust=0, vjust=-.75, size=3.5,
            colour="#222222"

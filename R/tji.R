@@ -150,7 +150,7 @@ if(tji_voc_total_p1 > 1){
 if(tji_voc_total_b1617 > 1){
   oc_total_b1617_str <- paste(comma(tji_voc_total_b1617), " cases of the B.1.617 variant lineage", sep="")
 }
-
+oc_total_uncat_str <- ""
 if (tji_voc_total_uncat > 1) {
   oc_total_uncat_str <- paste(comma(tji_voc_total_uncat), " uncategorized variant of concern cases", sep = "")
 }
@@ -247,7 +247,6 @@ headline <-  paste("", new_cases_str, " new COVID-19 cases and ",  tji_daily_dea
 story <- paste(
   "Provincial health officials announced ",  new_cases_str, " new cases of COVID-19 and ",  tji_daily_deaths_str, " in Manitoba ", today_name, ".",
   "\n","\n",
-  total_voc_str, "\n\n",
   "There are ",  comma(active_cases_str), " active cases in Manitoba, with ",  tji_hospitalized_total, " people in hospital, ",  tji_icu_total, " of them in intensive care.",
   "\n","\n",
   "The five-day test positivity rate is ",  tji_positivity_manitoba, " in Manitoba, and ",  tji_positivity_winnipeg, " in Winnipeg. ",

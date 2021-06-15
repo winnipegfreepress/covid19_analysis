@@ -90,7 +90,7 @@ p_vaccine_targets_5_12_20K <- p_vaccine_targets +
 
 
 wfp_vaccine_targets <- prepare_plot(p_vaccine_targets)
-ggsave_pngpdf(wfp_vaccine_targets, "wfp_vaccine_targets", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
+ggsave_pngpdf(wfp_vaccine_targets, "wfp_vaccine_targets_some", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
 wfp_vaccine_targets_5_12_20K <- prepare_plot(p_vaccine_targets_5_12_20K)
-ggsave_pngpdf(wfp_vaccine_targets_5_12_20K, "wfp_vaccine_targets_5_12_20K", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
+ggsave_pngpdf(wfp_vaccine_targets_5_12_20K, "wfp_vaccine_targets_5_12_20K_some", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
