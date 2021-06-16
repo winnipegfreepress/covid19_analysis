@@ -21,5 +21,5 @@ Michael Pereira <monkeycycle@gmail.com>'
 
 ```docker build --rm --force-rm -t covid19_analysis .```
 
-```docker run -d --rm -p 28787:8787 --name covid19_analysis -e USERID=$UID -e PASSWORD=foo_9__rRVKb_xS3_7 -v $DATA_DIR:/home/rstudio/analysis covid19_analysis```
+```docker run -d --rm -p 28787:8787 --name covid19_analysis -e USERID=$UID -e PASSWORD=SomeGoodPassWordHere -v $DATA_DIR:/home/rstudio/analysis covid19_analysis```
 
