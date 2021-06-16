@@ -25,7 +25,7 @@ geom_point(data=dashboard_5day_positivity %>% filter(date == max(date)),
 ) +
 geom_text(data=dashboard_5day_positivity %>% filter(date == max(date)),
           aes(x=date + 5, y=positivity_rate_5day_mb, label=paste("Manitoba ", positivity_rate_5day_mb, "%", sep="")),
-          color="#000000", hjust=.05, vjust=.5, size=4
+          color="#000000", hjust=.05, vjust=-.5, size=4
 ) +
 geom_line(data=dashboard_5day_positivity,
          aes(x=date, y=positivity_rate_5day_ywg),
@@ -37,7 +37,7 @@ geom_point(data=dashboard_5day_positivity %>% filter(date == max(date)),
 ) +
 geom_text(data=dashboard_5day_positivity %>% filter(date == max(date)),
           aes(x=date + 5, y=positivity_rate_5day_ywg, label=paste("Winnipeg ", positivity_rate_5day_ywg, "%", sep="")),
-          color="#000000", hjust=.05, vjust=-.75, size=4
+          color="#000000", hjust=.05, vjust=.75, size=4
 )
 
 

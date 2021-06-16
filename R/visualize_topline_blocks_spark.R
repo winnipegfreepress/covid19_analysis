@@ -70,7 +70,7 @@ p_covid19_cumsum_1stdose  <- plot_bignumber_abs_pctchg(sum_val=latest_cumulative
                                                        sum_unit_period="cumulative vaccinations",
                                                        pctchg_sym_val="", colour_val="",
                                                        pct_chg_val=latest_cumulative_first_dose_vaccinations,
-                                                       pct_chg_str_val="18+ population")
+                                                       pct_chg_str_val="12+ population")
 
 
 p_topline_cases_deaths_1st_doses_vertical <-ggarrange(

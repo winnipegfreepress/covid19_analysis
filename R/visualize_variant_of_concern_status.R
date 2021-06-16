@@ -50,7 +50,7 @@ p_variants_of_concern_transmission <- ggplot(dashboard_variants_of_concern_trans
   aes(x=variant, y=voc_cases_total, group=variant) +
   geom_bar(stat="identity", colour=wfp_blue, fill=wfp_blue) +
   geom_text(
-    aes(x=variant, y=voc_cases_total, group=variant, label=voc_cases_total),
+    aes(x=variant, y=voc_cases_total, group=variant, label=comma(voc_cases_total, accuracy=1)),
     stat="identity", size=4, vjust=-.5) +
   scale_y_continuous(
     expand=c(0, 0),

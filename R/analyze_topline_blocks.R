@@ -1,17 +1,20 @@
 # Pulled values for total and 18+ populations
 population_manitoba_2020 <- population_provinces_2020 %>% filter(province =="Manitoba") %>% select(population) %>% pull()
 
-population_manitoba_18plus_2021Q2 <- read_csv(dir_data_raw("population_provinces_18plus_2021Q2.csv")) %>%
-  clean_names() %>%
-  rename(
-    province=geography,
-    population=population_18plus_2020q2
-  ) %>%
-  mutate(reference_period=as.Date("2020-06-30")) %>%
-  select("reference_period", "province", "population") %>%
-  filter(province=="Manitoba") %>%
-  pull()
+# Use 12+ population instead
+# population_12plus_total
+# 1175703
 
+# population_manitoba_18plus_2021Q2 <- read_csv(dir_data_raw("population_provinces_18plus_2021Q2.csv")) %>%
+#   clean_names() %>%
+#   rename(
+#     province=geography,
+#     population=population_18plus_2020q2
+#   ) %>%
+#   mutate(reference_period=as.Date("2020-06-30")) %>%
+#   select("reference_period", "province", "population") %>%
+#   filter(province=="Manitoba") %>%
+#   pull()
 
 
 wfp_covid19_topline <- wfp_daily_totals %>%
@@ -43,7 +46,7 @@ mutate(
   year=year(date),
   epi_week_year=paste(year, "-", epi_week, sep=""),
   population_2020=population_manitoba_2020,
-  population_2020_18plus=population_manitoba_18plus_2021Q2,
+  population_2020_12plus=population_12plus_total,
   # new_daily_deaths=deaths - lag(deaths),
   new_daily_cases=ifelse(is.na(new_daily_cases), 0, new_daily_cases),
   new_daily_deaths=ifelse(is.na(new_daily_deaths), 0, new_daily_deaths),
@@ -54,5 +57,5 @@ mutate(
   cases_14day_pctchg=((cases_14day_sum - lag(cases_14day_sum)) / lag(cases_14day_sum)) * 100,
   deaths_14day_pctchg=((deaths_14day_sum - lag(deaths_14day_sum)) / lag(deaths_14day_sum)) * 100,
   doses_first_14day_pctchg=((doses_first_14day_sum - lag(doses_first_14day_sum)) / lag(doses_first_14day_sum)) * 100,
-  cumulative_first_doses_per_100K=cumulative_first_doses / population_2020_18plus * 100000
+  cumulative_first_doses_per_100K=cumulative_first_doses / population_2020_12plus * 100000
 )
