@@ -121,15 +121,14 @@ population_provinces_2020 <-  read_feather(dir_data_processed("population_provin
 population_manitoba_2020 <- population_provinces_2020 %>% filter(province =="Manitoba") %>% select(population) %>% pull()
 manitoba_health_regions_populations <-  read_feather(dir_data_processed("manitoba_health_regions_populations.feather"))
 manitoba_health_districts_populations <-  read_feather(dir_data_processed("manitoba_health_districts_populations.feather"))
-
 MB_age_group_pops <-  read_feather(dir_data_processed("MB_age_group_pops.feather"))
-
 MB_pop_estimates_2020_statcan_17_10_0005_01 <-  read_feather(dir_data_processed("MB_pop_estimates_2020_statcan_17_10_0005_01.feather"))
 population_provinces_18plus_2021Q2 <-  read_feather(dir_data_processed("population_provinces_18plus_2021Q2.feather"))
 
 mbhealth_population_age_20200601 <- read_feather(dir_data_processed("mbhealth_population_age_20200601.feather"))
 mbhealth_population_agegroups <-read_feather(dir_data_processed("mbhealth_population_agegroups.feather"))
 mbhealth_population_agegroups_12plus <- read_feather(dir_data_processed("mbhealth_population_agegroups_12plus.feather"))
+population_12plus_total <- sum(mbhealth_population_agegroups_12plus$population_age)
 
 ################################################################################
 # Growth in provincial cases since the 10th case
