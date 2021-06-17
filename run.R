@@ -11,10 +11,6 @@ source(dir_src("palette.R"))
 # the notebook which does the same whileto build the report
 ################################################################################
 
-# Prep TJI before downloading everything
-source(dir_src("tji.R"))
-cat(tji_hed_body)
-
 source(dir_src("get.R"))
 run_process()
 run_analyze()
