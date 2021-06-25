@@ -20,6 +20,7 @@ initialize_startr(
     "googledrive", "googlesheets4", "cowplot",
     "zip", "gmailr", "knitr", "DT", "zoo", "ggtext",
     "ggpubr", "ggtext", "showtext", "kableExtra",
+    "sendmailR",
     "pracma", "ISOweek"
     # "RcmdrPlugin.KMggplot2"
     # "rvest",

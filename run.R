@@ -21,9 +21,5 @@ source(dir_src("visualize_daily_case_status.R"))
 source(dir_src("tweets.R"))
 
 run_visualize()
-
-# source(dir_src("insights.R"))
-
 upload_plots_s3()
-
 
