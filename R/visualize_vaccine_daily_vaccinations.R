@@ -105,7 +105,7 @@ p_covid_19_mb_daily_vaccinations_combined <- plot_bar_timeseries(
   subtitle_str="Combined daily total of first and second doses",
   x_str="", y_str="",
   xmin="2020-12-01", xmax="2021-08-30", xformat="%b", x_units="1 month",
-  ymin=0, ymax=25000, y_units="",
+  ymin=0, ymax=40000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 

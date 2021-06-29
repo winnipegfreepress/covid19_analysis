@@ -76,7 +76,7 @@ p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
   ) +
   scale_x_date(
     expand=c(0, 0),
-    limits=c(as.Date("2020-03-01"), as.Date("2021-09-30")),
+    limits=c(as.Date("2020-03-01"), as.Date("2021-10-31")),
     date_breaks="1 month",
     date_minor_breaks="1 month",
     labels=date_format("%b")
