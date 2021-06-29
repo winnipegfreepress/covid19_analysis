@@ -1,0 +1,51 @@
+epi_week,week_of,Regional Health Authority,Cases,Median Contacts,Minimum Contacts,Maximum Contacts
+15,2021-04-11,Interlake-Eastern,46,3,0,36
+15,2021-04-11,Northern,222,0,0,65
+15,2021-04-11,Prairie Mountain,60,3,0,26
+15,2021-04-11,Southern,55,2,0,13
+15,2021-04-11,Winnipeg,555,4,0,78
+16,2021-04-18,Interlake-Eastern,87,3,0,40
+16,2021-04-18,Northern,161,1,0,59
+16,2021-04-18,Prairie Mountain,148,0,0,41
+16,2021-04-18,Southern,142,3,0,43
+16,2021-04-18,Winnipeg,918,4,0,54
+17,2021-04-25,Interlake-Eastern,82,3,0,42
+17,2021-04-25,Northern,79,0,0,49
+17,2021-04-25,Prairie Mountain,232,2.5,0,48
+17,2021-04-25,Southern,116,2,0,37
+17,2021-04-25,Winnipeg,1179,4,0,111
+18,2021-05-02,Interlake-Eastern,123,3,0,75
+18,2021-05-02,Northern,99,0,0,16
+18,2021-05-02,Prairie Mountain,195,3,0,53
+18,2021-05-02,Southern,203,2,0,22
+18,2021-05-02,Winnipeg,2033,3,0,67
+19,2021-05-09,Interlake-Eastern,227,2,0,76
+19,2021-05-09,Northern,106,0,0,29
+19,2021-05-09,Prairie Mountain,223,3,0,48
+19,2021-05-09,Southern,356,3,0,69
+19,2021-05-09,Winnipeg,2323,3,0,82
+20,2021-05-16,Interlake-Eastern,180,1,0,14
+20,2021-05-16,Northern,186,2,0,34
+20,2021-05-16,Prairie Mountain,216,3,0,52
+20,2021-05-16,Southern,395,2,0,38
+20,2021-05-16,Winnipeg,2281,3,0,88
+21,2021-05-23,Interlake-Eastern,150,0,0,24
+21,2021-05-23,Northern,115,0,0,29
+21,2021-05-23,Prairie Mountain,186,3,0,35
+21,2021-05-23,Southern,286,2,0,32
+21,2021-05-23,Winnipeg,1613,3,0,38
+22,2021-05-30,Interlake-Eastern,122,0,0,44
+22,2021-05-30,Northern,119,1,0,32
+22,2021-05-30,Prairie Mountain,146,4,0,36
+22,2021-05-30,Southern,279,2,0,37
+22,2021-05-30,Winnipeg,1311,3,0,46
+23,2021-06-06,Interlake-Eastern,116,1,0,31
+23,2021-06-06,Northern,165,1,0,34
+23,2021-06-06,Prairie Mountain,118,4,0,16
+23,2021-06-06,Southern,284,1,0,31
+23,2021-06-06,Winnipeg,917,3,0,58
+24,2021-06-13,Interlake-Eastern,79,1,0,41
+24,2021-06-13,Northern,163,0,0,121
+24,2021-06-13,Prairie Mountain,79,4,0,20
+24,2021-06-13,Southern,185,0,0,31
+24,2021-06-13,Winnipeg,459,3,0,49
