@@ -10,9 +10,9 @@ plot_bignumber_abs_pctchg <-  function(sum_val="", sum_unit_str="", sum_unit_per
     annotate(geom="text", x=6, y=14,label={{sum_unit_str}}, lineheight=.8, size=2.5, fontface="bold", hjust=1) +
     annotate(geom="text", x=6, y=0,label=paste({{sum_unit_period}}, sep=""), size=2.75,  hjust=1, vjust=-1, colour="#666666")
 
-  if(pctchg_sym_val != ""){
-    plot_tmp <-  plot_tmp +
-      annotate(geom="text", x=6.5, y=13, label=sprintf({{pctchg_sym_val}}), size=9, fontface="bold", hjust=0, colour=colour_val, fill=colour_val )
+  if (pctchg_sym_val != "") {
+    plot_tmp <- plot_tmp +
+      annotate(geom = "text", x = 6.25, y = 14, label = sprintf({{ pctchg_sym_val }}), size = 8.5, fontface = "bold", hjust = 0, colour = colour_val, fill = colour_val)
   }
 
   plot_tmp <-  plot_tmp +
