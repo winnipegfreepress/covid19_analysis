@@ -274,10 +274,24 @@ COVID19_MB_vaccine_demographics_coverage_df <- COVID19_MB_vaccine_demographics_c
   )
 
 
+Manitoba_COVID_19_Vaccine_Uptake_by_District <- read_csv(dir_data_raw("Manitoba_COVID-19_Vaccine_Uptake_by_District.csv")) %>%
+  clean_names() %>%
+  select(-objectid, -shape_length, -shape_area) %>%
+  mutate(
+    rha = ifelse(rhacode == "SO", "Southern Health", rha),
+    rha = factor(rha,
+      levels = c(
+        "Interlake-Eastern",
+        "Northern",
+        "Prairie Mountain Health",
+        "Southern Health",
+        "Winnipeg"
+      )
+    )
+  )
 
 covid19_districts_cases_vax <- left_join(
   dashboard_daily_status_districts_all,
   Manitoba_COVID_19_Vaccine_Uptake_by_District,
-  by = c("area" = "rhad" )
+  by = c("area" = "rhad")
 )
-

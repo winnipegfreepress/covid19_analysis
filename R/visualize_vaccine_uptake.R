@@ -1,5 +1,5 @@
 
-Manitoba_COVID_19_Vaccine_Uptake_by_District <- read_csv("data/raw/Manitoba_COVID-19_Vaccine_Uptake_by_District.csv") %>%
+Manitoba_COVID_19_Vaccine_Uptake_by_District <- read_csv(dir_data_raw("Manitoba_COVID-19_Vaccine_Uptake_by_District.csv")) %>%
   clean_names() %>%
   select(-objectid, -shape_length, -shape_area) %>%
   mutate(

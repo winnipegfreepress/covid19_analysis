@@ -42,6 +42,7 @@ registerS3method(
 # This is normally set in the get.R file
 Sys.sleep(time_pause)
 
+run_analyze()
 
 ```
 
