@@ -272,3 +272,12 @@ COVID19_MB_vaccine_demographics_coverage_df <- COVID19_MB_vaccine_demographics_c
   mutate(
     pct_vaccinated_fullpop=first_dose_total / population_age * 100
   )
+
+
+
+covid19_districts_cases_vax <- left_join(
+  dashboard_daily_status_districts_all,
+  Manitoba_COVID_19_Vaccine_Uptake_by_District,
+  by = c("area" = "rhad" )
+)
+
