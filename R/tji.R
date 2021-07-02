@@ -262,5 +262,6 @@ tji_hed_body <- paste(
   headline,
   "\n","\n",
   story,
+  "\n\n",
   sep=""
 )
