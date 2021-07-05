@@ -39,33 +39,33 @@ tji_hospitalized_total <- gsheet_wfp_tji %>% filter(field == "hospitalized_total
 tji_icu_total  <- gsheet_wfp_tji %>% filter(field == "icu_total") %>% select(value) %>% pull()
 
 
-tji_voc_new_b1117 <-   gsheet_wfp_tji %>% filter(field == "voc_new_b1117") %>% select(value) %>% pull()
-tji_voc_new_b1351 <-   gsheet_wfp_tji %>% filter(field == "voc_new_b1351") %>% select(value) %>% pull()
-tji_voc_new_p1 <-  gsheet_wfp_tji %>% filter(field == "voc_new_p1") %>% select(value) %>% pull()
-tji_voc_new_b1617 <-  gsheet_wfp_tji %>% filter(field == "voc_new_b1617") %>% select(value) %>% pull()
-tji_voc_new_uncat <- gsheet_wfp_tji %>% filter(field == "voc_new_unknown") %>% select(value) %>% pull()
+# tji_voc_new_b1117 <-   gsheet_wfp_tji %>% filter(field == "voc_new_b1117") %>% select(value) %>% pull()
+# tji_voc_new_b1351 <-   gsheet_wfp_tji %>% filter(field == "voc_new_b1351") %>% select(value) %>% pull()
+# tji_voc_new_p1 <-  gsheet_wfp_tji %>% filter(field == "voc_new_p1") %>% select(value) %>% pull()
+# tji_voc_new_b1617 <-  gsheet_wfp_tji %>% filter(field == "voc_new_b1617") %>% select(value) %>% pull()
+# tji_voc_new_uncat <- gsheet_wfp_tji %>% filter(field == "voc_new_unknown") %>% select(value) %>% pull()
 
-tji_voc_total_b1117 <-   gsheet_wfp_tji %>% filter(field == "voc_total_b1117") %>% select(value) %>% pull()
-tji_voc_total_b1351 <-   gsheet_wfp_tji %>% filter(field == "voc_total_b1351") %>% select(value) %>% pull()
-tji_voc_total_p1 <-  gsheet_wfp_tji %>% filter(field == "voc_total_p1") %>% select(value) %>% pull()
-tji_voc_total_b1617 <-  gsheet_wfp_tji %>% filter(field == "voc_total_b1617") %>% select(value) %>% pull()
-tji_voc_total_uncat <- gsheet_wfp_tji %>% filter(field == "voc_total_unknown") %>% select(value) %>% pull()
+# tji_voc_total_b1117 <-   gsheet_wfp_tji %>% filter(field == "voc_total_b1117") %>% select(value) %>% pull()
+# tji_voc_total_b1351 <-   gsheet_wfp_tji %>% filter(field == "voc_total_b1351") %>% select(value) %>% pull()
+# tji_voc_total_p1 <-  gsheet_wfp_tji %>% filter(field == "voc_total_p1") %>% select(value) %>% pull()
+# tji_voc_total_b1617 <-  gsheet_wfp_tji %>% filter(field == "voc_total_b1617") %>% select(value) %>% pull()
+# tji_voc_total_uncat <- gsheet_wfp_tji %>% filter(field == "voc_total_unknown") %>% select(value) %>% pull()
 
 # Cast to numeric
-tji_voc_new_b1117 <-  as.numeric(as.character(tji_voc_new_b1117))
-tji_voc_new_b1351 <-  as.numeric(as.character(tji_voc_new_b1351))
-tji_voc_new_p1 <-  as.numeric(as.character(tji_voc_new_p1))
-tji_voc_new_b1617 <-  as.numeric(as.character(tji_voc_new_b1617))
-tji_voc_new_uncat <- as.numeric(as.character(tji_voc_new_uncat))
+# tji_voc_new_b1117 <-  as.numeric(as.character(tji_voc_new_b1117))
+# tji_voc_new_b1351 <-  as.numeric(as.character(tji_voc_new_b1351))
+# tji_voc_new_p1 <-  as.numeric(as.character(tji_voc_new_p1))
+# tji_voc_new_b1617 <-  as.numeric(as.character(tji_voc_new_b1617))
+# tji_voc_new_uncat <- as.numeric(as.character(tji_voc_new_uncat))
 
-tji_voc_total_b1117 <-  as.numeric(as.character(tji_voc_total_b1117))
-tji_voc_total_b1351 <-  as.numeric(as.character(tji_voc_total_b1351))
-tji_voc_total_p1 <-  as.numeric(as.character(tji_voc_total_p1))
-tji_voc_total_b1617 <-  as.numeric(as.character(tji_voc_total_b1617))
-tji_voc_total_uncat <- as.numeric(as.character(tji_voc_total_uncat))
+# tji_voc_total_b1117 <-  as.numeric(as.character(tji_voc_total_b1117))
+# tji_voc_total_b1351 <-  as.numeric(as.character(tji_voc_total_b1351))
+# tji_voc_total_p1 <-  as.numeric(as.character(tji_voc_total_p1))
+# tji_voc_total_b1617 <-  as.numeric(as.character(tji_voc_total_b1617))
+# tji_voc_total_uncat <- as.numeric(as.character(tji_voc_total_uncat))
 
-total_new_voc <- tji_voc_new_b1117 + tji_voc_new_b1351 + tji_voc_new_p1 + tji_voc_new_b1617 + tji_voc_new_uncat
-total_voc <- tji_voc_total_b1117 + tji_voc_total_b1351 + tji_voc_total_p1 + tji_voc_total_b1617 + tji_voc_total_uncat
+# total_new_voc <- tji_voc_new_b1117 + tji_voc_new_b1351 + tji_voc_new_p1 + tji_voc_new_b1617 + tji_voc_new_uncat
+# total_voc <- tji_voc_total_b1117 + tji_voc_total_b1351 + tji_voc_total_p1 + tji_voc_total_b1617 + tji_voc_total_uncat
 
 
 ################################################################################
@@ -132,42 +132,43 @@ new_uncat_str <- ""
 # }
 #
 #
-total_b1117_str <- paste("zero cases of B.1.1.7")
-total_b1351_str <- paste("zero cases of B.1.351")
-oc_total_p1_str <- paste("zero cases of P.1")
+# total_b1117_str <- paste("zero cases of B.1.1.7")
+# total_b1351_str <- paste("zero cases of B.1.351")
+# oc_total_p1_str <- paste("zero cases of P.1")
 
 
 
-if(tji_voc_total_b1117 > 1){
-  total_b1117_str <- paste(comma(tji_voc_total_b1117), " cases of B.1.1.7", sep="")
-}
-if(tji_voc_total_b1351 > 1){
-  total_b1351_str <- paste(comma(tji_voc_total_b1351), " cases of B.1.351", sep="")
-}
-if(tji_voc_total_p1 > 1){
-  oc_total_p1_str <- paste(comma(tji_voc_total_p1), " cases of the P.1 variant", sep="")
-}
-if(tji_voc_total_b1617 > 1){
-  oc_total_b1617_str <- paste(comma(tji_voc_total_b1617), " cases of the B.1.617 variant lineage", sep="")
-}
-oc_total_uncat_str <- ""
-if (tji_voc_total_uncat > 1) {
-  oc_total_uncat_str <- paste(comma(tji_voc_total_uncat), " uncategorized variant of concern cases", sep = "")
-}
+# if(tji_voc_total_b1117 > 1){
+#   total_b1117_str <- paste(comma(tji_voc_total_b1117), " cases of B.1.1.7", sep="")
+# }
+# if(tji_voc_total_b1351 > 1){
+#   total_b1351_str <- paste(comma(tji_voc_total_b1351), " cases of B.1.351", sep="")
+# }
+# if(tji_voc_total_p1 > 1){
+#   oc_total_p1_str <- paste(comma(tji_voc_total_p1), " cases of the P.1 variant", sep="")
+# }
+# if(tji_voc_total_b1617 > 1){
+#   oc_total_b1617_str <- paste(comma(tji_voc_total_b1617), " cases of the B.1.617 variant lineage", sep="")
+# }
+# oc_total_uncat_str <- ""
+# if (tji_voc_total_uncat > 1) {
+#   oc_total_uncat_str <- paste(comma(tji_voc_total_uncat), " uncategorized variant of concern cases", sep = "")
+# }
 
 
 
-total_voc_str <- paste(
-  "Public health officials have reported a total of ", "\n",
-  comma(total_voc), " variant of concern cases in Manitoba including ", "\n",
-  total_b1117_str, ", ", "\n",
-  total_b1351_str, " and ", "\n",
-  oc_total_p1_str, ".", "\n",
-  oc_total_uncat_str, ".", "\n",
-  sep=""
-)
+# total_voc_str <- paste(
+#   "Public health officials have reported a total of ", "\n",
+#   comma(total_voc), " variant of concern cases in Manitoba including ", "\n",
+#   total_b1117_str, ", ", "\n",
+#   total_b1351_str, " and ", "\n",
+#   oc_total_p1_str, ".", "\n",
+#   oc_total_uncat_str, ".", "\n",
+#   sep=""
+# )
 
-total_voc_str <- ""
+# total_voc_str <- ""
+
 ################################################################################
 # Deaths
 ################################################################################
