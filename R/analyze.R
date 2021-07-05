@@ -5,6 +5,7 @@
 wfp_daily_totals <- read_feather(dir_data_processed("wfp_daily_totals.feather"))
 
 wfp_daily_status_tall <-  wfp_daily_totals %>%
+  filter(!is.na(date)) %>%
   select(date, active, recovered, deaths) %>%
   mutate(
     active = as.numeric(as.character(active))
