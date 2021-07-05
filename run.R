@@ -4,12 +4,6 @@ run_config()
 
 
 ################################################################################
-# Run TJI before everything else
-################################################################################
-source(dir_src("tji.R"))
-
-
-################################################################################
 # Grab and cache latest data from Google Sheets and various dahsboards.
 # This can take a few minutes to run.
 ################################################################################
@@ -49,6 +43,3 @@ upload_plots_s3()
 source(dir_src("visualize_topline_blocks_strings.R"))
 source(dir_src("visualize_topline_blocks_spark.R"))
 
-
-
-# Email this graphic to latenewsdesk@freepress.mb.ca
