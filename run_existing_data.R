@@ -4,6 +4,12 @@ run_config()
 
 
 ################################################################################
+# Process new data to prepare for analysis
+################################################################################
+run_process()
+
+
+################################################################################
 # Run analysis steps
 ################################################################################
 run_analyze()
@@ -12,15 +18,14 @@ run_analyze()
 ################################################################################
 # Run notebooks
 ################################################################################
-run_notebook(filename="vaccinations.Rmd")
-upload_reports_s3(report="vaccinations.html", destination_path="covid-19-tracker/")
+run_notebook(filename = "vaccinations.Rmd")
+upload_reports_s3(report = "vaccinations.html", destination_path = "covid-19-tracker/")
 
 
 ################################################################################
 # Run visuals and upload to S3 bucket
 ################################################################################
 run_visualize()
-upload_plots_s3()
 
 
 ################################################################################
@@ -29,4 +34,13 @@ upload_plots_s3()
 ################################################################################
 source(dir_src("visualize_topline_blocks_strings.R"))
 source(dir_src("visualize_topline_blocks_spark.R"))
+
+
+################################################################################
+# Upload the PDFs and PNGs to Amazon
+################################################################################
+upload_plots_s3()
+
+
+cat("All done. That's it! ")
 

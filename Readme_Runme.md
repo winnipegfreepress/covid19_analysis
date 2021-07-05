@@ -105,6 +105,4 @@ When all of the required fields have been filled in the relevant Google Sheets, 
 
 This file takes a few minutes to run. Messages will appear in the console on the right including warnings and errors. The console will also report when generated files are being uploaded to the Amazon bucket. 
 
-This file pulls and analyzes data from multiple sources to generate notebooks and graphics which are then uploaded to WFP server space for use in stories and newsletters. It takes a few
-
 ![rstudio_run](/Users/michael/Desktop/rstudio_run.png)
