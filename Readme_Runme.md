@@ -77,11 +77,11 @@ Tracked data along with provincial, federal and org data feeds is processed and 
 
 	* Files are listed in the lower-left. Files are opened and ready to run in the upper-left. Key menu items are shown with an arrow.
 
-* ![rstudio](/Users/michael/Desktop/rstudio.png)
+* ![rstudio](./gfx/rstudio.png)
 
 	
 
-* It is best to start with a new session to ensure a clean slate. From the RStudio menu, select **Session** and **Restart R**.  Also clear the console with **CTRL-L**.![restart-R](/Users/michael/Desktop/restart-R.png)
+* It is best to start with a new session to ensure a clean slate. From the RStudio menu, select **Session** and **Restart R**.  Also clear the console with **CTRL-L**.![restart-R](./gfx/restart-R.png)
 
 	
 
@@ -91,11 +91,11 @@ Tracked data along with provincial, federal and org data feeds is processed and 
 
 * To run the TJI code, click the **Source** icon (blue arrow pointing right) in the upper-right of the Source pane. You can also select **Source** from the **Code**  menu. 
 
-![menu-code-source](/Users/michael/Desktop/menu-code-source.png)
+![menu-code-source](./gfx/menu-code-source.png)
 
 The TJI code will run and output a hed and body in the **Console** pane on the right. Select the compiled text and paste it into a new TJI entry in Click, setting expiry to 24 hours and target *This just in* under *Latest*. 
 
-![console.tji-copy-paste](/Users/michael/Desktop/console.tji-copy-paste.png)
+![console.tji-copy-paste](./gfx/console.tji-copy-paste.png)
 
 
 
@@ -105,4 +105,15 @@ When all of the required fields have been filled in the relevant Google Sheets, 
 
 This file takes a few minutes to run. Messages will appear in the console on the right including warnings and errors. The console will also report when generated files are being uploaded to the Amazon bucket. 
 
-![rstudio_run](/Users/michael/Desktop/rstudio_run.png)
+The cache on Amazon buckets sometimes needs to be nudged. To rerun and upload graphics without the extra data download time, source the `run_existing_data.R` file listed in the Files pane.
+
+A message should appear in the console when the file has finished running. Updated graphics appear on the COVID-19 by the numbers page **https://stage.www.winnipegfreepress.com/special/coronavirus/COVID-19-by-the-numbers-569451931.html**
+
+The vaccine notebook is posted to **https://wfpdata.s3.amazonaws.com/covid-19-tracker/vaccinations.html**
+
+![rstudio_run](./gfx/rstudio_run.png)
+
+
+
+
+
