@@ -199,6 +199,7 @@ deaths_details_str <- gsub("male", "man", deaths_details_str, fixed=TRUE)
 
 deaths_details_str <- gsub("; and", "", deaths_details_str, fixed=TRUE)
 deaths_details_str <- gsub(";", "", deaths_details_str, fixed=TRUE)
+deaths_details_str <- gsub(".", "", deaths_details_str, fixed=TRUE)
 
 
 # Topline numbers from the dashboard
