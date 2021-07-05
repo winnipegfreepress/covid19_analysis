@@ -54,7 +54,7 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   ) +
   scale_y_continuous(
     expand=c(0, 0),
-    limits=c(0, 1000000),
+    limits=c(0, 2000000),
     labels=label_number_si(unit="")
   ) +
   labs(

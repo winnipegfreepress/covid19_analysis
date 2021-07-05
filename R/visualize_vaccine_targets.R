@@ -211,8 +211,8 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   ) +
   scale_y_continuous(
     expand=c(0, 0),
-    limits=c(0, 1500000),
-    labels=label_number_si(unit="")
+    limits=c(0, 2000000),
+    labels=comma
   ) +
   labs(
     title=wrap_text("COVID-19 vaccinations in Manitoba", 65),

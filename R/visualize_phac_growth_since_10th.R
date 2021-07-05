@@ -58,7 +58,7 @@ p_provincial_growth_timeline_since10 <- ggplot(phac_growth_since_10__tall,
   ) +
   scale_x_continuous(
     expand=c(0, 0),
-    limits=c(0, 450),
+    limits=c(0, 600),
     labels=scales::comma) +
   scale_y_continuous(
     trans="log10",
