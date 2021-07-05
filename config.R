@@ -21,16 +21,17 @@ initialize_startr(
     "googledrive", "googlesheets4", "cowplot",
     "zip", "gmailr", "knitr", "DT", "zoo", "ggtext",
     "ggpubr", "ggtext", "showtext", "kableExtra",
-    # "sendmailR",
-    # "emayili",
     "gmailr", "patchwork",
     "pracma", "ISOweek"
+    # "sendmailR",
+    # "emayili",
     # "RcmdrPlugin.KMggplot2"
     # "rvest",
     # "tidymodels",
     # "gganimate",
     # "sf",
-    # "cansim", "cancensus",
+    # "cansim",
+    # "cancensus",
   )
 )
 
@@ -40,4 +41,4 @@ source(dir_src("theme.R"))
 source(dir_src("palette.R"))
 credit_str = "WINNIPEG FREE PRESS"
 time_pause <- .5
-# font_add_google("Open Sans")
+font_add_google("Open Sans")
