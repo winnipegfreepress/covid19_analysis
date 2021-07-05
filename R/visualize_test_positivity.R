@@ -1,5 +1,5 @@
-dashboard_5day_positivity <- dashboard_5day_positivity %>%
-  fill(positivity_rate_5day_ywg)
+# dashboard_5day_positivity <- dashboard_5day_positivity %>%
+#   fill(positivity_rate_5day_ywg)
 
 
 p_5day_test_positivity <- plot_line_timeseries_pct(
@@ -22,23 +22,27 @@ p_5day_test_positivity <- p_5day_test_positivity +
 geom_point(data=dashboard_5day_positivity %>% filter(date == max(date)),
          aes(x=date, y=positivity_rate_5day_mb),
          color=nominalBold_shade_0, fill=nominalMuted_shade_1, size=1.5, alpha=1
-) +
+)
+
+p_5day_test_positivity <- p_5day_test_positivity +
 geom_text(data=dashboard_5day_positivity %>% filter(date == max(date)),
           aes(x=date + 5, y=positivity_rate_5day_mb, label=paste("Manitoba ", positivity_rate_5day_mb, "%", sep="")),
           color="#000000", hjust=.05, vjust=-1, size=4
-) +
-geom_line(data=dashboard_5day_positivity,
-         aes(x=date, y=positivity_rate_5day_ywg),
-         color=nominalBold_shade_1, fill=nominalMuted_shade_1, size=1, alpha=1
-) +
-geom_point(data=dashboard_5day_positivity %>% filter(date == max(date)),
-         aes(x=date, y=positivity_rate_5day_ywg),
-         color=nominalBold_shade_1, fill=nominalMuted_shade_1, size=1.5, alpha=1
-) +
-geom_text(data=dashboard_5day_positivity %>% filter(date == max(date)),
-          aes(x=date + 5, y=positivity_rate_5day_ywg, label=paste("Winnipeg ", positivity_rate_5day_ywg, "%", sep="")),
-          color="#000000", hjust=.05, vjust=1, size=4
 )
+
+# p_5day_test_positivity <- p_5day_test_positivity +
+# geom_line(data=dashboard_5day_positivity,
+#          aes(x=date, y=positivity_rate_5day_ywg),
+#          color=nominalBold_shade_1, fill=nominalMuted_shade_1, size=1, alpha=1
+# ) +
+# geom_point(data=dashboard_5day_positivity %>% filter(date == max(date)),
+#          aes(x=date, y=positivity_rate_5day_ywg),
+#          color=nominalBold_shade_1, fill=nominalMuted_shade_1, size=1.5, alpha=1
+# ) +
+# geom_text(data=dashboard_5day_positivity %>% filter(date == max(date)),
+#           aes(x=date + 5, y=positivity_rate_5day_ywg, label=paste("Winnipeg ", positivity_rate_5day_ywg, "%", "\n", "foo ", format(date, format="%B %d"), sep="")),
+#           color="#000000", hjust=.01, vjust=1, size=4, lineheight=1
+# )
 
 
 wfp_5day_test_positivity <- prepare_plot(p_5day_test_positivity)

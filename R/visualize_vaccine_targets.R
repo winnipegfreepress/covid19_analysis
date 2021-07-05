@@ -205,13 +205,13 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
   ) +
   scale_x_date(
     expand=c(0, 0),
-    limits=as.Date(c("2020-12-01", "2021-07-31")),
+    limits=as.Date(c("2020-12-01", "2021-08-30")),
     date_breaks="1 month",
     labels=date_format("%b")
   ) +
   scale_y_continuous(
     expand=c(0, 0),
-    limits=c(0, 1000000),
+    limits=c(0, 1500000),
     labels=label_number_si(unit="")
   ) +
   labs(

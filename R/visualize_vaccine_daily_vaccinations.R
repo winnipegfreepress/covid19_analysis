@@ -31,7 +31,7 @@ p_covid_19_mb_daily_vaccinations_1st2nd <- plot_bar_stack(
   # subtitle_str="First and second doses",
   x_str="", y_str="",
   xmin="2020-12-01", xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=25000, y_units="",
+  ymin=0, ymax=40000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 
@@ -110,7 +110,17 @@ p_covid_19_mb_daily_vaccinations_combined <- plot_bar_timeseries(
 )
 
 
-# p_covid_19_mb_daily_vaccinations_combined <- p_covid_19_mb_daily_vaccinations_combined +
+p_covid_19_mb_daily_vaccinations_combined <- p_covid_19_mb_daily_vaccinations_combined +
+  scale_y_continuous(
+    expand=c(0, 0),
+    limits=c(0, 50000),
+    breaks=c(seq(0,50000,10000)),
+    # labels=label_number_si(unit="K")
+    labels=scales::comma
+    # labels=function(x) {
+    #   ifelse(x == 100, paste(x, "%", sep=""), x)
+    # }
+  )
   # annotate("text",
   #        x=as.Date(max(COVID19_MB_daily_1st_2nd_vaccine_dose_tall$vaccination_date)) + 2,
   #        y=most_recent_date_admin_vaccines,
