@@ -21,8 +21,8 @@ p_vaccine_gap <- plot_bar_stack(
   title_str="Administered and unused doses of COVID-19 vaccine in Manitoba",
   subtitle_str=paste("Administered ", comma(total_doses_administered), " of ",  comma(total_doses_distributed), " doses distributed by the federal government", sep=""),
   x_str="", y_str="",
-  xmin="2020-12-01", xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=2000000, y_units="",
+  xmin="2020-12-01", xmax="2021-09-30", xformat="%b", x_units="1 month",
+  ymin=0, ymax=3000000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 

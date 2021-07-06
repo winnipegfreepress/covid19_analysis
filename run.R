@@ -35,6 +35,7 @@ upload_reports_s3(report="vaccinations.html", destination_path="covid-19-tracker
 run_visualize()
 
 
+
 ################################################################################
 # Run attic graphic -- this changes the graphics driver.
 # Restart sessions if type looks too small

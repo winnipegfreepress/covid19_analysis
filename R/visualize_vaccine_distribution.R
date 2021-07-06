@@ -18,13 +18,13 @@ p_vaccine_distribution_cumsum <-  ggplot(COVID19_MB_vaccine_distribution__Manito
   ) +
   scale_x_date(
     expand=c(0, 0),
-    limits=c(as.Date("2020-12-01"),as.Date("2021-04-30")),
+    limits=c(as.Date("2020-12-01"),as.Date("2021-09-30")),
     date_breaks="1 month",
     labels=date_format("%B")
   ) +
   scale_y_continuous(
     expand=c(0, 0),
-    limits=c(0, 500000),
+    limits=c(0, 3000000),
     labels=scales::comma
   ) +
   labs(
@@ -40,33 +40,33 @@ p_vaccine_distribution_cumsum <-  ggplot(COVID19_MB_vaccine_distribution__Manito
 p_vaccine_distribution_cumsum <- prepare_plot(p_vaccine_distribution_cumsum)
 ggsave_pngpdf(p_vaccine_distribution_cumsum, "p_vaccine_distribution_cumsum", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
-
-p_vaccine_distribution_daily <- ggplot(COVID19_MB_vaccine_distribution__Manitoba) +
-  aes(x=date, weight=dvaccine) +
-  geom_bar(fill=wfp_blue) +
-  scale_x_date(
-    expand=c(0, 0),
-    limits=c(as.Date("2020-12-01"),as.Date("2021-04-30")),
-    date_breaks="1 month",
-    labels=date_format("%B")
-  ) +
-  scale_y_continuous(
-    expand=c(0, 0),
-    limits=c(0, 30000),
-    labels=scales::comma
-  ) +
-  labs(
-    title="",
-    subtitle="",
-    caption="",
-    x="",
-    y="",
-    fill=""
-  ) +
-  minimal_theme()
-
-
-
-p_vaccine_distribution_daily <- prepare_plot(p_vaccine_distribution_daily)
-ggsave_pngpdf(p_vaccine_distribution_daily, "p_vaccine_distribution_daily", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
+#
+# p_vaccine_distribution_daily <- ggplot(COVID19_MB_vaccine_distribution__Manitoba) +
+#   aes(x=date, weight=dvaccine) +
+#   geom_bar(fill=wfp_blue) +
+#   scale_x_date(
+#     expand=c(0, 0),
+#     limits=c(as.Date("2020-12-01"),as.Date("2021-09-30")),
+#     date_breaks="1 month",
+#     labels=date_format("%B")
+#   ) +
+#   scale_y_continuous(
+#     expand=c(0, 0),
+#     limits=c(0, 250000),
+#     labels=scales::comma
+#   ) +
+#   labs(
+#     title="Vaccine doses distributed to Manitoba",
+#     subtitle="",
+#     caption="",
+#     x="",
+#     y="",
+#     fill=""
+#   ) +
+#   minimal_theme()
+#
+#
+#
+# p_vaccine_distribution_daily <- prepare_plot(p_vaccine_distribution_daily)
+# ggsave_pngpdf(p_vaccine_distribution_daily, "p_vaccine_distribution_daily", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 

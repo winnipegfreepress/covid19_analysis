@@ -84,7 +84,7 @@ source(dir_src("visualize_symptoms.R"))
 
 
 # COVID-19 Canada Open Data Woring Group
-source(dir_src("_provincial_vaccine_comparison.R"))
+# source(dir_src("_provincial_vaccine_comparison.R"))
 
 
 

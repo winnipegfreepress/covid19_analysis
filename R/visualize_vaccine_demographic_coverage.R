@@ -61,7 +61,8 @@ p_covid19_vaccine_demographics_coverage <- p_covid19_vaccine_demographics_covera
     labels=function(x) { ifelse(x %in% c(120), paste(x, "%", sep=""), x) }
   ) +
   labs(
-    caption=wrap_text(paste("Calculated percentages may exceed 100% due to differences between actual and projected 2020 populations.", "\n\n",
+    caption=wrap_text(paste("Calculated percentages may exceed 100% due to differences between actual and projected eligible 2020 populations and may differ from provincial estimates due to discrepancies in population projections and published vaccination counts.",
+                            "\n\n",
                               toupper(paste("WINNIPEG FREE PRESS — SOURCE: ",
                                       "Manitoba Health", " (", last_update_timestamp, ")",sep="")),
 

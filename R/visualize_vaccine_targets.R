@@ -219,8 +219,8 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
     subtitle=wrap_text(subtitle_str, 88),
     caption=
 
-      paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and official vaccination counts.",
-            "\n",
+      paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and \npublished vaccination counts.",
+            "\n\n",
             toupper("Winnipeg Free Press"), " — SOURCE: ", toupper("Manitoba Health Vaccine Dashboard"), " (", last_update_timestamp, ")", sep="")
 
     ,

@@ -42,5 +42,5 @@ source(dir_src("visualize_topline_blocks_spark.R"))
 upload_plots_s3()
 
 
-cat("All done. That's it! ")
+cat("All done. That's it! \n\n")
 

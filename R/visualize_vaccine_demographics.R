@@ -11,7 +11,7 @@ p_covid19_vaccine_demographics <- plot_bar_stack_nominal(
   title_str="Age groups of Manitobans vaccinated against COVID-19",
   subtitle_str="Total vaccinations to date",
   x_str="", y_str="",
-  ymin=0, ymax=30000, y_units="",
+  ymin=0, ymax=300000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 
