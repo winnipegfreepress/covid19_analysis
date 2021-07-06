@@ -2,10 +2,12 @@
 dashboard_variants_of_concern_type <- dashboard_variants_of_concern %>%
   mutate(
     variant = case_when(
+      variant == "B.1.1.7" ~ "B.1.1.7 (Alpha)",
+      variant == "B.1.351" ~ "B.1.351 (Beta)",
+      variant == "P.1" ~ "P.1 (Gamma)",
       variant == "B.1.617" ~ "B.1.617",
-      variant == "B.1.617.1" ~ "B.1.617",
-      variant == "B.1.617.2" ~ "B.1.617",
-      variant == "B.1.617.3" ~ "B.1.617",
+      variant == "B.1.617.1" ~ "B.1.617.1",
+      variant == "B.1.617.2" ~ "B.1.617.2 (Delta)",
       TRUE ~ variant
     )
   ) %>%
@@ -20,10 +22,12 @@ dashboard_variants_of_concern_transmission <- dashboard_variants_of_concern %>%
   select(-object_id) %>%
   mutate(
     variant = case_when(
+      variant == "B.1.1.7" ~ "B.1.1.7 (Alpha)",
+      variant == "B.1.351" ~ "B.1.351 (Beta)",
+      variant == "P.1" ~ "P.1 (Gamma)",
       variant == "B.1.617" ~ "B.1.617",
-      variant == "B.1.617.1" ~ "B.1.617",
-      variant == "B.1.617.2" ~ "B.1.617",
-      variant == "B.1.617.3" ~ "B.1.617",
+      variant == "B.1.617.1" ~ "B.1.617.1",
+      variant == "B.1.617.2" ~ "B.1.617.2 (Delta)",
       TRUE ~ variant
     )
   ) %>%

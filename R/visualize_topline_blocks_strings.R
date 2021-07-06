@@ -38,7 +38,6 @@ p_title <- paste("COVID-19 in Manitoba")
 p_title.p <- ggparagraph(text=p_title, face="bold", size=14, lineheight=1, color="black", margin(0,0.2,0,0.2, "cm"))
 
 p_title_vaccinations <-
-# p_title_vaccinations.p <- ggparagraph(text = paste("Vaccinations"), face = "bold", size = 12, lineheight = 1, color = "black", margin(0, 0.2, 0, 0.2, "cm"))
 p_title_vaccinations.p <- ggparagraph(text = paste("Vaccinations ==", "", sep=""), size = 12, lineheight = 1, color = "black", margin(0.2, 0.2, 0, 0.2, "cm"))
 
 p_credit=toupper(credit_str)
@@ -48,12 +47,10 @@ p_source=toupper(paste("SOURCE: ", "Manitoba Health",sep=""))
 p_source.p=ggparagraph(text=p_source, size=7, color="black",  margin(0.2,0.2,0,0.2, "cm"))
 
 p_credit_source=paste("SOURCE: MANITOBA HEALTH", " (", format(date_max, "%Y-%m-%d"), ")", sep="")
-# p_credit_source.p=ggparagraph(text=p_credit_source, size=6, color="black",  margin(0.2,0,0,0, "cm"))
 p_credit_source.p <- text_grob(
   x=0,
   y=0,
   label=p_credit_source,
-  # just="left",
   hjust=0,
   vjust=0,
   color="black",
@@ -62,8 +59,9 @@ p_credit_source.p <- text_grob(
   lineheight=1
 )
 
-# dumbdf <-  data.frame()
-# p_credit_source.p=ggtext(data=dumbdf, x=0, y=0, label=p_credit_source, size=6, color="black", hjust=.5)
+p_disclaimer <- paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and published vaccination counts.", sep="")
+p_disclaimer.p=ggparagraph(text=p_disclaimer, size=7, color="black",  margin(0.2,0.2,0,0.2, "cm"))
+
 
 latest_14day_cases_pct_chg_str <- ""
 latest_14day_cases_pct_chg_sym <- ""

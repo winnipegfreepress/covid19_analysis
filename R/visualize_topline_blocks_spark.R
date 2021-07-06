@@ -79,14 +79,15 @@ p_topline_cases_deaths_1st_doses_vertical <-ggarrange(
   p_covid19_14day_deaths,
   p_covid19_14day_1stdose,
   p_covid19_cumsum_1stdose,
+  p_disclaimer.p,
   p_credit_source.p,
   labels=c("", "", ""),
-  ncol=1, nrow=6,
-  heights=c(.1, .22, .22, .22, .22, .06)
+  ncol=1, nrow=7,
+  heights=c(.1, .22, .22, .22, .22, .06, .06)
 ) +
   theme(plot.margin=margin(.2,.2,.2,.2, "cm"))
 
-ggsave_pngpdf(p_topline_cases_deaths_1st_doses_vertical, "p_topline_cases_deaths_1st_doses_vertical", width_var=2.38, height_var=2.42, dpi_var=300, scale_var=1, units_var="in")
+ggsave_pngpdf(p_topline_cases_deaths_1st_doses_vertical, "p_topline_cases_deaths_1st_doses_vertical", width_var=2.38, height_var=2.6, dpi_var=300, scale_var=1, units_var="in")
 
 
 
@@ -97,10 +98,11 @@ p_topline_cases_deaths_1st_doses_vertical_web <- ggarrange(
   p_title_vaccinations.p,
   p_covid19_cumsum_1stdose, # p_covid19_14day_1stdose,
   p_covid19_cumsum_1stdose,
+  p_disclaimer.p,
   p_credit_source.p,
   labels = c("", "", ""),
-  ncol = 1, nrow = 7,
-  heights = c(.1, .22, .22, .2, .22, .22, .06)
+  ncol = 1, nrow = 8,
+  heights = c(.1, .22, .22, .2, .22, .22, .06, .06)
 ) +
   theme(plot.margin = margin(.2, .2, .2, .2, "cm"))
 
