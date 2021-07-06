@@ -219,7 +219,7 @@ p_vaccine_targets <- ggplot(phac_covid_vaccine_mb_projections) +
     subtitle=wrap_text(subtitle_str, 88),
     caption=
 
-      paste(comma(mb_12plus_population_2020estimate), " eligible Manitobans age 12 or older",
+      paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and official vaccination counts.",
             "\n",
             toupper("Winnipeg Free Press"), " — SOURCE: ", toupper("Manitoba Health Vaccine Dashboard"), " (", last_update_timestamp, ")", sep="")
 

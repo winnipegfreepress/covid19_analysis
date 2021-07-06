@@ -13,7 +13,7 @@ p_covid_19_mb_vaccinations_first_second <- plot_bar_stack(
   subtitle_str="Total vaccinations to date",
   x_str="", y_str="",
   xmin="2020-12-01", xmax="2021-08-30", xformat="%b", x_units="1 month",
-  ymin=0, ymax=1500000, y_units="",
+  ymin=0, ymax=2000000, y_units="",
   source_str="Manitoba Health Vaccine Dashboard", lastupdate_str=last_update_timestamp
 )
 
