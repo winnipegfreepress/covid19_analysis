@@ -330,4 +330,4 @@ p_provincial_vax_pct_1st_2nd <-  ggarrange(
   theme(plot.margin=margin(.4,.25,.25,.25, "cm"))
 
 
-ggsave_pngpdf(p_provincial_vax_pct_1st_2nd, "p_provincial_vax_pct_1st_2nd", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
+ggsave_pngpdf(p_provincial_vax_pct_1st_2nd, "wfp_provincial_vax_pct_1st_2nd", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
