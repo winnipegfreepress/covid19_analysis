@@ -22,7 +22,8 @@ initialize_startr(
     "zip", "gmailr", "knitr", "DT", "zoo", "ggtext",
     "ggpubr", "ggtext", "showtext", "kableExtra",
     "gmailr", "patchwork",
-    "pracma", "ISOweek"
+    "pracma", "ISOweek",
+    "slackr"
     # "sendmailR",
     # "emayili",
     # "RcmdrPlugin.KMggplot2"
