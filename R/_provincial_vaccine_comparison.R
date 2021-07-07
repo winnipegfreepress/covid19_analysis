@@ -103,7 +103,7 @@ p_provincial_vax_pct_1st <- plot_bar_x_reordered_y(
   x_var = province, y_var = pct,
   bar_colour = nominalMuted_shade_0,
   title_str = "Percentage of eligible population with at least one dose of a COVID-19 vaccine",
-  subtitle_str = "Eligible population age 12 or older", x_str = "", y_str = "",
+  subtitle_str = "Eligible population age 12 or older as of July 1, 2020", x_str = "", y_str = "",
   ymin = 0, ymax = 100, y_units = "%",
   source_str = "COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str = last_update_timestamp
 )
@@ -184,7 +184,7 @@ p_provincial_vax_pct_2nd <- plot_bar_x_reordered_y(
   x_var = province, y_var = pct,
   bar_colour = nominalMuted_shade_0,
   title_str = "Percentage of population with two doses of a COVID-19 vaccine",
-  subtitle_str = "Eligible population age 12 or older", x_str = "", y_str = "",
+  subtitle_str = "Eligible population age 12 or older as of July 1, 2020", x_str = "", y_str = "",
   ymin = 0, ymax = 100, y_units = "%",
   source_str = "COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str = last_update_timestamp
 )
