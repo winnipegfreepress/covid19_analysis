@@ -1,36 +1,43 @@
 
-GET("https://api.opencovid.ca/timeseries?stat=avaccine&loc=prov",
-    write_disk(dir_data_raw("c19ca_vaccine_administererd.json"), overwrite=TRUE))
+GET(
+  "https://api.opencovid.ca/timeseries?stat=avaccine&loc=prov",
+  write_disk(dir_data_raw("c19ca_vaccine_administererd.json"), overwrite = TRUE)
+)
 Sys.sleep(time_pause)
 
 
-GET("https://api.opencovid.ca/timeseries?stat=cvaccine&loc=prov",
-    write_disk(dir_data_raw("c19ca_vaccine_completed.json"), overwrite=TRUE))
+GET(
+  "https://api.opencovid.ca/timeseries?stat=cvaccine&loc=prov",
+  write_disk(dir_data_raw("c19ca_vaccine_completed.json"), overwrite = TRUE)
+)
 Sys.sleep(time_pause)
 
-c19ca_vaccine_administered <- jsonlite::fromJSON(dir_data_raw('c19ca_vaccine_administererd.json'))
+c19ca_vaccine_administered <- jsonlite::fromJSON(dir_data_raw("c19ca_vaccine_administererd.json"))
 c19ca_vaccine_administered <- c19ca_vaccine_administered[["avaccine"]]
 c19ca_vaccine_administered <- c19ca_vaccine_administered %>%
   mutate(
-    date = as.Date(date_vaccine_administered, format="%d-%m-%Y")
+    date = as.Date(date_vaccine_administered, format = "%d-%m-%Y")
   )
 
-c19ca_vaccine_completed <- jsonlite::fromJSON(dir_data_raw('c19ca_vaccine_completed.json'))
+c19ca_vaccine_completed <- jsonlite::fromJSON(dir_data_raw("c19ca_vaccine_completed.json"))
 c19ca_vaccine_completed <- c19ca_vaccine_completed[["cvaccine"]]
 c19ca_vaccine_completed <- c19ca_vaccine_completed %>%
   mutate(
-    date = as.Date(date_vaccine_completed, format="%d-%m-%Y")
+    date = as.Date(date_vaccine_completed, format = "%d-%m-%Y")
   )
 
 provincial_population_12older_2020 <- read_csv(dir_data_raw("provincial_population_12older_total_2020_1710000501.csv")) %>%
   clean_names() %>%
   mutate(
     province_alt = ifelse(province == "British Columbia", "BC",
-                    ifelse(province == "Newfoundland and Labrador", "NL",
-                    ifelse(province == "Prince Edward Island", "PEI",
-                    ifelse(province == "Northwest Territories", "NWT",
-                      province
-                    ))))
+      ifelse(province == "Newfoundland and Labrador", "NL",
+        ifelse(province == "Prince Edward Island", "PEI",
+          ifelse(province == "Northwest Territories", "NWT",
+            province
+          )
+        )
+      )
+    )
   )
 
 
@@ -38,14 +45,14 @@ provincial_population_12older_2020 <- read_csv(dir_data_raw("provincial_populati
 provincial_vaccinations <- left_join(
   c19ca_vaccine_administered %>% filter(date == max(date)),
   c19ca_vaccine_completed %>% filter(date == max(date)),
-  by=c("province"="province")
+  by = c("province" = "province")
 ) %>%
   rename(
     date = date.x
   ) %>%
   left_join(
     provincial_population_12older_2020,
-    by=c("province"="province_alt")
+    by = c("province" = "province_alt")
   ) %>%
   select(
     -province
@@ -82,133 +89,169 @@ provincial_vaccinations_pct_tall <- provincial_vaccinations %>%
   ) %>%
   pivot_longer(
     !province,
-    names_to="type",
-    values_to="pct"
+    names_to = "type",
+    values_to = "pct"
   ) %>%
   mutate(
-    type = gsub("pct_", "", type, fixed=TRUE),
-    type = gsub("_", " ", type, fixed=TRUE)
+    type = gsub("pct_", "", type, fixed = TRUE),
+    type = gsub("_", " ", type, fixed = TRUE)
   )
 
 
 p_provincial_vax_pct_1st <- plot_bar_x_reordered_y(
   provincial_vaccinations_pct_tall %>% filter(type == "one dose"),
-  x_var=province, y_var=pct,
-  bar_colour=nominalMuted_shade_0,
-  title_str="Percentage of population with at least a single dose of a COVID-19 vaccine",
-  subtitle_str="Eligible population age 12 or older", x_str="", y_str="",
-  ymin=0, ymax=100, y_units="%",
-  source_str="COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str=last_update_timestamp
+  x_var = province, y_var = pct,
+  bar_colour = nominalMuted_shade_0,
+  title_str = "Percentage of eligible population with at least one dose of a COVID-19 vaccine",
+  subtitle_str = "Eligible population age 12 or older", x_str = "", y_str = "",
+  ymin = 0, ymax = 100, y_units = "%",
+  source_str = "COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str = last_update_timestamp
 )
 
 p_provincial_vax_pct_1st <- p_provincial_vax_pct_1st +
-  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "one dose"),
-            aes(
-              x=reorder(province, pct), y=pct - 1,
-              label=wrap_text(paste(
-                round(pct, 1),
-                # "%",
-                sep=""), 40
-              )
-            ),
-            hjust=1, vjust=.4, size=3.5, color="#222222"
+  geom_text(
+    data = provincial_vaccinations_pct_tall %>% filter(type == "one dose"),
+    aes(
+      x = reorder(province, pct), y = pct - 1,
+      label = wrap_text(paste(
+        round(pct, 1),
+        # "%",
+        sep = ""
+      ), 40)
+    ),
+    hjust = 1, vjust = .4, size = 3.5, color = "#222222"
   ) +
   geom_col(
-    data=provincial_vaccinations_pct_tall %>% filter(type == "one dose") %>% filter(province == "Manitoba"),
-    aes(x=reorder(province, pct), y=pct),
-    colour=wfp_blue, fill=wfp_blue
+    data = provincial_vaccinations_pct_tall %>% filter(type == "one dose") %>% filter(province == "Manitoba"),
+    aes(x = reorder(province, pct), y = pct),
+    colour = wfp_blue, fill = wfp_blue
   ) +
-  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "one dose") %>% filter(province == "Manitoba"),
-            aes(
-              x=reorder(province, pct), y=pct - 1,
-              label=wrap_text(paste(
-                round(pct, 1),
-                # "%",
-                sep=""), 40
-              )
-            ),
-            hjust=1, vjust=.4, fontface="bold", size=3.5, color="#ffffff"
+  geom_text(
+    data = provincial_vaccinations_pct_tall %>% filter(type == "one dose") %>% filter(province == "Manitoba"),
+    aes(
+      x = reorder(province, pct), y = pct - 1,
+      label = wrap_text(paste(
+        round(pct, 1),
+        # "%",
+        sep = ""
+      ), 40)
+    ),
+    hjust = 1, vjust = .4, fontface = "bold", size = 3.5, color = "#ffffff"
   ) +
   scale_y_continuous(
-    expand=c(0, 0),
-    limits=c(0, 100),
-    labels=function(x) {
-      ifelse(x == 100, paste(x, "%", sep=""), x)
+    expand = c(0, 0),
+    limits = c(0, 100),
+    labels = function(x) {
+      ifelse(x == 100, paste(x, "%", sep = ""), x)
     }
+  ) +
+  labs(
+    caption = paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and \npublished vaccination counts.",
+      # " ",
+      # comma(mb_12plus_population_2020estimate),
+      # " eligible Manitobans age 12 or older",
+      "\n\n",
+      toupper("Winnipeg Free Press"),
+      " — SOURCE: ",
+      toupper("COVID-19 Canada Open Data Working Group, Statistics Canada"),
+      " (", last_update_timestamp, ")",
+      sep = ""
+    )
   ) +
   minimal_theme() +
   theme(
-    axis.text=ggplot2::element_text(size=10, color="#222222"),
-    axis.ticks=ggplot2::element_line(color="#888888"),
-    panel.grid.major=ggplot2::element_blank(),
-    panel.grid.minor=ggplot2::element_blank(),
-    panel.grid.major.x=ggplot2::element_blank(),
-    panel.grid.major.y=ggplot2::element_blank(),
-    panel.grid.minor.x=ggplot2::element_blank(),
-    panel.grid.minor.y=ggplot2::element_blank()
+    axis.title.x = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.text.x = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.ticks.x = ggplot2::element_line(color = "#888888"),
+    axis.title.y = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.text.y = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.ticks.y = ggplot2::element_line(color = "#888888"),
+
+    panel.grid.major = ggplot2::element_blank(),
+    panel.grid.minor = ggplot2::element_blank(),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank()
   )
 
 wfp_provincial_vax_pct_1st <- prepare_plot(p_provincial_vax_pct_1st)
-ggsave_pngpdf(wfp_provincial_vax_pct_1st, "wfp_provincial_vax_pct_1st", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
+ggsave_pngpdf(wfp_provincial_vax_pct_1st, "wfp_provincial_vax_pct_1st", width_var = 8.66, height_var = 6, dpi_var = 300, scale_var = 1, units_var = "in")
 
 
 p_provincial_vax_pct_2nd <- plot_bar_x_reordered_y(
   provincial_vaccinations_pct_tall %>% filter(type == "two dose"),
-  x_var=province, y_var=pct,
-  bar_colour=nominalMuted_shade_0,
-  title_str="Percentage of population with two doses of a COVID-19 vaccine",
-  subtitle_str="Eligible population age 12 or older", x_str="", y_str="",
-  ymin=0, ymax=100, y_units="%",
-  source_str="COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str=last_update_timestamp
+  x_var = province, y_var = pct,
+  bar_colour = nominalMuted_shade_0,
+  title_str = "Percentage of population with two doses of a COVID-19 vaccine",
+  subtitle_str = "Eligible population age 12 or older", x_str = "", y_str = "",
+  ymin = 0, ymax = 100, y_units = "%",
+  source_str = "COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str = last_update_timestamp
 )
 
 p_provincial_vax_pct_2nd <- p_provincial_vax_pct_2nd +
-  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "two dose"),
-            aes(
-              x=reorder(province, pct), y=pct - 1,
-              label=wrap_text(paste(
-                round(pct, 1),
-                # "%",
-                sep=""), 40
-              )
-            ),
-            hjust=1, vjust=.4, size=3.5, color="#222222"
+  geom_text(
+    data = provincial_vaccinations_pct_tall %>% filter(type == "two dose"),
+    aes(
+      x = reorder(province, pct), y = pct - 1,
+      label = wrap_text(paste(
+        round(pct, 1),
+        # "%",
+        sep = ""
+      ), 40)
+    ),
+    hjust = 1, vjust = .4, size = 3.5, color = "#222222"
   ) +
   geom_col(
-    data=provincial_vaccinations_pct_tall %>% filter(type == "two dose") %>% filter(province == "Manitoba"),
-    aes(x=reorder(province, pct), y=pct),
-    colour=wfp_blue, fill=wfp_blue
+    data = provincial_vaccinations_pct_tall %>% filter(type == "two dose") %>% filter(province == "Manitoba"),
+    aes(x = reorder(province, pct), y = pct),
+    colour = wfp_blue, fill = wfp_blue
   ) +
-  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "two dose") %>% filter(province == "Manitoba"),
-            aes(
-              x=reorder(province, pct), y=pct - 1,
-              label=wrap_text(paste(
-                round(pct, 1),
-                # "%",
-                sep=""), 40
-              )
-            ),
-            hjust=1, vjust=.4, fontface="bold", size=3.5, color="#ffffff"
+  geom_text(
+    data = provincial_vaccinations_pct_tall %>% filter(type == "two dose") %>% filter(province == "Manitoba"),
+    aes(
+      x = reorder(province, pct), y = pct - 1,
+      label = wrap_text(paste(
+        round(pct, 1),
+        # "%",
+        sep = ""
+      ), 40)
+    ),
+    hjust = 1, vjust = .4, fontface = "bold", size = 3.5, color = "#ffffff"
   ) +
   scale_y_continuous(
-    expand=c(0, 0),
-    limits=c(0, 100),
-    labels=function(x) {
-      ifelse(x == 100, paste(x, "%", sep=""), x)
+    expand = c(0, 0),
+    limits = c(0, 100),
+    labels = function(x) {
+      ifelse(x == 100, paste(x, "%", sep = ""), x)
     }
+  ) +
+  labs(
+    caption = paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and \npublished vaccination counts.",
+      "\n\n",
+      toupper("Winnipeg Free Press"),
+      " — SOURCE: ",
+      toupper("COVID-19 Canada Open Data Working Group, Statistics Canada"),
+      " (", last_update_timestamp, ")",
+      sep = ""
+    )
   ) +
   minimal_theme() +
   theme(
-    axis.text=ggplot2::element_text(size=10, color="#222222"),
-    axis.ticks=ggplot2::element_line(color="#888888"),
-    panel.grid.major=ggplot2::element_blank(),
-    panel.grid.minor=ggplot2::element_blank(),
-    panel.grid.major.x=ggplot2::element_blank(),
-    panel.grid.major.y=ggplot2::element_blank(),
-    panel.grid.minor.x=ggplot2::element_blank(),
-    panel.grid.minor.y=ggplot2::element_blank()
+    axis.title.x = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.text.x = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.ticks.x = ggplot2::element_line(color = "#888888"),
+    axis.title.y = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.text.y = ggplot2::element_text(size = 10, color = "#222222"),
+    axis.ticks.y = ggplot2::element_line(color = "#888888"),
+
+    panel.grid.major = ggplot2::element_blank(),
+    panel.grid.minor = ggplot2::element_blank(),
+    panel.grid.major.x = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    panel.grid.minor.x = ggplot2::element_blank(),
+    panel.grid.minor.y = ggplot2::element_blank()
   )
 
 wfp_provincial_vax_pct_2nd <- prepare_plot(p_provincial_vax_pct_2nd)
-ggsave_pngpdf(wfp_provincial_vax_pct_2nd, "wfp_provincial_vax_pct_2nd", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
-
+ggsave_pngpdf(wfp_provincial_vax_pct_2nd, "wfp_provincial_vax_pct_2nd", width_var = 8.66, height_var = 6, dpi_var = 300, scale_var = 1, units_var = "in")
