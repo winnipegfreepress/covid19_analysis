@@ -255,3 +255,79 @@ p_provincial_vax_pct_2nd <- p_provincial_vax_pct_2nd +
 
 wfp_provincial_vax_pct_2nd <- prepare_plot(p_provincial_vax_pct_2nd)
 ggsave_pngpdf(wfp_provincial_vax_pct_2nd, "wfp_provincial_vax_pct_2nd", width_var = 8.66, height_var = 6, dpi_var = 300, scale_var = 1, units_var = "in")
+
+
+
+
+# Try 2-up
+
+
+p_title <- paste("Percentage of population with a COVID-19 vaccination")
+p_title.p <- ggparagraph(text=p_title, face="bold", size=16, lineheight=1, color="black", margin(.2,0.2,0,0.2, "cm"))
+
+p_subtitle <- paste("Eligible population age 12 or older as of July 1, 2020")
+p_subtitle.p <- ggparagraph(text=p_subtitle, size=14, lineheight=1, color="black", margin(0,0.2,0,0.2, "cm"))
+
+p_credit_source=paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and vaccination counts.",
+                      "\n\n",
+                      toupper("Winnipeg Free Press"),
+                      " — SOURCE: ",
+                      toupper("COVID-19 Canada Open Data Working Group, Statistics Canada"),
+                      " (", last_update_timestamp, ")",
+                      sep = ""
+)
+p_credit_source.p <- text_grob(
+  x=0,
+  y=0,
+  label=p_credit_source,
+  hjust=0,
+  vjust=0,
+  color="black",
+  face="plain",
+  size=10,
+  lineheight=1
+)
+
+p_provincial_vax_pct_1st_sq <- p_provincial_vax_pct_1st +
+  labs(
+    title="",
+    subtitle="One dose",
+    caption=""
+  ) +
+  theme(
+    plot.subtitle=ggplot2::element_text(size=14, face="bold", lineheight=1, color="#222222", margin=ggplot2::margin(5,0,20,0)),
+  )
+
+p_provincial_vax_pct_2nd_sq <- p_provincial_vax_pct_2nd +
+  labs(
+    title="",
+    subtitle="Two doses",
+    caption=""
+  ) +
+  theme(
+    plot.subtitle=ggplot2::element_text(size=14, face="bold", lineheight=1, color="#222222", margin=ggplot2::margin(5,0,20,0)),
+  )
+
+
+p_provincial_vax_pct_1st_2nd_2up <-  ggarrange(
+    p_provincial_vax_pct_1st_sq,
+    p_provincial_vax_pct_2nd_sq,
+    labels=c("", "", ""),
+    ncol=2, nrow=1,
+    widths=c(.5, .5)
+  ) +
+  theme(plot.margin=margin(0,0,0,0, "cm"))
+
+p_provincial_vax_pct_1st_2nd <-  ggarrange(
+  p_title.p,
+  p_subtitle.p,
+  p_provincial_vax_pct_1st_2nd_2up,
+  p_credit_source.p,
+  labels=c("", "", ""),
+  ncol=1, nrow=4,
+  heights=c(.4, .15, 5, .1)
+) +
+  theme(plot.margin=margin(.4,.25,.25,.25, "cm"))
+
+
+ggsave_pngpdf(p_provincial_vax_pct_1st_2nd, "p_provincial_vax_pct_1st_2nd", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
