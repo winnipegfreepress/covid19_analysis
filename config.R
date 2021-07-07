@@ -42,3 +42,8 @@ source(dir_src("palette.R"))
 credit_str = "WINNIPEG FREE PRESS"
 time_pause <- .5
 font_add_google("Open Sans")
+
+last_update_timestamp=Sys.Date()
+
+
+

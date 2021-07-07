@@ -82,9 +82,9 @@ source(dir_src("visualize_healthcareworkers.R"))
 source(dir_src("visualize_symptoms.R"))
 
 
-
-# COVID-19 Canada Open Data Woring Group
-# source(dir_src("_provincial_vaccine_comparison.R"))
+# Vaccine comparison using data from
+# COVID-19 Canada Open Data Working Group
+source(dir_src("_provincial_vaccine_comparison.R"))
 
 
 

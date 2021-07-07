@@ -117,7 +117,7 @@ wfp_transmission_source_tall <- read_feather(dir_data_processed("gsheet_wfp_tran
 wfp_symptoms <- read_feather(dir_data_processed("gsheet_wfp_symptoms.feather"))
 wfp_symptoms_tall <- read_feather(dir_data_processed("gsheet_wfp_symptoms_tall.feather"))
 
-
+provincial_population_12older_2020 <- read_feather(dir_data_processed("provincial_population_12older_2020.feather"))
 population_provinces_2020 <-  read_feather(dir_data_processed("population_provinces_2020.feather"))
 population_manitoba_2020 <- population_provinces_2020 %>% filter(province =="Manitoba") %>% select(population) %>% pull()
 manitoba_health_regions_populations <-  read_feather(dir_data_processed("manitoba_health_regions_populations.feather"))

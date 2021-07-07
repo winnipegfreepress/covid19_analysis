@@ -115,6 +115,17 @@ Sys.sleep(time_pause)
 source(dir_src("get_vaccinations.R"))
 
 
+################################################################################
+# COVID-19 Canada Open Data Working Group
+################################################################################
+GET("https://api.opencovid.ca/timeseries?stat=avaccine&loc=prov",
+    write_disk(dir_data_raw("c19ca_vaccine_administererd.json"), overwrite=TRUE))
+Sys.sleep(time_pause)
+
+GET("https://api.opencovid.ca/timeseries?stat=cvaccine&loc=prov",
+    write_disk(dir_data_raw("c19ca_vaccine_completed.json"), overwrite=TRUE))
+Sys.sleep(time_pause)
+
 
 ################################################################################
 # Save a copy of the data as a snapshot zip
@@ -126,3 +137,5 @@ zip::zipr(
   here::here("data/cache", cache_filename),
 	dir_data_raw()
 )
+
+

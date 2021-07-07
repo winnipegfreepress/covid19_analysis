@@ -1,7 +1,4 @@
 
-# Update timestamp
-last_update_timestamp=Sys.Date()
-
 # Pull latest topline numbers for summaries, etc.
 new_daily_cases_str <- wfp_daily_totals_last_date %>% select(new_daily_cases) %>% pull()
 test_to_date_str <- wfp_daily_totals_last_date %>% select(test_to_date) %>% pull()

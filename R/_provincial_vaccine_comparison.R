@@ -84,20 +84,131 @@ provincial_vaccinations_pct_tall <- provincial_vaccinations %>%
     !province,
     names_to="type",
     values_to="pct"
+  ) %>%
+  mutate(
+    type = gsub("pct_", "", type, fixed=TRUE),
+    type = gsub("_", " ", type, fixed=TRUE)
   )
 
-# Statistics Canada. Table 17-10-0005-01 Population estimates on July 1st, by age and sex
-#
-# p<-ggplot(provincial_vaccinations_pct_tall) +
-#   aes(x=type, y=pct, group=province) +
-#   geom_segment(aes(x=type,xend=type,y=pct,yend=pct),size=1, colour=wfp_blue) +
-#   theme(panel.background = element_blank()) +
-#   theme(panel.grid=element_blank()) +
-#   theme(axis.ticks=element_blank()) +
-#   theme(axis.text=element_blank()) +
-#   theme(panel.border=element_blank()) +
-#   xlab("") +
-#   ylab("Percentage of eligible population")
-#
-# plot(p)
+
+p_provincial_vax_pct_1st <- plot_bar_x_reordered_y(
+  provincial_vaccinations_pct_tall %>% filter(type == "one dose"),
+  x_var=province, y_var=pct,
+  bar_colour=nominalMuted_shade_0,
+  title_str="Percentage of population with at least a single dose of a COVID-19 vaccine",
+  subtitle_str="Eligible population age 12 or older", x_str="", y_str="",
+  ymin=0, ymax=100, y_units="%",
+  source_str="COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str=last_update_timestamp
+)
+
+p_provincial_vax_pct_1st <- p_provincial_vax_pct_1st +
+  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "one dose"),
+            aes(
+              x=reorder(province, pct), y=pct - 1,
+              label=wrap_text(paste(
+                round(pct, 1),
+                # "%",
+                sep=""), 40
+              )
+            ),
+            hjust=1, vjust=.4, size=3.5, color="#222222"
+  ) +
+  geom_col(
+    data=provincial_vaccinations_pct_tall %>% filter(type == "one dose") %>% filter(province == "Manitoba"),
+    aes(x=reorder(province, pct), y=pct),
+    colour=wfp_blue, fill=wfp_blue
+  ) +
+  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "one dose") %>% filter(province == "Manitoba"),
+            aes(
+              x=reorder(province, pct), y=pct - 1,
+              label=wrap_text(paste(
+                round(pct, 1),
+                # "%",
+                sep=""), 40
+              )
+            ),
+            hjust=1, vjust=.4, fontface="bold", size=3.5, color="#ffffff"
+  ) +
+  scale_y_continuous(
+    expand=c(0, 0),
+    limits=c(0, 100),
+    labels=function(x) {
+      ifelse(x == 100, paste(x, "%", sep=""), x)
+    }
+  ) +
+  minimal_theme() +
+  theme(
+    axis.text=ggplot2::element_text(size=10, color="#222222"),
+    axis.ticks=ggplot2::element_line(color="#888888"),
+    panel.grid.major=ggplot2::element_blank(),
+    panel.grid.minor=ggplot2::element_blank(),
+    panel.grid.major.x=ggplot2::element_blank(),
+    panel.grid.major.y=ggplot2::element_blank(),
+    panel.grid.minor.x=ggplot2::element_blank(),
+    panel.grid.minor.y=ggplot2::element_blank()
+  )
+
+wfp_provincial_vax_pct_1st <- prepare_plot(p_provincial_vax_pct_1st)
+ggsave_pngpdf(wfp_provincial_vax_pct_1st, "wfp_provincial_vax_pct_1st", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
+
+
+p_provincial_vax_pct_2nd <- plot_bar_x_reordered_y(
+  provincial_vaccinations_pct_tall %>% filter(type == "two dose"),
+  x_var=province, y_var=pct,
+  bar_colour=nominalMuted_shade_0,
+  title_str="Percentage of population with two doses of a COVID-19 vaccine",
+  subtitle_str="Eligible population age 12 or older", x_str="", y_str="",
+  ymin=0, ymax=100, y_units="%",
+  source_str="COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str=last_update_timestamp
+)
+
+p_provincial_vax_pct_2nd <- p_provincial_vax_pct_2nd +
+  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "two dose"),
+            aes(
+              x=reorder(province, pct), y=pct - 1,
+              label=wrap_text(paste(
+                round(pct, 1),
+                # "%",
+                sep=""), 40
+              )
+            ),
+            hjust=1, vjust=.4, size=3.5, color="#222222"
+  ) +
+  geom_col(
+    data=provincial_vaccinations_pct_tall %>% filter(type == "two dose") %>% filter(province == "Manitoba"),
+    aes(x=reorder(province, pct), y=pct),
+    colour=wfp_blue, fill=wfp_blue
+  ) +
+  geom_text(data=provincial_vaccinations_pct_tall %>% filter(type == "two dose") %>% filter(province == "Manitoba"),
+            aes(
+              x=reorder(province, pct), y=pct - 1,
+              label=wrap_text(paste(
+                round(pct, 1),
+                # "%",
+                sep=""), 40
+              )
+            ),
+            hjust=1, vjust=.4, fontface="bold", size=3.5, color="#ffffff"
+  ) +
+  scale_y_continuous(
+    expand=c(0, 0),
+    limits=c(0, 100),
+    labels=function(x) {
+      ifelse(x == 100, paste(x, "%", sep=""), x)
+    }
+  ) +
+  minimal_theme() +
+  theme(
+    axis.text=ggplot2::element_text(size=10, color="#222222"),
+    axis.ticks=ggplot2::element_line(color="#888888"),
+    panel.grid.major=ggplot2::element_blank(),
+    panel.grid.minor=ggplot2::element_blank(),
+    panel.grid.major.x=ggplot2::element_blank(),
+    panel.grid.major.y=ggplot2::element_blank(),
+    panel.grid.minor.x=ggplot2::element_blank(),
+    panel.grid.minor.y=ggplot2::element_blank()
+  )
+
+wfp_provincial_vax_pct_2nd <- prepare_plot(p_provincial_vax_pct_2nd)
+ggsave_pngpdf(wfp_provincial_vax_pct_2nd, "wfp_provincial_vax_pct_2nd", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
