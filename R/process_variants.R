@@ -52,7 +52,7 @@ covid19_variants <-covid19_variants %>%
 dashboard_variants_of_concern <- jsonlite::fromJSON(dir_data_raw('mbdata_variant_of_concern_cases.json'))
 dashboard_variants_of_concern <- dashboard_variants_of_concern[["features"]][["properties"]]
 dashboard_variants_of_concern <- dashboard_variants_of_concern %>%
-  clean_names()
+    janitor::make_clean_names()
 
 
 
