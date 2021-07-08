@@ -60,7 +60,7 @@ p_credit_source.p <- text_grob(
 )
 
 p_disclaimer <- paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and published vaccination counts.", sep="")
-p_disclaimer.p=ggparagraph(text=p_disclaimer, size=7, color="black",  margin(0.2,0.2,0,0.2, "cm"))
+p_disclaimer.p=ggparagraph(text=p_disclaimer, size=7, lineheight=1, color="#666666",  margin(0.2,0.2,0,0.2, "cm"))
 
 
 latest_14day_cases_pct_chg_str <- ""

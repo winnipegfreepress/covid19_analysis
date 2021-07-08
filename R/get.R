@@ -127,6 +127,14 @@ GET("https://api.opencovid.ca/timeseries?stat=cvaccine&loc=prov",
 Sys.sleep(time_pause)
 
 
+
+GET(
+  "https://api.opencovid.ca/timeseries?loc=prov",
+  write_disk(dir_data_raw("c19ca_provinces_all_data.json"), overwrite = TRUE)
+)
+Sys.sleep(time_pause)
+
+
 ################################################################################
 # Save a copy of the data as a snapshot zip
 ################################################################################

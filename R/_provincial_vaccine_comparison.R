@@ -325,7 +325,7 @@ p_provincial_vax_pct_1st_2nd <-  ggarrange(
   p_credit_source.p,
   labels=c("", "", ""),
   ncol=1, nrow=4,
-  heights=c(.4, .15, 5, .1)
+  heights=c(.4, .25, 5, .1)
 ) +
   theme(plot.margin=margin(.4,.25,.25,.25, "cm"))
 
