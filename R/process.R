@@ -11,3 +11,5 @@ source(dir_src("process_weekly_epi_report.R"))
 
 
 cat("DONE: Processing data")
+cat(" ")
+cat(" ")

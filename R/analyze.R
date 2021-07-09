@@ -158,3 +158,5 @@ source(dir_src("analyze_districts.R"))
 source(dir_src("analyze_topline_blocks.R"))
 
 cat("DONE: Analyzing data")
+cat(" ")
+cat(" ")

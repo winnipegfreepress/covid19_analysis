@@ -89,3 +89,5 @@ source(dir_src("_provincial_vaccine_comparison.R"))
 
 
 cat("DONE: Visualizing data")
+cat(" ")
+cat(" ")
