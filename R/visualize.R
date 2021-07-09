@@ -1,3 +1,4 @@
+cat("Visualizing data")
 
 # Misc bits of text to accompany graphics
 source(dir_src("visualize_strings.R"))
@@ -87,5 +88,4 @@ source(dir_src("visualize_symptoms.R"))
 source(dir_src("_provincial_vaccine_comparison.R"))
 
 
-
-
+cat("DONE: Visualizing data")

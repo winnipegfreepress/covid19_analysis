@@ -1,6 +1,7 @@
 
 wfp_daily_totals_raw <- read_csv(dir_data_raw("gsheet_wfp_daily_totals.csv")) %>%
   clean_names() %>%
+  filter(!is.na(date)) %>%
   fill(deaths) %>%
   mutate(
     date=as.Date(date, "%m/%d/%Y"),

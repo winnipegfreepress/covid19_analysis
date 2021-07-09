@@ -2,6 +2,8 @@
 # Download and cache the source data for processing and analysis
 ################################################################################
 
+cat("Downloading data")
+
 # No need for auth to pull as read-only
 gs4_deauth()
 
@@ -147,3 +149,4 @@ zip::zipr(
 )
 
 
+cat("DONE: Downloading data")
