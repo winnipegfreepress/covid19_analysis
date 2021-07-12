@@ -41,8 +41,7 @@ p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
             stat="identity",
             aes(x=date + 3, y=active_icu, label=paste(active_icu, " active in ICU", sep="")),
             colour=nominalBold_shade_3,
-            hjust=-.03, size=3.5, lineheight=1, fontface="bold",
-            vjust=1.3
+            hjust=-.03, size=3.5, lineheight=1, fontface="bold"
   ) +
 
   # annotate("text",
@@ -76,7 +75,7 @@ p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
   ) +
   scale_x_date(
     expand=c(0, 0),
-    limits=c(as.Date("2020-03-01"), as.Date("2021-10-31")),
+    limits=c(as.Date("2020-03-01"), as.Date("2021-11-30")),
     date_breaks="1 month",
     date_minor_breaks="1 month",
     labels=date_format("%b")
