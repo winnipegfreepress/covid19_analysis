@@ -19,7 +19,7 @@ dashboard_variants_of_concern_type <- dashboard_variants_of_concern %>%
 
 
 dashboard_variants_of_concern_transmission <- dashboard_variants_of_concern %>%
-  select(-object_id) %>%
+  select(-objectid) %>%
   mutate(
     variant = case_when(
       variant == "B.1.1.7" ~ "B.1.1.7 (Alpha)",
