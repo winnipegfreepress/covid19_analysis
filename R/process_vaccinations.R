@@ -8,7 +8,7 @@ COVID19_MB_vaccine_doses_received_raw <- COVID19_MB_vaccine_doses_received_raw %
 total_doses_distributed_val=COVID19_MB_vaccine_doses_received_raw %>% head(1) %>% select(doses_received) %>%  pull()
 
 # Vaccination summary
-COVID19_MB_vaccination_summary_raw <- jsonlite::fromJSON(dir_data_raw("mb_covid_vaccinations_summary_stats.json"))
+COVID19_MB_vaccination_summary_raw <- jsonlite::fromJSON(dir_data_raw("mb_covid_vaccinations_summary_stats_updated.json"))
 COVID19_MB_vaccination_summary_raw <- COVID19_MB_vaccination_summary_raw[["features"]][["attributes"]]
 COVID19_MB_vaccination_summary_raw <- COVID19_MB_vaccination_summary_raw %>%
   clean_names() %>%

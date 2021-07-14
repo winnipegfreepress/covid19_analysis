@@ -4,7 +4,7 @@ last_update_timestamp=Sys.Date()
 
 # Set common limits for timeseries data
 xmin_var="2020-09-01"
-xmax_var="2021-08-30"
+xmax_var="2021-11-30"
 
 wfp_daily_totals_last_date <- wfp_daily_totals %>%
   filter(date == max(date))
