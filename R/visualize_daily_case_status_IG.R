@@ -36,7 +36,7 @@ p_daily_case_status <- plot_bar_stack(
   bar_colour=nominalMuted_shade_0,
   title_str="Daily status of COVID-19 cases reported in Manitoba",
   subtitle_str=summary_str, x_str="", y_str="",
-  xmin=xmin_var, xmax="2021-06-30", xformat="%b", x_units="1 month",
+  xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="1 month",
   ymin=0, ymax=40000, y_units="",
   source_str="Manitoba Health COVID-19 Bulletin", lastupdate_str=last_update_timestamp
 )
