@@ -98,12 +98,6 @@ dashboard_daily_status_districts_all <- read_feather(dir_data_processed("dashboa
 phac_daily <- read_feather(dir_data_processed("phac_daily.feather"))
 
 
-################################################################################
-# COVID-19 variants
-################################################################################
-covid19_variants <- read_feather(dir_data_processed("covid19_variants.feather"))
-dashboard_variants_of_concern <- read_feather(dir_data_processed("dashboard_variants_of_concern.feather"))
-
 
 ################################################################################
 # Weekly epidemiology report
@@ -136,6 +130,10 @@ population_12plus_total <- sum(mbhealth_population_agegroups_12plus$population_a
 ################################################################################
 source(dir_src("analyze_provincial_case_growth.R"))
 
+################################################################################
+# Variants
+################################################################################
+source(dir_src("analyze_variants.R"))
 
 ################################################################################
 # Weekly cases and deaths as abs and pct chg

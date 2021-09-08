@@ -13,17 +13,21 @@ initialize_startr(
   should_timestamp_output_files = TRUE,
   should_beep = FALSE,
   packages = c(
-    "tidyverse", "glue", "magrittr", "lubridate", "hms",
+    "devtools",
+    "tidyverse", "glue", "magrittr",
+    "lubridate", "hms",
     "readxl", "feather", "RcppRoll",
-    "scales", "janitor", "httr", "Cairo",
+    "scales", "janitor", "httr",
+    # "Cairo",
     "ggrepel", "prettydoc",
     "aws.s3", "dotenv", "rlang",
     "googledrive", "googlesheets4", "cowplot",
     "zip", "gmailr", "knitr", "DT", "zoo", "ggtext",
     "ggpubr", "ggtext", "showtext", "kableExtra",
     "gmailr", "patchwork",
-    "pracma", "ISOweek",
-    "slackr"
+    "pracma", "ISOweek"
+    # "EpiWeek",
+    # "slackr"
     # "sendmailR",
     # "emayili",
     # "RcmdrPlugin.KMggplot2"
@@ -36,6 +40,9 @@ initialize_startr(
   )
 )
 
+
+install_github("chrismerkord/epical")
+library(epical)
 
 # Misc vars and strings
 source(dir_src("theme.R"))

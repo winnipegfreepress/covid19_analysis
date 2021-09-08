@@ -118,6 +118,14 @@ source(dir_src("get_vaccinations.R"))
 
 
 ################################################################################
+# COVID-19 Breakthrough cases
+################################################################################
+GET("https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/mb_covid_cases_by_vaccination_status/FeatureServer/0/query?f=json&cacheHint=true&outFields=*&outStatistics=%5B%7B%22onStatisticField%22%3A%22Not_Vaccinated%22%2C%22outStatisticFieldName%22%3A%22Not_Vaccinated%22%2C%22statisticType%22%3A%22sum%22%7D%2C%7B%22onStatisticField%22%3A%22Partially_Vaccinated%22%2C%22outStatisticFieldName%22%3A%22Partially_Vaccinated%22%2C%22statisticType%22%3A%22sum%22%7D%2C%7B%22onStatisticField%22%3A%22Fully_Vaccinated%22%2C%22outStatisticFieldName%22%3A%22Fully_Vaccinated%22%2C%22statisticType%22%3A%22sum%22%7D%5D&resultType=standard&returnGeometry=false&spatialRel=esriSpatialRelIntersects&where=Category%3D%27New%27",
+    write_disk(dir_data_raw("covid19_mb_breakthrough_cases.json"), overwrite=TRUE))
+Sys.sleep(time_pause)
+
+
+################################################################################
 # COVID-19 Canada Open Data Working Group
 ################################################################################
 GET("https://api.opencovid.ca/timeseries?stat=avaccine&loc=prov",

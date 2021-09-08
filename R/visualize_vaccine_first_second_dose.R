@@ -19,8 +19,8 @@ p_covid_19_mb_vaccinations_first_second <- plot_bar_stack(
 
 p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_second +
   annotate("text",
-           x=as.Date("2021-03-06"),
-           y=850000,
+           x=as.Date("2021-04-10"),
+           y=870000,
            label=wrap_text("March 3: Manitoba begins delaying administration of second doses of vaccine to increase the number of people receiving first doses.", 35),
            hjust=1, vjust=.7, size=4,
            colour="#000000"
@@ -47,7 +47,7 @@ p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_seco
     values=c(
       "cumulative_first_doses"=nominalMuted_shade_0,
       "cumulative_second_doses"=nominalBold_shade_1,
-      "remainder_first_doses"=nominalBold_shade_2
+      "remainder_first_doses"=nominalBold_shade_0
     ),
     labels=c(
       paste(comma(cumulative_first_doses_cnt), "first doses", sep=" "),
@@ -61,7 +61,7 @@ p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_seco
   ) +
   theme(
     legend.title=element_text(size=12, face="bold"),
-    legend.position=c(.35, 1.0),
+    legend.position=c(.40, 1.0),
     legend.justification=c("right", "top"),
     legend.box.just="right",
     legend.margin=margin(10, 10, 10, 10)

@@ -30,7 +30,7 @@ upload_reports_s3(report="vaccinations.html", destination_path="covid-19-tracker
 
 
 ################################################################################
-# Run visuals and upload to S3 bucket
+# Run visuals
 ################################################################################
 run_visualize()
 
