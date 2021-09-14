@@ -25,7 +25,7 @@ initialize_startr(
     "zip", "gmailr", "knitr", "DT", "zoo", "ggtext",
     "ggpubr", "ggtext", "showtext", "kableExtra",
     "gmailr", "patchwork",
-    "pracma", "ISOweek"
+    "pracma", "ISOweek", "easycsv"
     # "EpiWeek",
     # "slackr"
     # "sendmailR",

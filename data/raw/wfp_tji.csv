@@ -1,9 +1,9 @@
 field,value,"Add a death_bullet row, including field name, for each death"
 daily_deaths,0,
-positivity_manitoba,2.8,
-positivity_winnipeg,999999,
-hospitalized_total,74,
-icu_total,15,
+positivity_manitoba,3.2,
+positivity_winnipeg,99999,
+hospitalized_total,68,
+icu_total,14,
 rha_interlake,99999,
 rha_northern,99999,
 rha_prairiemountain,99999,

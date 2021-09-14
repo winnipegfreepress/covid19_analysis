@@ -14,7 +14,7 @@ if(importJSON == "Full"){
 
   theDate <- start
 
-  demographics_df_sample <- jsonlite::fromJSON(dir_data_raw( "demographic_heatmap/2020-10-01-demographics-rha.json"))
+  demographics_df_sample <- jsonlite::fromJSON(dir_data_raw( "demographics-rha/2020-10-01-demographics-rha.json"))
   demographics_df_sample <- demographics_df_sample[["features"]][["attributes"]]
   demographics_df_sample <- demographics_df_sample %>%
     clean_names() %>%
@@ -28,7 +28,7 @@ if(importJSON == "Full"){
 
   while (theDate <= end){
 
-    file_name <- paste("/demographic_heatmap/", format(theDate,"%Y-%m-%d"), "-demographics-rha.json", sep="")
+    file_name <- paste("/demographics-rha/", format(theDate,"%Y-%m-%d"), "-demographics-rha.json", sep="")
     print(file_name)
 
     if(file.exists(dir_data_raw(file_name))){

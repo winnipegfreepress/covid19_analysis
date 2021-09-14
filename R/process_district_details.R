@@ -1,6 +1,6 @@
 
 dateStart <- as.Date("2020-10-01", format="%Y-%m-%d")
-dateEnd <- as.Date("2021-03-16", format="%Y-%m-%d")
+dateEnd <- as.Date("2021-09-14", format="%Y-%m-%d")
 
 
 population_mb_2020 <- read_csv(dir_data_raw("population_mb_2020.csv")) %>%

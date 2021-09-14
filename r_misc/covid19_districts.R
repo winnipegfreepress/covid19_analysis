@@ -1,6 +1,6 @@
 
 dateStart <- as.Date("2020-10-01", format = "%Y-%m-%d")
-dateEnd <- as.Date("2021-05-18", format = "%Y-%m-%d")
+dateEnd <- as.Date("2021-09-14", format = "%Y-%m-%d")
 
 
 population_mb_2020 <- read_csv(here::here("data/raw/", "population_mb_2020.csv")) %>%
@@ -12,7 +12,7 @@ population_mb_2020 <- read_csv(here::here("data/raw/", "population_mb_2020.csv")
 
 
 # Create df based on what the JSON contains, empty it and then rbind in the while loop
-districts_df_input <- jsonlite::fromJSON(here::here("data/raw/", "district_daily", "2020-10-01-details-district.json"))
+districts_df_input <- jsonlite::fromJSON(here::here("data/raw/", "details-district", "2020-10-01-details-district.json"))
 districts_df_input <- districts_df_input[["features"]][["attributes"]]
 districts_df_input <- districts_df_input %>%
   clean_names() %>%
@@ -35,7 +35,7 @@ theDate <- dateStart
 
 while (theDate <= dateEnd) {
   file_name <- paste(format(theDate, "%Y-%m-%d"), "-details-district.json", sep = "")
-  filepath <- here::here("data/raw", "district_daily", file_name)
+  filepath <- here::here("data/raw", "details-district", file_name)
   print(filepath)
 
   if(file.exists(filepath)) {
