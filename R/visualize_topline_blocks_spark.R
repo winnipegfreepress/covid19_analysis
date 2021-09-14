@@ -1,12 +1,8 @@
 
 plot_bignumber_abs_pctchg <-  function(sum_val="", sum_unit_str="", sum_unit_period="", pctchg_sym_val="", colour_val="", pct_chg_val="", pct_chg_str_val=""){
 
-  # if(sum_unit_period == ""){
-  #   sum_unit_period <- "FOO in previous 14 days"
-  # }
-
   plot_tmp <- ggplot2::ggplot() +
-    annotate(geom="text", x=4, y=14,label=paste(comma({{sum_val}}), sep=" "), size=5.5, fontface="bold", hjust=1) +
+    annotate(geom="text", x=4.4, y=14,label=paste(comma({{sum_val}}), sep=" "), size=5.5, fontface="bold", hjust=1) +
     annotate(geom="text", x=6, y=14,label={{sum_unit_str}}, lineheight=.8, size=2.5, fontface="bold", hjust=1) +
     annotate(geom="text", x=6, y=0,label=paste({{sum_unit_period}}, sep=""), size=2.75,  hjust=1, vjust=-1, colour="#666666")
 
@@ -57,11 +53,11 @@ p_covid19_14day_deaths  <- plot_bignumber_abs_pctchg(sum_val=latest_daily_deaths
                                                      pct_chg_str_val=latest_14day_deaths_pct_chg_str)
 
 p_covid19_14day_1stdose  <-  plot_bignumber_abs_pctchg(sum_val=latest_14day_doses_first_sum, sum_unit_str="first\ndoses",
-                                                     sum_unit_period="in previous 14 days",
-                                                     pctchg_sym_val=latest_14day_doses_first_pct_chg_sym, colour_val=latest_14day_doses_first_pct_chg_sym_colour,
-                                                     pct_chg_val=latest_14day_doses_first_pct_chg,
-                                                     pct_chg_str_val=latest_14day_doses_first_pct_chg_str
-                                                     )
+                                                       sum_unit_period="in previous 14 days",
+                                                       pctchg_sym_val=latest_14day_doses_first_pct_chg_sym, colour_val=latest_14day_doses_first_pct_chg_sym_colour,
+                                                       pct_chg_val=latest_14day_doses_first_pct_chg,
+                                                       pct_chg_str_val=latest_14day_doses_first_pct_chg_str
+)
 
 #   plot_bignumber_abs_pctchg(sum_val=latest_14day_doses_first_sum, sum_unit_str="first\ndoses",
 # sum_unit_period="in previous 14 days",  pct_chg_val=latest_14day_doses_first_pct_chg, pct_chg_str_val=latest_14day_doses_first_pct_chg_str)
