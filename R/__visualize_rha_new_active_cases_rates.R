@@ -190,30 +190,34 @@ p_rha_active_cases_100K <- p_rha_active_cases_100K +
 
 # Save out the files
 wfp_rha_new_cases_100K <- prepare_plot(p_rha_new_cases_100K)
-ggsave(dir_plots("wfp_rha_new_cases_100K.png"),
-       plot=wfp_rha_new_cases_100K,
-       width=8.66, height=6, units = "in", dpi = 300,
-       scale=1, limitsize = TRUE
-)
+# ggsave(dir_plots("wfp_rha_new_cases_100K.png"),
+#        plot=wfp_rha_new_cases_100K,
+#        width=8.66, height=6, units = "in", dpi = 300,
+#        scale=1, limitsize = TRUE
+# )
+ggsave_pngpdf(wfp_rha_new_cases_100K, "wfp_rha_new_cases_100K", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
 wfp_rha_new_cases <- prepare_plot(p_rha_new_cases)
-ggsave(dir_plots("wfp_rha_new_cases.png"),
-       plot=wfp_rha_new_cases,
-       width=8.66, height=6, units = "in", dpi = 300,
-       scale=1, limitsize = TRUE
-)
+# ggsave(dir_plots("wfp_rha_new_cases.png"),
+#        plot=wfp_rha_new_cases,
+#        width=8.66, height=6, units = "in", dpi = 300,
+#        scale=1, limitsize = TRUE
+# )
+ggsave_pngpdf(wfp_rha_new_cases, "wfp_rha_new_cases", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
 wfp_rha_active_cases_100K <- prepare_plot(p_rha_active_cases_100K)
-ggsave(dir_plots("wfp_rha_active_cases_100K.png"),
-       plot=wfp_rha_active_cases_100K,
-       width=8.66, height=6, units = "in", dpi = 300,
-       scale=1, limitsize = TRUE
-)
+# ggsave(dir_plots("wfp_rha_active_cases_100K.png"),
+#        plot=wfp_rha_active_cases_100K,
+#        width=8.66, height=6, units = "in", dpi = 300,
+#        scale=1, limitsize = TRUE
+# )
+ggsave_pngpdf(wfp_rha_active_cases_100K, "wfp_rha_active_cases_100K", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
 
 wfp_districts_4thwave <- prepare_plot(p_districts_4thwave)
-ggsave(dir_plots("wfp_districts_4thwave.png"),
-       plot=wfp_districts_4thwave,
-       width=8.66, height=6, units = "in", dpi = 300,
-       scale=1, limitsize = TRUE
-)
+# ggsave(dir_plots("wfp_districts_4thwave.png"),
+#        plot=wfp_districts_4thwave,
+#        width=8.66, height=6, units = "in", dpi = 300,
+#        scale=1, limitsize = TRUE
+# )
+ggsave_pngpdf(wfp_districts_4thwave, "wfp_districts_4thwave", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
