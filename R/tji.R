@@ -222,7 +222,7 @@ rate_str <- dashboard_daily_topline_raw %>% select(rate) %>% pull()
 
 # today
 today_date <- Sys.Date()
-today_name <- wday(today_date, label=TRUE, abbr=FALSE)
+today_name <- lubridate::wday(today_date, label=TRUE, abbr=FALSE)
 
 
 # Singular/plural strings for deaths in hed and body

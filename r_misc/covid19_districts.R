@@ -1,7 +1,6 @@
 
 dateStart <- as.Date("2020-10-01", format = "%Y-%m-%d")
-dateEnd <- as.Date("2021-09-14", format = "%Y-%m-%d")
-
+dateEnd <- Sys.Date() # as.Date("2021-09-21", format="%Y-%m-%d")
 
 population_mb_2020 <- read_csv(here::here("data/raw/", "population_mb_2020.csv")) %>%
   clean_names() %>%

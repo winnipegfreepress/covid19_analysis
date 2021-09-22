@@ -16,6 +16,23 @@ nominalBold_shade_2 <- "#378b36";
 nominalBold_shade_3 <- "#bd4718";
 nominalBold_shade_4 <- "#00a090";
 
+wfpPaletteNominalBold <- c(
+  nominalBold_shade_0,
+  nominalBold_shade_1,
+  nominalBold_shade_2,
+  nominalBold_shade_3,
+  nominalBold_shade_4
+)
+
+wfpPaletteNominalMuted <- c(
+  nominalMuted_shade_0,
+  nominalMuted_shade_1,
+  nominalMuted_shade_2,
+  wfp_blue,
+  nominalMuted_shade_4
+)
+
+
 # Provinces palette, MB Highlight
 # palette_provinces <- c(
 #   "MB"="#0078A9",
@@ -27,3 +44,5 @@ nominalBold_shade_4 <- "#00a090";
 #   "SK"="#a65628",
 #   "NS"="#f781bf"
 # )
+
+

@@ -1,7 +1,7 @@
 
 start <- as.Date("2020-09-14",format="%Y-%m-%d")
-end <- as.Date("2021-08-16",format="%Y-%m-%d")
-importJSON <- "None" # None/Full
+end <- as.Date("2021-09-22",format="%Y-%m-%d")
+importJSON <- "Full" # None/Full
 
 # THIS TAKES A FEW MINUTES, READ THE CSV UNLESS IT'S THE FIRST RUN OF THE DAY
 # Create df based on what the JSON contains then rbind in the while loop
