@@ -20,7 +20,7 @@ last_update <-  Manitoba_COVID_19_Vaccine_Uptake_by_District %>%
   select(date) %>%
   pull()
 
-last_updated_ts <- as.Date(last_update)
+last_updated_ts <- last_update_timestamp
 
 p_vaccine_uptake_dose_1 <- ggplot(Manitoba_COVID_19_Vaccine_Uptake_by_District) +
   aes(x=reorder(rhadname, uptake_1), fill = rha, y = uptake_1) +

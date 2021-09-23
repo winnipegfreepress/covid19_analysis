@@ -38,7 +38,7 @@ source(dir_src("visualize_rha_total_case_100K.R"))
 # Health district snapshot
 source(dir_src("visualize_district_active_cases.R"))
 source(dir_src("visualize_district_active_case_100K.R"))
-source(dir_src("visualize_districts_new_cases.R"))
+# source(dir_src("visualize_districts_new_cases.R"))
 
 # TODO WIP Weekly pct change in cases and deaths
 # source(dir_src("visualize_cases_deaths_week_over_week.R"))
