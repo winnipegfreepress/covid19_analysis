@@ -74,16 +74,16 @@ p_daily_cases_rha_capita <- ggplot(dashboard_daily_status_manitoba %>%
               filter(rha == "Southern"),
             size = 1, alpha=1) +
 
-  geom_text_repel(
+  geom_text(
     data=dashboard_daily_status_manitoba %>% filter(date == max(date)),
     aes(x = date,
         y = daily_cases_7day_100K,
         group = rha,
-        label=paste(rha, ": ", format(daily_cases_7day_100K, digits=2), sep="")
+        label=paste(rha, ": ", format(daily_cases_7day_100K, digits=2), " cases/100K", sep="")
     ),
     color="#222222",
     size=4,
-    hjust=-.75,
+    hjust=-.05,
     # vjust=-.25,
     direction="y",
     segment.color="#222222",
@@ -94,7 +94,7 @@ p_daily_cases_rha_capita <- ggplot(dashboard_daily_status_manitoba %>%
   scale_colour_manual(values=wfpPaletteNominalMuted) +
   scale_x_date(
     expand=c(0, 0),
-    limits=as.Date(c("2021-08-30","2021-10-01")),
+    limits=as.Date(c("2021-08-30","2021-11-01")),
     date_breaks="2 weeks",
     labels=date_format("%b %d")
   ) +
@@ -105,7 +105,7 @@ p_daily_cases_rha_capita <- ggplot(dashboard_daily_status_manitoba %>%
   labs(
     title=wrap_text("Daily cases per capita of COVID-19 across Manitoba health regions", 70),
     subtitle=wrap_text("Seven-day moving average of new cases per 100,000 people", 80),
-    caption=wrap_text(toupper(paste("WINNIPEG FREE PRESS", " — SOURCE: ", "Manitoba Health", " (", "2021-09-22", ")",sep="")), 80),
+    caption=wrap_text(toupper(paste("WINNIPEG FREE PRESS", " — SOURCE: ", "Manitoba Health", " (", last_update_timestamp, ")",sep="")), 80),
     x="",
     y=""
   ) +

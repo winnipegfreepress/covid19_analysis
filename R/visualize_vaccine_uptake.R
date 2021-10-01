@@ -34,7 +34,7 @@ p_vaccine_uptake_dose_1 <- ggplot(Manitoba_COVID_19_Vaccine_Uptake_by_District) 
   scale_fill_brewer(palette = "Set2", drop=FALSE) +
   scale_y_continuous(
     expand=c(0, 0),
-    limits=c(0, 100),
+    limits=c(0, 110),
     # labels=scales::comma
     labels=function(x) {
       ifelse(x == 100, paste(x, "%", sep=""), x)
