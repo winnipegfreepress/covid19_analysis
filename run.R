@@ -47,7 +47,7 @@ source(dir_src("visualize_topline_blocks_spark.R"))
 ################################################################################
 # Upload the PDFs and PNGs to Amazon
 ################################################################################
-# upload_plots_s3()
+upload_plots_s3()
 
 
 cat("All done. That's it! ")
