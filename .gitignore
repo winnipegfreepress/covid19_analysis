@@ -22,6 +22,8 @@ node_modules
 Icon
 Icon\r
 "Icon\r"
+.idea
+.idea/*
 _scratch/*
 
 gmail-api-318003-d05f3621c589.json
