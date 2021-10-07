@@ -29,7 +29,7 @@ Third-party credentials (AWS S3/Google API keys) are not included in build or ru
 
 AWS credentials are required for uploads to the S3 bucket used for production graphics.
 
-AWS 
+
 ```
 GOOGLE_API_KEY=qwertyuhgfvcghjuikjhnklo-kmkl
 AWS_ACCESS_KEY_ID=qwertyuhgfvcghjuik-jhnklokmkl
