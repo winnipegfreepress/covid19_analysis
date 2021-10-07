@@ -12,7 +12,7 @@ The project can be run locally in RStudio or a server-based instance of RStudio 
 
 # Build the image
 
-```docker build --rm --force-rm -t covid19_analysis .```
+```docker build --rm --force-rm -t docker-data-r .```
 
 # Run the image
 

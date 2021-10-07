@@ -10,7 +10,6 @@ RUN apt-get update -qq && apt-get install -y \
   libgif-dev \
   libpng-dev
 
-
 # create an R user
 ENV USER wfpnews
 
