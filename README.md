@@ -10,15 +10,17 @@ The project can be run locally in RStudio or a server-based instance of RStudio 
 
 ## Docker install
 
+Change user name and  RStudio login credentials in the `Dockerfile` and `run_docker.sh` files before proceeding
+
 # Build the image
 
-```docker build --rm --force-rm -t docker-data-r .```
+```docker build --rm --force-rm -t covid19_analysis .```
 
 # Run the image
 
 `sh ./run_docker.sh`
 
-This sets data directory and defines user credentials to access RStudio. Adjust the `docker run ` options to suit. 
+This sets data directory and defines credentials for the RStudio user defined in the `Dockerfile`. Adjust the `docker run ` options to suit. 
 
 
 Login credentials for the default user (`wfpnews`) is set as a docker run option in `./run_docker.sh`. Change them before deploying and starting the container.
