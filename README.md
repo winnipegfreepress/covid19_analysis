@@ -3,23 +3,39 @@
 Michael Pereira <monkeycycle@gmail.com>'
 
 
+This project collects, compiles, analyzes and viusualizes COVID-19 data -- primarily for the provinc of Manitoba.
 
-## Data sources
-
-### WFP's COVID-19 bulletin tracker
-
-* [TJI fields](https://docs.google.com/spreadsheets/d/19IqfhdXQaQbCJDns3yG0EEL4TAYGRgEGKKyLeELvLNA/edit#gid=362680117)
-
-* [Daily totals](https://docs.google.com/spreadsheets/d/19IqfhdXQaQbCJDns3yG0EEL4TAYGRgEGKKyLeELvLNA/edit#gid=1935428018)
-
-* [Local five-day test positivity](https://docs.google.com/spreadsheets/d/19IqfhdXQaQbCJDns3yG0EEL4TAYGRgEGKKyLeELvLNA/edit#gid=322055627)
-	Winnipeg's test positivity rate is only available through the daily COVID-19 bulletin. The provincial rate is available through dashboard feeds. **Dated to the day prior to match feed dates**
+The project can be run locally in RStudio or a server-based instance of RStudio can be deployed using Docker. 
 
 
+## Docker install
 
-----
+# Build the image
 
-```docker build --rm --force-rm -t covid19_analysis .```
+```docker build --rm --force-rm -t docker-data-r .```
 
-```docker run -d --rm -p 28787:8787 --name covid19_analysis -e USERID=$UID -e PASSWORD=SomeGoodPassWordHere -v $DATA_DIR:/home/rstudio/analysis covid19_analysis```
+# Run the image
+
+`sh ./run_docker.sh`
+
+This sets data directory and defines user credentials to access RStudio. Adjust the `docker run ` options to suit. 
+
+Login credentials for the default user (`wfpnews`) is set as a docker run option in `./run_docker.sh`. Change them before deploying and starting the container.
+
+
+Third-party credentials (AWS S3/Google API keys) are not included in build or run. 
+
+**Manually add a .env after the image is running.**
+
+AWS credentials are required for uploads to the S3 bucket used for production graphics.
+
+AWS 
+```
+GOOGLE_API_KEY=qwertyuhgfvcghjuikjhnklo-kmkl
+AWS_ACCESS_KEY_ID=qwertyuhgfvcghjuik-jhnklokmkl
+AWS_SECRET_ACCESS_KEY=qwertyuhgfvcghjuikjhnklokmkl-qwertyuhgfvcghjuikjhnklokmkl
+
+```
+
+***** 
 

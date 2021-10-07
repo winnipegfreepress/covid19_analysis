@@ -8,11 +8,11 @@ RUN apt-get update -qq && apt-get install -y \
   libcairo2-dev \
   libjpeg-dev \
   libgif-dev \
-  libpng-dev 
+  libpng-dev
 
 
 # create an R user
-ENV USER r_user
+ENV USER wfpnews
 
 # install devtools and upstartr
 RUN R -e "install.packages('devtools')"
