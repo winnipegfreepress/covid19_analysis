@@ -1,6 +1,6 @@
 # covid19_analysis
 
-Michael Pereira <monkeycycle@gmail.com>'
+Michael Pereira <monkeycycle@gmail.com>
 
 
 This project collects, compiles, analyzes and viusualizes COVID-19 data -- primarily for the provinc of Manitoba.
