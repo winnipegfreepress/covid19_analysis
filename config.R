@@ -13,6 +13,7 @@ initialize_startr(
   should_timestamp_output_files = TRUE,
   should_beep = FALSE,
   packages = c(
+    "dotenv",
     "devtools",
     "tidyverse", "glue", "magrittr",
     "lubridate", "hms",
@@ -48,11 +49,13 @@ library(epical)
 # Misc vars and strings
 source(dir_src("theme.R"))
 source(dir_src("palette.R"))
-credit_str = "WINNIPEG FREE PRESS"
+credit_str <- "WINNIPEG FREE PRESS"
 time_pause <- .5
 font_add_google("Open Sans")
 
-last_update_timestamp=Sys.Date()
+last_update_timestamp <- Sys.Date()
 
 
-
+if(file.exists(".env")){
+  load_dot_env(file = ".env")
+}
