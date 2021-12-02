@@ -8,7 +8,7 @@ p_rha_new_cases <- plot_line_timeseries(
   title_str="New daily cases of COVID-19 across Manitoba",
   subtitle_str="Seven-day moving average for new daily cases",
   x_str="", y_str="",
-  xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="2 months",
+  xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="3 months",
   ymin=0, ymax=400, y_units="%",
   source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )
