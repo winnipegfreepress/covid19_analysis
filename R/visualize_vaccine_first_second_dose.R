@@ -18,20 +18,20 @@ p_covid_19_mb_vaccinations_first_second <- plot_bar_stack(
 )
 
 p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_second +
-  annotate("text",
-           x=as.Date("2021-05-05"),
-           y=1570000,
-           label=wrap_text("March 3: Manitoba begins delaying administration of second doses of vaccine to increase the number of people receiving first doses.", 35),
-           hjust=1, vjust=.7, size=4,
-           colour="#000000"
-  ) +
-  annotate("segment",
-           x=as.Date("2021-02-23"),
-           y=1050000,
-           xend=as.Date("2021-02-23"),
-           yend=1000, size=.25,
-           colour="#9c9c9c"
-  ) +
+  # annotate("text",
+  #          x=as.Date("2021-03-01"),
+  #          y=1570000,
+  #          label=wrap_text("March 3: Manitoba begins delaying administration of second doses of vaccine to increase the number of people receiving first doses.", 35),
+  #          hjust=-.001, vjust=.7, size=4,
+  #          colour="#000000"
+  # ) +
+  # annotate("segment",
+  #          x=as.Date("2021-02-23"),
+  #          y=1050000,
+  #          xend=as.Date("2021-02-23"),
+  #          yend=1000, size=.25,
+  #          colour="#9c9c9c"
+  # ) +
   scale_colour_manual(
     values=c(
       "cumulative_first_doses"=nominalMuted_shade_0,

@@ -140,9 +140,11 @@ p_provincial_vax_pct_1st <- p_provincial_vax_pct_1st +
   ) +
   scale_y_continuous(
     expand = c(0, 0),
-    limits = c(0, 100),
+    limits = c(0, 140),
     labels = function(x) {
-      ifelse(x == 100, paste(x, "%", sep = ""), x)
+      ifelse(x == 100, paste(x, "%", sep = ""),
+             ifelse(x > 100, "",
+                    x))
     }
   ) +
   labs(
@@ -221,9 +223,11 @@ p_provincial_vax_pct_2nd <- p_provincial_vax_pct_2nd +
   ) +
   scale_y_continuous(
     expand = c(0, 0),
-    limits = c(0, 100),
+    limits = c(0, 140),
     labels = function(x) {
-      ifelse(x == 100, paste(x, "%", sep = ""), x)
+      ifelse(x == 100, paste(x, "%", sep = ""),
+             ifelse(x > 100, "",
+                    x))
     }
   ) +
   labs(

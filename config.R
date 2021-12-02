@@ -27,18 +27,6 @@ initialize_startr(
     "ggpubr", "ggtext", "showtext", "kableExtra",
     "gmailr", "patchwork",
     "pracma", "ISOweek"
-    # "easycsv"
-    # "EpiWeek",
-    # "slackr"
-    # "sendmailR",
-    # "emayili",
-    # "RcmdrPlugin.KMggplot2"
-    # "rvest",
-    # "tidymodels",
-    # "gganimate",
-    # "sf",
-    # "cansim",
-    # "cancensus",
   )
 )
 
@@ -53,9 +41,15 @@ credit_str <- "WINNIPEG FREE PRESS"
 time_pause <- .5
 font_add_google("Open Sans")
 
+
+# Set common limits for timeseries data
+xmin_var="2020-03-01"
+xmax_var="2022-03-31"
+
+# Timestamp for the last update in source line
 last_update_timestamp <- Sys.Date()
 
-
+# This is not committed to the git repo.
 if(file.exists(".env")){
   load_dot_env(file = ".env")
 }

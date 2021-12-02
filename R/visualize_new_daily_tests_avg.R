@@ -22,13 +22,13 @@ geom_point(data=wfp_daily_totals %>% filter(date == max(date)),
          color=nominalBold_shade_1, fill=nominalMuted_shade_1, size=1, alpha=1
 ) +
 geom_text(data=wfp_daily_totals %>% filter(date == max(date)),
-          aes(x=date + 3, y=tests_mavg_7day - 1,
+          aes(x=date + 6, y=tests_mavg_7day - 1,
           label=wrap_text(paste("Seven-day moving average ", sep=""), 13)
         ),
           color="#000000", hjust=.05, vjust=-.3, size=3
 ) +
 geom_text(data=wfp_daily_totals %>% filter(date == max(date)),
-          aes(x=date + 3, y=tests_mavg_7day - 1, label=paste(comma(tests_mavg_7day, accuracy=1), sep="")),
+          aes(x=date + 6, y=tests_mavg_7day - 1, label=paste(comma(tests_mavg_7day, accuracy=1), sep="")),
           color="#000000", hjust=.05, vjust=0.8, size=4, fontface="bold"
 )
 
