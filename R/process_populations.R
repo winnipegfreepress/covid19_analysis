@@ -98,7 +98,8 @@ population_12plus_total <- sum(mbhealth_population_agegroups_12plus$population_a
 
 
 
-provincial_population_12older_2020 <- read_csv(dir_data_raw("provincial_population_12older_total_2020_1710000501.csv")) %>%
+# provincial_population_2021 <- read_csv(dir_data_raw("provincial_population_12older_total_2020_1710000501.csv")) %>%
+provincial_population_2021 <- read_csv(dir_data_raw("provincial_population_total_2021_17-10-0009-01.csv")) %>%
   clean_names() %>%
   mutate(
     province_alt = ifelse(province == "British Columbia", "BC",
@@ -111,7 +112,7 @@ provincial_population_12older_2020 <- read_csv(dir_data_raw("provincial_populati
 
 
 
-write_feather(provincial_population_12older_2020, dir_data_processed("provincial_population_12older_2020.feather"))
+write_feather(provincial_population_2021, dir_data_processed("provincial_population_2021.feather"))
 write_feather(population_provinces_2020, dir_data_processed("population_provinces_2020.feather"))
 write_feather(manitoba_health_regions_populations, dir_data_processed("manitoba_health_regions_populations.feather"))
 write_feather(manitoba_health_districts_populations, dir_data_processed("manitoba_health_districts_populations.feather"))

@@ -43,10 +43,10 @@ pct_second_dose <- phac_covid_vaccine_mb_current_last_date_row$cumulative_second
 subtitle_str <- paste(
   "Manitoba has administered ", comma(cnt_first_dose),
   " first doses of the COVID-19 vaccines, partially immunizing ",
-  round(pct_first_dose, digits=1), " per cent of the eligible population age 12 or older. ",
+  round(pct_first_dose, digits=1), " per cent of the population. ",
   comma(cnt_second_dose), " second doses have been administered, fully immunizing ",
   format(pct_second_dose, digits=2),
-  " per cent of the eligible population. ",
+  " per cent of the population. ",
   sep=""
 )
 
