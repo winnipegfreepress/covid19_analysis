@@ -187,7 +187,7 @@ p_provincial_vax_pct_2nd <- plot_bar_x_reordered_y(
   provincial_vaccinations_pct_tall %>% filter(type == "two dose"),
   x_var = province, y_var = pct,
   bar_colour = nominalMuted_shade_0,
-  title_str = "Percentage of population with two doses of a COVID-19 vaccine",
+  title_str = "Percentage of total population that is fully vaccinated",
   subtitle_str = "", x_str = "", y_str = "",
   ymin = 0, ymax = 100, y_units = "%",
   source_str = "COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str = last_update_timestamp
@@ -225,7 +225,7 @@ p_provincial_vax_pct_2nd <- p_provincial_vax_pct_2nd +
   ) +
   scale_y_continuous(
     expand = c(0, 0),
-    limits = c(0, 140),
+    limits = c(0, 100),
     labels = function(x) {
       ifelse(x == 100, paste(x, "%", sep = ""),
              ifelse(x > 100, "",
@@ -234,7 +234,7 @@ p_provincial_vax_pct_2nd <- p_provincial_vax_pct_2nd +
   ) +
   labs(
     caption = paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and \npublished vaccination counts.",
-      "\n\n",
+      "\n",
       toupper("Winnipeg Free Press"),
       " — SOURCE: ",
       toupper("COVID-19 Canada Open Data Working Group, Statistics Canada"),
