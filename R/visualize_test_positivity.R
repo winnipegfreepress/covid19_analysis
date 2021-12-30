@@ -14,7 +14,7 @@ p_5day_test_positivity <- plot_line_timeseries_pct(
   subtitle_str="The World Health Organization (WHO) advised governments that test positivity rates should be 5 per cent or lower for at least 14 days before reopening",
   x_str="", y_str="",
   xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=25, y_units="%",
+  ymin=0, ymax=40, y_units="%",
   source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )
 
