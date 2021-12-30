@@ -25,8 +25,8 @@ run_analyze()
 ################################################################################
 # Run notebooks
 ################################################################################
-run_notebook(filename="vaccinations.Rmd")
-upload_reports_s3(report="vaccinations.html", destination_path="covid-19-tracker/")
+# run_notebook(filename="vaccinations.Rmd")
+# upload_reports_s3(report="vaccinations.html", destination_path="covid-19-tracker/")
 
 
 ################################################################################

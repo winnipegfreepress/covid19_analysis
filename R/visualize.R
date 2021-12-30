@@ -68,12 +68,12 @@ source(dir_src("visualize_vaccine_demographics.R"))
 source(dir_src("visualize_vaccine_distribution.R"))
 source(dir_src("visualize_vaccine_first_second_dose.R"))
 source(dir_src("visualize_vaccine_gap_provinces.R"))
-source(dir_src("visualize_vaccine_targets.R"))
+# source(dir_src("visualize_vaccine_targets.R"))
 source(dir_src("visualize_vaccine_demographic_coverage.R"))
 # source(dir_src("_scratch", "visualize_vaccine_demographics_female_male.R"))
 # source(dir_src("_scratch", "visualize_vaccine_distribution.R"))
 # source(dir_src("_scratch", "visualize_vaccine_administration.R"))
-source(dir_src("visualize_vaccine_uptake.R"))
+# source(dir_src("visualize_vaccine_uptake.R"))
 
 ################################################################################
 # Weekly epi report

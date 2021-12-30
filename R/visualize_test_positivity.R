@@ -26,8 +26,8 @@ geom_point(data=dashboard_5day_positivity %>% filter(date == max(date)),
 
 p_5day_test_positivity <- p_5day_test_positivity +
 geom_text(data=dashboard_5day_positivity %>% filter(date == max(date)),
-          aes(x=date + 5, y=positivity_rate_5day_mb, label=paste("Manitoba ", positivity_rate_5day_mb, "%", sep="")),
-          color="#000000", hjust=.05, vjust=-1, size=4
+          aes(x=date, y=positivity_rate_5day_mb, label=paste(positivity_rate_5day_mb, "%", sep="")),
+          color="#000000", hjust=.5, vjust=-1, size=4
 )
 
 # p_5day_test_positivity <- p_5day_test_positivity +

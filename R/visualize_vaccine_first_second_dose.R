@@ -21,6 +21,11 @@ p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_seco
   geom_line(aes(x=vaccination_date, y=cumulative_second_doses),
             size = 1, colour = nominalMuted_shade_1)
 
+p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_second +
+  geom_line(aes(x=vaccination_date, y=cumulative_third_doses),
+            size = 1, colour = nominalMuted_shade_2)
+
+
 # cumsum to date 1st dose
 p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_second +
   geom_point(data=COVID19_MB_first_second_vaccine_dose %>% filter(vaccination_date == max(vaccination_date)),
@@ -30,20 +35,26 @@ p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_seco
   geom_point(data=COVID19_MB_first_second_vaccine_dose %>% filter(vaccination_date == max(vaccination_date)),
              aes(x=vaccination_date, y=cumulative_second_doses),
              color=nominalBold_shade_1, fill=nominalBold_shade_1, size=1.5, alpha=1
+  ) +
+  geom_point(data=COVID19_MB_first_second_vaccine_dose %>% filter(vaccination_date == max(vaccination_date)),
+             aes(x=vaccination_date, y=cumulative_third_doses),
+             color=nominalBold_shade_2, fill=nominalBold_shade_2, size=1.5, alpha=1
   )
-
 
 
 p_covid_19_mb_vaccinations_first_second <- p_covid_19_mb_vaccinations_first_second +
   geom_text(data=COVID19_MB_first_second_vaccine_dose %>% filter(vaccination_date == max(vaccination_date)),
-            aes(x=vax_start_date + 30, y=1350000, label=paste(comma(cumulative_first_doses), " first doses", sep="")),
-            color=nominalBold_shade_0, hjust=.05, vjust=-.85, size=4
+            aes(x=vax_start_date + 30, y=1400000, label=paste(comma(cumulative_first_doses), " first doses", sep="")),
+            color=nominalBold_shade_0, hjust=.05, vjust=0, size=4
   ) +
   geom_text(data=COVID19_MB_first_second_vaccine_dose %>% filter(vaccination_date == max(vaccination_date)),
-            aes(x=vax_start_date + 30, y=1350000, label=paste(comma(cumulative_second_doses), " second doses", sep="")),
-            color=nominalBold_shade_1, hjust=.04, vjust=.85, size=4
+            aes(x=vax_start_date + 30, y=1320000, label=paste(comma(cumulative_second_doses), " second doses", sep="")),
+            color=nominalBold_shade_1, hjust=.04, vjust=0, size=4
+  ) +
+  geom_text(data=COVID19_MB_first_second_vaccine_dose %>% filter(vaccination_date == max(vaccination_date)),
+            aes(x=vax_start_date + 30, y=1240000, label=paste(comma(cumulative_third_doses), " third doses", sep="")),
+            color=nominalBold_shade_2, hjust=.04, vjust=0, size=4
   )
-
 
 
 wfp_covid_19_mb_vaccinations_first_second <- prepare_plot(p_covid_19_mb_vaccinations_first_second)
@@ -52,6 +63,4 @@ ggsave_pngpdf(wfp_covid_19_mb_vaccinations_first_second, "wfp_covid_19_mb_vaccin
 ggsave_pngpdf(wfp_covid_19_mb_vaccinations_first_second, "wfp_vaccine_administration_mb", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")
 
 
-
-plot(wfp_covid_19_mb_vaccinations_first_second)
 
