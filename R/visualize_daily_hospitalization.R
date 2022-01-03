@@ -10,28 +10,28 @@ p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y=y_max - 10, label=paste(total_hospital, " in hospital", sep="")),
+            aes(x=date - 120, y=y_max - 10, label=paste(total_hospital, " in hospital", sep="")),
             colour=nominalMuted_shade_0,
             hjust=-.05, size=3.5, lineheight=1, fontface="bold"
   ) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y=y_max - 35, label=paste(active_hospital, " active in hospital", sep="")),
+            aes(x=date - 120, y=y_max - 35, label=paste(active_hospital, " active in hospital", sep="")),
             colour=nominalBold_shade_0,
             hjust=-.03, size=3.5, lineheight=1, fontface="bold"
   ) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y_max - 60, label=paste(total_icu, " in ICU", sep="")),
+            aes(x=date - 120, y_max - 60, label=paste(total_icu, " in ICU", sep="")),
             colour=nominalMuted_shade_3,
             hjust=-.05, size=3.5, lineheight=1, fontface="bold"
   ) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y_max - 85, label=paste(active_icu, " active in ICU", sep="")),
+            aes(x=date - 120, y_max - 85, label=paste(active_icu, " active in ICU", sep="")),
             colour=nominalBold_shade_3,
             hjust=-.03, size=3.5, lineheight=1, fontface="bold"
   ) +
