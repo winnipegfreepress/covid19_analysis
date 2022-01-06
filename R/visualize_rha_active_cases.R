@@ -6,7 +6,7 @@ p_rha_active_cases <- plot_line_timeseries(
   group_var=rha,
   line_colour=nominalMuted_shade_0,
   title_str="Active cases of COVID-19 in Manitoba's regional health authorities",
-  subtitle_str="Due to a backlog in provincial tracking of recovered cases, active cases may be lower than reported.",
+  subtitle_str="",
   x_str="", y_str="",
   xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="3 months",
   ymin=0, ymax=10000, y_units="%",

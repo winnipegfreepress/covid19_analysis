@@ -4,7 +4,7 @@ p_districts_active_cases <- plot_bar_x_reordered_y(
   x_var=area_name, y_var=active_cases,
   # colour_var=rha, fill_var=rha, group_var=rha,
   title_str="Active cases of COVID-19 in Manitoba health districts",
-  subtitle_str="Due to a backlog in provincial tracking of recovered cases, active cases may be lower than reported.",
+  subtitle_str="",
   x_str="", y_str="", y_units="", ymin=0, ymax=2000,
   source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )
