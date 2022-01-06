@@ -10,7 +10,7 @@ p_mb_deaths <- plot_bar_timeseries(
   title_str="COVID-19 deaths reported in Manitoba",
   subtitle_str="", x_str="", y_str="",
   xmin="2020-03-01", xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=1250, y_units="",
+  ymin=0, ymax=2000, y_units="",
   source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )
 
