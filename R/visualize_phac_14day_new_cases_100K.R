@@ -20,7 +20,7 @@ p_14daynew_provinces_rates <- plot_bar_x_reordered_y(
   bar_colour=nominalMuted_shade_0,
   title_str="New COVID-19 cases in the previous 14 days per 100,000 people",
   subtitle_str="All reported cases", x_str="", y_str="",
-  y_units="", ymin=0, ymax=2000,
+  y_units="", ymin=0, ymax=5000,
   source_str="Public Health Agency of Canada", lastupdate_str=last_update_timestamp
 )
 

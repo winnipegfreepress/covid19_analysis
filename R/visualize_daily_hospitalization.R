@@ -1,5 +1,5 @@
 
-y_max <- 500
+y_max <- 600
 
 p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
   aes(x = date, y = active_hospital) +

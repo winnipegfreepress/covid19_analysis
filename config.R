@@ -44,7 +44,7 @@ font_add_google("Open Sans")
 
 # Set common limits for timeseries data
 xmin_var="2020-03-01"
-xmax_var="2022-03-31"
+xmax_var="2022-06-30"
 
 # Timestamp for the last update in source line
 last_update_timestamp <- Sys.Date()
