@@ -12,10 +12,11 @@ COVID19_MB_first_second_vaccine_dose__tall <- COVID19_MB_first_second_vaccine_do
   select(
     vaccination_date,
     cumulative_first_doses,
-    cumulative_second_doses
+    cumulative_second_doses,
+    cumulative_third_doses,
   ) %>%
   mutate(
-    remainder_first_doses=cumulative_first_doses - cumulative_second_doses
+    remainder_first_doses=cumulative_first_doses - cumulative_second_doses - cumulative_third_doses,
   ) %>%
   pivot_longer(
     !vaccination_date,
@@ -23,9 +24,14 @@ COVID19_MB_first_second_vaccine_dose__tall <- COVID19_MB_first_second_vaccine_do
     values_to="count"
   ) %>%
   mutate(
-    type_str=ifelse(type == "cumulative_first_doses", "First dose", "Second dose"),
-    type_str=ifelse(type == "remainder_first_doses", "First dose only", type_str),
-    type=factor(type, levels=c("cumulative_first_doses", "cumulative_second_doses", "remainder_first_doses")),
+    type_str=case_when(
+      type == "cumulative_first_doses" ~ "First dose",
+      type == "cumulative_second_doses" ~ "Second dose",
+      type == "cumulative_third_doses" ~ "Third dose",
+      type == "remainder_first_doses" ~ "First dose only",
+      TRUE ~ "Other"
+    ),
+    type=factor(type, levels=c("cumulative_first_doses", "cumulative_second_doses", "cumulative_third_doses", "remainder_first_doses")),
     count=ifelse(is.na(count), 0, count)
   )
 
@@ -274,24 +280,25 @@ COVID19_MB_vaccine_demographics_coverage_df <- COVID19_MB_vaccine_demographics_c
   )
 
 
-Manitoba_COVID_19_Vaccine_Uptake_by_District <- read_csv(dir_data_raw("Manitoba_COVID-19_Vaccine_Uptake_by_District.csv")) %>%
-  clean_names() %>%
-  select(-objectid, -shape_length, -shape_area) %>%
-  mutate(
-    rha = ifelse(rhacode == "SO", "Southern Health", rha),
-    rha = factor(rha,
-      levels = c(
-        "Interlake-Eastern",
-        "Northern",
-        "Prairie Mountain Health",
-        "Southern Health",
-        "Winnipeg"
-      )
-    )
-  )
-
-covid19_districts_cases_vax <- left_join(
-  dashboard_daily_status_districts_all,
-  Manitoba_COVID_19_Vaccine_Uptake_by_District,
-  by = c("area" = "rhad")
-)
+# PROVINCE BROKE SOURCE TODO
+# Manitoba_COVID_19_Vaccine_Uptake_by_District <- read_csv(dir_data_raw("Manitoba_COVID-19_Vaccine_Uptake_by_District.csv")) %>%
+#   clean_names() %>%
+#   select(-objectid, -shape_length, -shape_area) %>%
+#   mutate(
+#     rha = ifelse(rhacode == "SO", "Southern Health", rha),
+#     rha = factor(rha,
+#       levels = c(
+#         "Interlake-Eastern",
+#         "Northern",
+#         "Prairie Mountain Health",
+#         "Southern Health",
+#         "Winnipeg"
+#       )
+#     )
+#   )
+#
+# covid19_districts_cases_vax <- left_join(
+#   dashboard_daily_status_districts_all,
+#   Manitoba_COVID_19_Vaccine_Uptake_by_District,
+#   by = c("area" = "rhad")
+# )

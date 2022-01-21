@@ -1,5 +1,5 @@
 
-y_max <- 500
+y_max <- 1000
 
 p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
   aes(x = date, y = active_hospital) +
@@ -10,28 +10,28 @@ p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y=y_max - 10, label=paste(total_hospital, " in hospital", sep="")),
+            aes(x=date - 165, y=y_max - 25, label=paste(total_hospital, " in hospital", sep="")),
             colour=nominalMuted_shade_0,
             hjust=-.05, size=3.5, lineheight=1, fontface="bold"
   ) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y=y_max - 35, label=paste(active_hospital, " active in hospital", sep="")),
+            aes(x=date - 165, y=y_max - 75, label=paste(active_hospital, " active in hospital", sep="")),
             colour=nominalBold_shade_0,
             hjust=-.03, size=3.5, lineheight=1, fontface="bold"
   ) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y_max - 60, label=paste(total_icu, " in ICU", sep="")),
+            aes(x=date - 165, y_max - 125, label=paste(total_icu, " in ICU", sep="")),
             colour=nominalMuted_shade_3,
             hjust=-.05, size=3.5, lineheight=1, fontface="bold"
   ) +
 
   geom_text(data=wfp_daily_hospitalization_totals %>% filter(date == max(date)),
             stat="identity",
-            aes(x=date - 30, y_max - 85, label=paste(active_icu, " active in ICU", sep="")),
+            aes(x=date - 165, y_max - 175, label=paste(active_icu, " active in ICU", sep="")),
             colour=nominalBold_shade_3,
             hjust=-.03, size=3.5, lineheight=1, fontface="bold"
   ) +
@@ -43,7 +43,7 @@ p_daily_hospitalization <- ggplot(wfp_daily_hospitalization_totals) +
   ) +
   scale_x_date(
     expand=c(0, 0),
-    limits=c(as.Date("2020-03-01"), as.Date("2021-12-31")),
+    limits=c(as.Date(xmin_var), as.Date(xmax_var)),
     date_breaks="1 month",
     date_minor_breaks="1 month",
     labels=date_format("%b")

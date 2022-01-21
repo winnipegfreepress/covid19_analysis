@@ -14,7 +14,7 @@ p_5day_test_positivity <- plot_line_timeseries_pct(
   subtitle_str="The World Health Organization (WHO) advised governments that test positivity rates should be 5 per cent or lower for at least 14 days before reopening",
   x_str="", y_str="",
   xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=25, y_units="%",
+  ymin=0, ymax=60, y_units="%",
   source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )
 
@@ -26,8 +26,8 @@ geom_point(data=dashboard_5day_positivity %>% filter(date == max(date)),
 
 p_5day_test_positivity <- p_5day_test_positivity +
 geom_text(data=dashboard_5day_positivity %>% filter(date == max(date)),
-          aes(x=date + 5, y=positivity_rate_5day_mb, label=paste("Manitoba ", positivity_rate_5day_mb, "%", sep="")),
-          color="#000000", hjust=.05, vjust=-1, size=4
+          aes(x=date, y=positivity_rate_5day_mb, label=paste(positivity_rate_5day_mb, "%", sep="")),
+          color="#000000", hjust=.5, vjust=-1, size=4
 )
 
 # p_5day_test_positivity <- p_5day_test_positivity +

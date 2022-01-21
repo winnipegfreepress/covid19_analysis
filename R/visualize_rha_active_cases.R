@@ -1,3 +1,5 @@
+ymax_var = 30000
+
 
 p_rha_active_cases <- plot_line_timeseries(
   dashboard_daily_status_manitoba,
@@ -6,10 +8,10 @@ p_rha_active_cases <- plot_line_timeseries(
   group_var=rha,
   line_colour=nominalMuted_shade_0,
   title_str="Active cases of COVID-19 in Manitoba's regional health authorities",
-  subtitle_str="Due to a backlog in provincial tracking of recovered cases, active cases may be lower than reported.",
+  subtitle_str="",
   x_str="", y_str="",
-  xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="2 months",
-  ymin=0, ymax=10000, y_units="%",
+  xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="4 months",
+  ymin=0, ymax=ymax_var, y_units="%",
   source_str="Manitoba Health", lastupdate_str=last_update_timestamp
 )
 
@@ -19,7 +21,7 @@ geom_point(data=dashboard_daily_status_manitoba %>% filter(date == max(date)),
          color=nominalBold_shade_0, fill=nominalMuted_shade_1, size=1.5, alpha=1
 ) +
 geom_text(data=dashboard_daily_status_manitoba %>% filter(date == max(date)),
-          aes(x=as.Date(xmin_var) + 10, y=9500,
+          aes(x=as.Date(xmin_var) + 50, y=ymax_var * .95,
             label=paste(
               comma(cumulative_cases), " cases", "\n",
               comma(active_cases, accuracy=1), " active", "\n",

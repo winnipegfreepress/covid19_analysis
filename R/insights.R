@@ -104,7 +104,7 @@ today_districts_message <- paste(
   today_districts[["area_name"]][4], ": ", today_districts[["active_cases"]][4], "\n",
   today_districts[["area_name"]][5], ": ", today_districts[["active_cases"]][5], "\n",
   "\n",
-  "Due to a backlog in provincial tracking of recovered cases, active cases may be lower than reported.",
+  "",
   "\n", "#wfp", "\n",
   "\n", "==========", "\n\n",
   sep=""

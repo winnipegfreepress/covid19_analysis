@@ -26,7 +26,9 @@ c19ca_vaccine_completed <- c19ca_vaccine_completed %>%
     date = as.Date(date_vaccine_completed, format = "%d-%m-%Y")
   )
 
-provincial_population_12older_2020 <- read_csv(dir_data_raw("provincial_population_12older_total_2020_1710000501.csv")) %>%
+
+# provincial_population_2021 <- read_csv(dir_data_raw("provincial_population_12older_total_2020_1710000501.csv")) %>%
+provincial_population_2021 <- read_csv(dir_data_raw("provincial_population_total_2021_17-10-0009-01.csv")) %>%
   clean_names() %>%
   mutate(
     province_alt = ifelse(province == "British Columbia", "BC",
@@ -51,7 +53,7 @@ provincial_vaccinations <- left_join(
     date = date.x
   ) %>%
   left_join(
-    provincial_population_12older_2020,
+    provincial_population_2021,
     by = c("province" = "province_alt")
   ) %>%
   select(
@@ -62,13 +64,13 @@ provincial_vaccinations <- left_join(
   ) %>%
   mutate(
     cumulative_first_doses = cumulative_avaccine - cumulative_cvaccine,
-    pct_one_dose = cumulative_first_doses / total_population_12_or_older * 100,
-    pct_two_dose = cumulative_cvaccine / total_population_12_or_older * 100
+    pct_one_dose = cumulative_first_doses / total_population * 100,
+    pct_two_dose = cumulative_cvaccine / total_population * 100
   ) %>%
   select(
     date,
     province,
-    total_population_12_or_older,
+    total_population,
     avaccine,
     cvaccine,
     cumulative_avaccine,
@@ -102,8 +104,8 @@ p_provincial_vax_pct_1st <- plot_bar_x_reordered_y(
   provincial_vaccinations_pct_tall %>% filter(type == "one dose"),
   x_var = province, y_var = pct,
   bar_colour = nominalMuted_shade_0,
-  title_str = "Percentage of eligible population with at least one dose of a COVID-19 vaccine",
-  subtitle_str = "Eligible population age 12 or older as of July 1, 2020", x_str = "", y_str = "",
+  title_str = "Percentage of population with at least one dose of a COVID-19 vaccine",
+  subtitle_str = "", x_str = "", y_str = "",
   ymin = 0, ymax = 100, y_units = "%",
   source_str = "COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str = last_update_timestamp
 )
@@ -140,9 +142,11 @@ p_provincial_vax_pct_1st <- p_provincial_vax_pct_1st +
   ) +
   scale_y_continuous(
     expand = c(0, 0),
-    limits = c(0, 100),
+    limits = c(0, 140),
     labels = function(x) {
-      ifelse(x == 100, paste(x, "%", sep = ""), x)
+      ifelse(x == 100, paste(x, "%", sep = ""),
+             ifelse(x > 100, "",
+                    x))
     }
   ) +
   labs(
@@ -183,8 +187,8 @@ p_provincial_vax_pct_2nd <- plot_bar_x_reordered_y(
   provincial_vaccinations_pct_tall %>% filter(type == "two dose"),
   x_var = province, y_var = pct,
   bar_colour = nominalMuted_shade_0,
-  title_str = "Percentage of population with two doses of a COVID-19 vaccine",
-  subtitle_str = "Eligible population age 12 or older as of July 1, 2020", x_str = "", y_str = "",
+  title_str = "Percentage of total population that is fully vaccinated",
+  subtitle_str = "", x_str = "", y_str = "",
   ymin = 0, ymax = 100, y_units = "%",
   source_str = "COVID-19 Canada Open Data Working Group, Statistics Canada", lastupdate_str = last_update_timestamp
 )
@@ -223,12 +227,14 @@ p_provincial_vax_pct_2nd <- p_provincial_vax_pct_2nd +
     expand = c(0, 0),
     limits = c(0, 100),
     labels = function(x) {
-      ifelse(x == 100, paste(x, "%", sep = ""), x)
+      ifelse(x == 100, paste(x, "%", sep = ""),
+             ifelse(x > 100, "",
+                    x))
     }
   ) +
   labs(
     caption = paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and \npublished vaccination counts.",
-      "\n\n",
+      "\n",
       toupper("Winnipeg Free Press"),
       " — SOURCE: ",
       toupper("COVID-19 Canada Open Data Working Group, Statistics Canada"),
@@ -262,10 +268,10 @@ ggsave_pngpdf(wfp_provincial_vax_pct_2nd, "wfp_provincial_vax_pct_2nd", width_va
 # Try 2-up
 
 
-p_title <- paste("Percentage of population with a COVID-19 vaccination")
+p_title <- paste("Percentage of total population with a COVID-19 vaccination")
 p_title.p <- ggparagraph(text=p_title, face="bold", size=16, lineheight=1, color="black", margin(.2,0.2,0,0.2, "cm"))
 
-p_subtitle <- paste("Eligible population age 12 or older as of July 1, 2020")
+p_subtitle <- paste(" ")
 p_subtitle.p <- ggparagraph(text=p_subtitle, size=14, lineheight=1, color="black", margin(0,0.2,0,0.2, "cm"))
 
 p_credit_source=paste("Vaccination percentages may differ from provincial estimates due to discrepancies in population projections and vaccination counts.",
@@ -320,14 +326,14 @@ p_provincial_vax_pct_1st_2nd_2up <-  ggarrange(
 
 p_provincial_vax_pct_1st_2nd <-  ggarrange(
   p_title.p,
-  p_subtitle.p,
+  # p_subtitle.p,
   p_provincial_vax_pct_1st_2nd_2up,
   p_credit_source.p,
   labels=c("", "", ""),
-  ncol=1, nrow=4,
-  heights=c(.4, .25, 5, .1)
+  ncol=1,
+  nrow=3,
+  heights=c(.4, 5, .1)
 ) +
   theme(plot.margin=margin(.4,.25,.25,.25, "cm"))
-
 
 ggsave_pngpdf(p_provincial_vax_pct_1st_2nd, "wfp_provincial_vax_pct_1st_2nd", width_var=8.66, height_var=6, dpi_var=300, scale_var=1, units_var="in")

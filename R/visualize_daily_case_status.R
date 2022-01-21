@@ -8,7 +8,7 @@ if(wfp_daily_totals_last_date$new_daily_cases == 1){
 }
 
 if(wfp_daily_totals_last_date$new_daily_cases > 1){
-  fill_legend_title_cases <- paste(wfp_daily_totals_last_date$new_daily_cases, " new cases of COVID-19", sep="")
+  fill_legend_title_cases <- paste(comma(wfp_daily_totals_last_date$new_daily_cases), " new cases of COVID-19", sep="")
 }
 
 if(wfp_daily_totals_last_date$new_daily_deaths < 1){
@@ -37,7 +37,7 @@ p_daily_case_status <- plot_bar_stack(
   title_str="Daily status of COVID-19 cases reported in Manitoba",
   subtitle_str=summary_str, x_str="", y_str="",
   xmin=xmin_var, xmax=xmax_var, xformat="%b", x_units="1 month",
-  ymin=0, ymax=80000, y_units="",
+  ymin=0, ymax=150000, y_units="",
   source_str="Manitoba Health COVID-19 Bulletin", lastupdate_str=last_update_timestamp
 )
 
